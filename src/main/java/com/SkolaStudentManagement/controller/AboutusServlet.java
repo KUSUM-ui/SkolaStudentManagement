@@ -1,0 +1,61 @@
+package com.SkolaStudentManagement.controller;
+
+import jakarta.servlet.ServletException;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * Servlet implementation class AboutusServlet
+ */
+@WebServlet(asyncSupported = true, urlPatterns = { "/AboutUsServlet" })
+public class AboutusServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AboutusServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// ── Stats (reuse same as HomeServlet) ──────────────────────────────
+		request.setAttribute("institutionCount", "50+");
+		request.setAttribute("activeStudents",   "1.2K");
+		request.setAttribute("efficiencyRate",   "98%");
+		request.setAttribute("userRating",       "4.9");
+
+		// ── Team members ───────────────────────────────────────────────────
+		// Add your team member names here
+		String[] teamNames  = { "Member 1", "Member 2", "Member 3", "Member 4", "Member 5" };
+		String[] teamRoles  = { "Developer", "Developer", "Designer", "Developer", "Designer" };
+		// Filenames of photos inside resources/images/
+		String[] teamPhotos = { "Kusum.png", "team2.png", "team3.png", "team4.png", "team5.png" };
+
+		request.setAttribute("teamNames",  teamNames);
+		request.setAttribute("teamRoles",  teamRoles);
+		request.setAttribute("teamPhotos", teamPhotos);
+
+		// ── Forward to aboutus.jsp ─────────────────────────────────────────
+		request.getRequestDispatcher("/WEB-INF/aboutus.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+

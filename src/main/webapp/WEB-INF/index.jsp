@@ -81,7 +81,71 @@
       <a href="about.jsp"><button class="btn-outline">View more</button></a>
     </div>
   </section>
+<!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="contact-bg">
+      <img src="${pageContext.request.contextPath}/resources/images/contactbg.png"
+           alt="Auditorium" />
+      <div class="contact-overlay"></div>
+    </div>
+    <div class="contact-card">
+      <h2>Contact Us</h2>
 
+      <% String msg = (String) request.getAttribute("message"); %>
+      <% if (msg != null) { %>
+        <p class="form-message"><%= msg %></p>
+      <% } %>
+
+      <form action="${pageContext.request.contextPath}/ContactServlet" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-send">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">🦢</span>
+          <span class="logo-text white">SKOLA</span>
+        </div>
+        <p>The Academic Curator for institutions that value excellence, aesthetics,
+           and efficiency in every digital touchpoint.</p>
+      </div>
+      <div class="footer-links">
+        <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-col-title">Contact</p>
+        <p>✉ skola@edu.np</p>
+        <p>📞 977+ 9741877269</p>
+        <p>📍 Suryabinayak, BKT</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 Relume. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </footer>
 
 
 
