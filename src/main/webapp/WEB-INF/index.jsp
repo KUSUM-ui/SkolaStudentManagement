@@ -40,7 +40,7 @@
 		</div>
 		<div class="hero-image">
 			<div class="image-blob">
-				<img src="${pageContext.request.contextPath}/resources/images/image 96.png" 
+				<img src="${pageContext.request.contextPath}/resources/images/brit.png" 
      alt="School Building" />
 			</div>
 		</div>
@@ -78,13 +78,13 @@
          It lets students access schedules, check teacher availability, organize notes, and stay updated
          with daily activities. It also supports club registration and participation, helping students
          stay organized, connected, and in control of their learning.</p>
-      <a href="about.jsp"><button class="btn-outline">View more</button></a>
+      <a href="aboutus.jsp"><button class="btn-outline">View more</button></a>
     </div>
   </section>
 <!-- CONTACT SECTION -->
   <section class="contact-section" id="contact">
     <div class="contact-bg">
-      <img src="${pageContext.request.contextPath}/resources/images/contactbg.png"
+      <img src="${pageContext.request.contextPath}/images/contactbg.png"
            alt="Auditorium" />
       <div class="contact-overlay"></div>
     </div>

@@ -35,8 +35,8 @@ public class AboutusServlet extends HttpServlet {
 		request.setAttribute("userRating",       "4.9");
 
 		// ── Team members ───────────────────────────────────────────────────
-		// Add your team member names here
-		String[] teamNames  = { "Member 1", "Member 2", "Member 3", "Member 4", "Member 5" };
+		// team member names here
+		String[] teamNames  = { "Kusum", "Dilisha", "Shine", "Nishriti", "Aaditya" };
 		String[] teamRoles  = { "Developer", "Developer", "Designer", "Developer", "Designer" };
 		// Filenames of photos inside resources/images/
 		String[] teamPhotos = { "Kusum.png", "team2.png", "team3.png", "team4.png", "team5.png" };

@@ -1,0 +1,377 @@
+/* ============================================================
+   contactus.css
+   ============================================================ */
+
+:root {
+  --red:        #C0292A;
+  --red-light:  #E84040;
+  --black:      #111111;
+  --grey:       #666666;
+  --light:      #F7F7F7;
+  --white:      #FFFFFF;
+  --radius:     14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--black); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 72px;
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--red);
+  letter-spacing: 1px;
+}
+
+.logo-text.white { color: var(--white); }
+
+.nav-links { display: flex; gap: 44px; }
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--black);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--red); }
+
+.btn-login {
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-login:hover { background: var(--red-light); transform: translateY(-1px); }
+
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+.cu-banner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.cu-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cu-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cu-banner-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   MAIN CONTENT (info + form side by side)
+   ============================================================ */
+.cu-main {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+  padding: 80px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* â”€â”€ Left Info Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.cu-info {
+  flex: 1;
+  max-width: 380px;
+}
+
+.cu-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 40px;
+}
+
+.cu-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.cu-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cu-info-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.cu-info-value {
+  font-size: 14px;
+  color: var(--grey);
+}
+
+/* Social */
+.cu-social-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.cu-social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.cu-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: 50%;
+  color: var(--black);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.cu-social-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(192,41,42,0.05);
+}
+
+/* â”€â”€ Right Form Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.cu-form-card {
+  flex: 1.2;
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 48px 44px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.form-group input,
+.form-group textarea {
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+  background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(192,41,42,0.08);
+}
+
+.btn-send {
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-send:hover { background: var(--red-light); transform: translateY(-1px); }
+
+/* Form feedback */
+.form-message {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.form-message.error {
+  background: #fff1f2;
+  color: var(--red);
+  border-color: #fecdd3;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--red);
+  color: rgba(255,255,255,0.85);
+  padding: 56px 72px 24px;
+  margin-top: 40px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.20);
+}
+
+.footer-brand { max-width: 220px; }
+.footer-brand p { font-size: 13px; line-height: 1.7; opacity: 0.80; }
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.footer-logo .logo-text { color: var(--white); }
+
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+
+.footer-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-contact { display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.footer-contact p { font-size: 13px; opacity: 0.85; }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-size: 12px;
+  opacity: 0.70;
+}
+
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { color: inherit; transition: opacity 0.2s; }
+.footer-bottom-links a:hover { opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .navbar { padding: 16px 32px; }
+
+  .cu-main {
+    flex-direction: column;
+    padding: 48px 32px;
+    gap: 40px;
+  }
+
+  .cu-info { max-width: 100%; }
+
+  .cu-form-card { padding: 36px 28px; }
+
+  .footer { padding: 48px 32px 24px; }
+  .footer-inner { flex-wrap: wrap; gap: 36px; }
+}
+
+@media (max-width: 600px) {
+  .navbar { padding: 14px 20px; }
+  .nav-links { display: none; }
+
+  .cu-banner { height: 200px; }
+  .cu-banner-overlay h1 { font-size: 32px; }
+
+  .cu-main { padding: 40px 20px; }
+
+  .cu-form-card { padding: 28px 20px; }
+
+  .footer { padding: 40px 20px 20px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-bottom-links { gap: 16px; }
+}
