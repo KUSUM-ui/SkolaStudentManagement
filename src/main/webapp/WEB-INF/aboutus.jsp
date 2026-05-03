@@ -8,20 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/SkolaStudentManagement/css/aboutus.css" />
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/aboutus.css" />
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-logo">
-      <span class="logo-icon">🦢</span>
-      <span class="logo-text">SKOLA</span>
+   <nav>
+        <a href="HomeServlet" class="nav-brand">
+          <div class="nav-logo">
+      <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
+      
     </div>
+            <span class="nav-wordmark">Skola</span>
+        </a>
     <ul class="nav-links">
       <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/AboutUsServlet" class="active">About Us</a></li>
-      <li><a href="${pageContext.request.contextPath}/index.jsp#contact">Contact Us</a></li>
+      <li><a href="${pageContext.request.contextPath}/AboutusServlet" class="active">About Us</a></li>
+      <li><a href="${pageContext.request.contextPath}/ContactUsServlet">Contact Us</a></li>
     </ul>
     <a href="${pageContext.request.contextPath}/login.jsp">
       <button class="btn-login">Login</button>
@@ -42,7 +45,7 @@
          connected and active student community.</p>
     </div>
     <div class="au-hero-image">
-      <img src="${pageContext.request.contextPath}/resources/images/aboutus.png"
+      <img src="${pageContext.request.contextPath}/resources/images/abtus.png"
            alt="Students studying" />
     </div>
   </section>
