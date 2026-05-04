@@ -30,10 +30,10 @@
 
             <!-- Hero Banner -->
             <div class="sk-cd-hero">
-                <img src="<%= request.getContextPath() %>/images/inkspiremain.png" class="hero-image" alt="Inkspire Hero" />
+                <img src="${pageContext.request.contextPath}/images/inkspiremain.png" class="hero-image" alt="Inkspire Hero" />
                 <div class="sk-cd-hero-overlay">
                     <h1 class="sk-cd-hero-title">Inkspire</h1>
-                    <a href="<%= request.getContextPath() %>/clubRegister.jsp" class="sk-cd-register-btn">Register Now</a>
+                    <a href="${pageContext.request.contextPath}/clubRegister.jsp" class="sk-cd-register-btn">Register Now</a>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     </p>
                 </div>
                 <div class="sk-cd-about-img">
-                    <img src="<%= request.getContextPath() %>/images/inkspire2nd.png" alt="Inkspire Club" />
+                    <img src="${pageContext.request.contextPath}/images/inkspire2nd.png" alt="Inkspire Club" />
                 </div>
             </section>
 
@@ -125,7 +125,7 @@
         </main>
     </div>
 
-    <%@ include file="_footer.jsp" %>
+     <jsp:include page="_footer.jsp" />
 
 </body>
 </html>

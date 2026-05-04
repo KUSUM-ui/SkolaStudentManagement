@@ -29,10 +29,10 @@
 
             <!-- Hero Banner -->
             <div class="sk-mm-hero">
-                <img src="<%= request.getContextPath() %>/images/moneymazemain.png" class="sk-mm-hero-image" alt="MoneyMaze Hero" />
+                <img src="${pageContext.request.contextPath}/images/moneymazemain.png" class="sk-mm-hero-image" alt="MoneyMaze Hero" />
                 <div class="sk-mm-hero-overlay">
                     <h1 class="sk-mm-hero-title">Money Maze</h1>
-                    <a href="<%= request.getContextPath() %>/clubRegister.jsp" class="sk-mm-register-btn">Register Now</a>
+                    <a href="${pageContext.request.contextPath}/clubRegister.jsp" class="sk-mm-register-btn">Register Now</a>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     </p>
                 </div>
                 <div class="sk-mm-about-img">
-                    <img src="<%= request.getContextPath() %>/images/moneymaze2nd.png" alt="Money Maze Club" />
+                    <img src="${pageContext.request.contextPath}/images/moneymaze2nd.png" alt="Money Maze Club" />
                 </div>
             </section>
 
@@ -99,7 +99,7 @@
                         <li>Anyone who wants to feel confident and in control of their financial future</li>
                     </ul>
                     <div class="sk-mm-who-deco">
-                        <img src="<%= request.getContextPath() %>/images/moneymaze3rd.png" alt="" />
+                        <img src="${pageContext.request.contextPath}/images/moneymaze3rd.png" alt="" />
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
         </main>
     </div>
 
-    <%@ include file="_footer.jsp" %>
+     <jsp:include page="_footer.jsp" />
 
 </body>
 </html>

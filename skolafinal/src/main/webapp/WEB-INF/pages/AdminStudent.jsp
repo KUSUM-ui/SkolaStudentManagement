@@ -116,7 +116,7 @@
     </main>
   </div>
 
-  <%@ include file="_footer.jsp" %>
+   <jsp:include page="_footer.jsp" />
 
 </div>
 

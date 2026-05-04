@@ -29,10 +29,10 @@
 
             <!-- Hero Banner -->
             <div class="sk-sparked-hero">
-                <img src="<%= request.getContextPath() %>/images/sparkedmain.png" class="sk-sparked-hero-image" alt="Sparked Hero" />
+                <img src="${pageContext.request.contextPath}/images/sparkedmain.png" class="sk-sparked-hero-image" alt="Sparked Hero" />
                 <div class="sk-sparked-hero-overlay">
                     <h1 class="sk-sparked-hero-title">Sparked</h1>
-                    <a href="<%= request.getContextPath() %>/clubRegister.jsp" class="sk-sparked-register-btn">Register Now</a>
+                    <a href="${pageContext.request.contextPath}/clubRegister.jsp" class="sk-sparked-register-btn">Register Now</a>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="sk-sparked-about-img">
-                    <img src="<%= request.getContextPath() %>/images/sparked2nd.png" alt="Sparked speaker" />
+                    <img src="${pageContext.request.contextPath}/images/sparked2nd.png" alt="Sparked speaker" />
                 </div>
             </section>
 
@@ -123,14 +123,14 @@
                     <p class="sk-sparked-social-link">Instagram — @sparked_club</p>
                 </div>
                 <div class="sk-sparked-social-img">
-                    <img src="<%= request.getContextPath() %>/images/sparked3rd.png" alt="Sparked audience silhouette" />
+                    <img src="${pageContext.request.contextPath}/images/sparked3rd.png" alt="Sparked audience silhouette" />
                 </div>
             </section>
 
         </main>
     </div>
 
-    <%@ include file="_footer.jsp" %>
+  <jsp:include page="_footer.jsp" />
 
 </body>
 </html>

@@ -2124,3 +2124,473 @@ h1 {
         width: 160px;
     }
 }
+/* ─────────────────────────────────────
+   9. STUDENT REGISTRATION PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-reg-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+}
+
+.sk-page .sk-reg-page-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 28px;
+    font-family: inherit;
+}
+
+.sk-page .sk-reg-card {
+    background: var(--red-pale);
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+}
+
+.sk-page .sk-reg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+}
+
+.sk-page .sk-reg-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Address spans only left column (col 1), matches design */
+.sk-page .sk-reg-field--full {
+    grid-column: 1 / 2;
+}
+
+.sk-page .sk-reg-field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.sk-page .sk-reg-field input {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #fff;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    box-shadow: 0 0 0 1px transparent;
+}
+
+.sk-page .sk-reg-field input:focus {
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.18);
+}
+
+.sk-page .sk-reg-submit-row {
+    display: flex;
+    justify-content: center;
+}
+
+.sk-page .sk-reg-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 80px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.sk-page .sk-reg-btn:hover {
+    background: var(--red-hover);
+}
+
+/* ─────────────────────────────────────
+   13. WEB DEV CLUB DETAIL PAGE  (.sk-webdev-)
+   ───────────────────────────────────── */
+
+/* Main layout */
+.sk-webdev-main {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.sk-webdev-main .sk-topbar {
+    padding: 28px 32px 0;
+    margin-bottom: 0;
+}
+
+/* ── Hero ── */
+.sk-webdev-hero {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 12px;
+    background: #0d1a2e;
+}
+
+.sk-webdev-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.88;
+    display: block;
+}
+
+.sk-webdev-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(10, 18, 45, 0.72) 0%,
+        rgba(10, 18, 45, 0.38) 48%,
+        transparent 78%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sk-webdev-hero-overlay {
+    position: absolute;
+    bottom: 32px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    z-index: 2;
+}
+
+.sk-webdev-hero-title {
+    font-size: 46px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    margin: 0;
+    text-shadow: 0 2px 20px rgba(0, 40, 120, 0.45);
+}
+
+.sk-webdev-register-btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.sk-webdev-register-btn:hover {
+    background: rgba(255, 255, 255, 0.26);
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* ── About card ── */
+.sk-webdev-about-card {
+    margin: 24px 32px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.sk-webdev-about {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    padding: 36px 36px 36px 40px;
+}
+
+.sk-webdev-about-text {
+    flex: 2;
+}
+
+.sk-webdev-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 16px;
+}
+
+.sk-webdev-about-text p {
+    font-size: 13px;
+    color: #444444;
+    line-height: 1.80;
+    margin-bottom: 10px;
+}
+
+.sk-webdev-about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.sk-webdev-about-img {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sk-webdev-about-img img {
+    width: 100%;
+    max-width: 210px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* ── Bottom row: What We Do + Events side by side ── */
+.sk-webdev-bottom-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 32px 32px 48px;
+    gap: 28px;
+    background: #fafafa;
+}
+
+.sk-webdev-what {
+    flex: 2;
+}
+
+.sk-webdev-events {
+    flex: 1;
+    min-width: 220px;
+}
+
+.sk-webdev-center-title {
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    color: #2d2d2d;
+    margin-bottom: 22px;
+}
+
+/* ── What We Do grid ── */
+.sk-webdev-what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.sk-webdev-what-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 18px 16px 22px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+}
+
+.sk-webdev-what-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 6px;
+}
+
+.sk-webdev-what-desc {
+    font-size: 11.5px;
+    color: #666666;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── Upcoming Events box ── */
+.sk-webdev-events-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sk-webdev-event-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-webdev-event-item:last-child {
+    border-bottom: none;
+    padding-bottom: 4px;
+}
+
+.sk-webdev-event-name {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 4px;
+}
+
+.sk-webdev-event-desc {
+    font-size: 12px;
+    color: #777777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+
+    .sk-webdev-main .sk-topbar {
+        padding: 20px 16px 0;
+    }
+
+    .sk-webdev-hero {
+        height: 200px;
+    }
+
+    .sk-webdev-hero-title {
+        font-size: 32px;
+    }
+
+    .sk-webdev-hero-overlay {
+        left: 20px;
+        bottom: 22px;
+        gap: 10px;
+    }
+
+    .sk-webdev-about-card {
+        margin: 16px;
+    }
+
+    .sk-webdev-about {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 20px;
+    }
+
+    .sk-webdev-about-img img {
+        max-width: 100%;
+    }
+
+    .sk-webdev-bottom-row {
+        flex-direction: column;
+        padding: 24px 16px 36px;
+    }
+
+    .sk-webdev-events {
+        width: 100%;
+    }
+
+    .sk-webdev-what-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ─────────────────────────────────────
+   9. STUDENT REQUESTS PAGE (ADMIN)
+   ───────────────────────────────────── */
+
+.sk-sreq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-sreq-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.sk-sreq-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sk-sreq-avatar i {
+    font-size: 30px;
+    color: #aaa;
+}
+
+.sk-sreq-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sk-sreq-info {
+    flex: 1;
+}
+
+.sk-sreq-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.sk-sreq-course {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.sk-sreq-details {
+    display: flex;
+    gap: 48px;
+}
+
+.sk-sreq-col p {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.sk-sreq-col p span {
+    font-weight: 700;
+}
+
+.sk-sreq-action {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.sk-sreq-approve-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.sk-sreq-empty {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 40px;
+}
