@@ -2,6 +2,7 @@ package com.SkolaStudentManagement.controller;
 
 import jakarta.servlet.ServletException;
 
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class AboutusServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/AboutUsServlet" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/AboutusServlet" })
 public class AboutusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

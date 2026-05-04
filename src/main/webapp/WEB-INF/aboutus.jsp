@@ -141,7 +141,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="logo-icon">🦢</span>
+          <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
           <span class="logo-text white">SKOLA</span>
         </div>
         <p>The Academic Curator for institutions that value excellence, aesthetics,
@@ -149,7 +149,7 @@
       </div>
       <div class="footer-links">
         <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
-        <a href="${pageContext.request.contextPath}/AboutUsServlet">About Us</a>
+        <a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a>
         <a href="${pageContext.request.contextPath}/index.jsp#contact">Contact Us</a>
       </div>
       <div class="footer-contact">

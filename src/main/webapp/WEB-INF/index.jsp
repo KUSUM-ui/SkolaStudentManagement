@@ -212,16 +212,36 @@
         </div>
     </section>
 
-    <!-- ── FOOTER ── -->
-    <footer>
+    <!-- ── FOOTER (matches aboutus.jsp) ── -->
+    <footer class="footer">
         <div class="footer-inner">
-            <span class="footer-brand">Skola</span>
-            <p class="footer-copy">&copy; 2024 Skola &nbsp;&middot;&nbsp; Academic Management System</p>
-            <ul class="footer-links">
-                <li><a href="about.jsp">About</a></li>
-                <li><a href="contact.jsp">Contact</a></li>
-                <li><a href="login.jsp">Login</a></li>
-            </ul>
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-icon">🦢</span>
+                    <span class="logo-text white">SKOLA</span>
+                </div>
+                <p>The Academic Curator for institutions that value excellence, aesthetics,
+                   and efficiency in every digital touchpoint.</p>
+            </div>
+            <div class="footer-links">
+                <a href="HomeServlet">Home</a>
+                <a href="AboutusServlet">About Us</a>
+                <a href="ContactUsServlet">Contact Us</a>
+            </div>
+            <div class="footer-contact">
+                <p class="footer-col-title">Contact</p>
+                <p>✉ skola@edu.np</p>
+                <p>📞 977+ 9741877269</p>
+                <p>📍 Suryabinayak, BKT</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2024 Relume. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookies Settings</a>
+            </div>
         </div>
     </footer>
 

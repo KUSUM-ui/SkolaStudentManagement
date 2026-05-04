@@ -26,7 +26,7 @@
 
         <ul class="nav-links">
       <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/AboutUsServlet">About Us</a></li>
+      <li><a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a></li>
       <li><a href="${pageContext.request.contextPath}/ContactUsServlet" class="active">Contact Us</a></li>
     </ul>
 
@@ -131,42 +131,35 @@
 
   </section>
 
-  <!-- ── FOOTER (matches home/about) ── -->
+  <!-- ── FOOTER (matches aboutus.jsp exactly) ── -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-mark"><i class="fa-solid fa-dove"></i></div>
-          <span class="footer-logo-text">SKOLA</span>
+          <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
+          <span class="logo-text white">SKOLA</span>
         </div>
-        <p>The Academic Curator for institutions that value excellence, aesthetics, and efficiency in every digital touchpoint.</p>
+        <p>The Academic Curator for institutions that value excellence, aesthetics,
+           and efficiency in every digital touchpoint.</p>
       </div>
-
-      <div class="footer-col">
-        <p class="footer-col-title">Navigation</p>
-        <div class="footer-links">
-          <a href="<%=request.getContextPath()%>/HomeServlet">Home</a>
-          <a href="<%=request.getContextPath()%>/AboutusServlet">About Us</a>
-          <a href="<%=request.getContextPath()%>/ContactUsServlet">Contact Us</a>
-        </div>
+      <div class="footer-links">
+        <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
+        <a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a>
+        <a href="${pageContext.request.contextPath}/ContactUsServlet">Contact Us</a>
       </div>
-
-      <div class="footer-col">
+      <div class="footer-contact">
         <p class="footer-col-title">Contact</p>
-        <div class="footer-contact">
-          <p><i class="fa-solid fa-envelope"></i> &nbsp;skola@edu.np</p>
-          <p><i class="fa-solid fa-phone"></i> &nbsp;977+ 9741877269</p>
-          <p><i class="fa-solid fa-location-dot"></i> &nbsp;Suryabinayak, BKT</p>
-        </div>
+        <p>✉ skola@edu.np</p>
+        <p>📞 977+ 9741877269</p>
+        <p>📍 Suryabinayak, BKT</p>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <span>&copy; 2024 SKOLA. All rights reserved.</span>
+      <span>&copy; 2024 Relume. All rights reserved.</span>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
-        <a href="#">Cookie Settings</a>
+        <a href="#">Cookies Settings</a>
       </div>
     </div>
   </footer>
