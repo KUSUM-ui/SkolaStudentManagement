@@ -1,0 +1,970 @@
+@charset "UTF-8";
+
+/* ════════════════════════════════════════════
+   SKOLA — SHARED STYLESHEET
+   Sections:
+     1. Reset & Base
+     2. Login Page
+     3. Shared Dashboard Layout (sidebar, nav, topbar, footer)
+     4. Admin Dashboard
+     5. Student Dashboard
+     6. Announcements Page
+   ════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────
+   1. RESET & BASE
+   ───────────────────────────────────── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+
+    min-height: 100vh;
+}
+
+
+/* ─────────────────────────────────────
+   2. LOGIN PAGE (FIXED THEME COLORS)
+   ───────────────────────────────────── */
+
+.navbar {
+    padding: 16px 40px;
+}
+
+.logo {
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 700;
+    color: #2d2d2d;
+}
+
+.page-center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px 60px;
+}
+
+/* LOGIN CARD */
+.card {
+    background: #f5dde0; /* matches --red-pale */
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    padding: 48px 48px 56px;
+    width: 100%;
+    max-width: 540px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs label {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 15px;
+    color: #2d2d2d;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+#tab-admin:checked ~ label[for="tab-admin"],
+#tab-student:checked ~ label[for="tab-student"] {
+    border-bottom: 2px solid #9b2335;
+    font-weight: 600;
+    color: #9b2335;
+}
+
+/* TEXT */
+h1 {
+    font-size: 42px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2d2d2d;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #7a7a7a;
+    margin-bottom: 32px;
+}
+
+/* INPUT FIELDS */
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 14px;
+    color: #2d2d2d;
+    margin-bottom: 6px;
+}
+
+.field input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-radius: 8px;
+    outline: none;
+}
+
+.field input:focus {
+    border-color: #9b2335;
+}
+
+/* BUTTON */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    background: #9b2335;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-login:hover {
+    background: #7a1a28;
+}
+
+/* FORGOT LINK */
+.forgot {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #7a7a7a;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    color: #2d2d2d;
+    text-decoration: underline;
+}
+
+
+/* ─────────────────────────────────────
+   3. SHARED DASHBOARD LAYOUT
+   All scoped under .sk-page to avoid
+   clashing with login styles above.
+   ───────────────────────────────────── */
+
+/* CSS variables — theme colours */
+.sk-page {
+    --red:        #9b2335;
+    --red-hover:  #7a1a28;
+    --red-pale:   #f5dde0;
+    --red-light:  #e8c4c9;
+    --white:      #ffffff;
+    --text:       #2d2d2d;
+    --muted:      #7a7a7a;
+    --border:     #e0e0e0;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--white);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* App wrapper */
+.sk-page .sk-app {
+    display: flex;
+    flex: 1;
+}
+
+/* ── Sidebar ── */
+.sk-page .sk-sidebar {
+    width: 200px;
+    min-height: 100vh;
+    background: var(--red-pale);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex-shrink: 0;
+}
+
+/* ── Logo (reused in sidebar & footer) ── */
+.sk-page .sk-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.sk-page .sk-logo img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+.sk-page .sk-logo span {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+/* ── Nav links ── */
+.sk-page .sk-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.sk-page .sk-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s;
+}
+.sk-page .sk-nav a i { font-size: 17px; }
+.sk-page .sk-nav a:hover  { background: var(--red-light); }
+.sk-page .sk-nav a.active { background: var(--red); color: var(--white); }
+
+/* ── Main content area ── */
+.sk-page .sk-main {
+    flex: 1;
+    padding: 28px 32px;
+    background: var(--white);
+}
+
+/* ── Topbar ── */
+.sk-page .sk-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.sk-page .sk-topbar h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+.sk-page .sk-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+}
+.sk-page .sk-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    color: var(--muted);
+    font-size: 13px;
+}
+.sk-page .sk-search i { font-size: 15px; }
+
+/* ── Generic pale card ── */
+.sk-page .sk-card {
+    background: var(--red-pale);
+    border-radius: 12px;
+    padding: 18px;
+}
+
+/* ── Generic row ── */
+.sk-page .sk-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* ── Solid button ── */
+.sk-page .sk-btn {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.sk-page .sk-btn:hover { background: var(--red-hover); }
+
+/* ── Outline button ── */
+.sk-page .sk-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.sk-page .sk-btn-outline:hover { background: var(--red-pale); }
+
+/* ── Footer ── */
+.sk-page .sk-footer {
+    background: var(--red);
+    color: var(--white);
+    padding: 32px 48px 14px;
+}
+.sk-page .sk-footer-top {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 24px;
+}
+.sk-page .sk-footer-brand { flex: 1.5; }
+.sk-page .sk-footer-brand .sk-footer-logo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.sk-page .sk-footer-brand p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+.sk-page .sk-footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+.sk-page .sk-footer-col a:hover { color: var(--white); }
+.sk-page .sk-footer-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+.sk-page .sk-footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 5px;
+}
+.sk-page .sk-footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+}
+.sk-page .sk-footer-bottom a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    margin-left: 14px;
+}
+
+
+/* ─────────────────────────────────────
+   4. ADMIN DASHBOARD  (.sk-admin)
+   ───────────────────────────────────── */
+
+/* Announcement post box */
+.sk-admin .sk-announce-box {
+    flex: 2;
+}
+.sk-admin .sk-announce-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.sk-admin .sk-announce-header span {
+    font-size: 14px;
+    font-weight: 500;
+}
+.sk-admin .sk-announce-box textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    resize: none;
+    height: 72px;
+    color: var(--muted);
+    font-family: inherit;
+    outline: none;
+}
+.sk-admin .sk-announce-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+.sk-admin .sk-announce-footer i { font-size: 18px; color: var(--muted); cursor: pointer; }
+
+/* Faculty stat card */
+.sk-admin .sk-stat-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.sk-admin .sk-stat-card i    { font-size: 22px; color: var(--red); }
+.sk-admin .sk-stat-label     { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.sk-admin .sk-stat-count     { font-size: 38px; font-weight: 800; line-height: 1; }
+.sk-admin .sk-stat-desc      { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* Action cards */
+.sk-admin .sk-action-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    cursor: pointer;
+}
+.sk-admin .sk-action-card span { font-size: 13px; font-weight: 500; }
+.sk-admin .sk-action-card i    { font-size: 44px; color: var(--red); opacity: 0.75; }
+
+/* Mid layout */
+.sk-admin .sk-mid-row  { display: flex; gap: 14px; margin-bottom: 20px; }
+.sk-admin .sk-mid-left { flex: 2; }
+.sk-admin .sk-mid-right { flex: 1; }
+
+/* Recent activities box */
+.sk-admin .sk-recent-label { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.sk-admin .sk-recent-box {
+    background: var(--red-pale);
+    border-radius: 12px;
+    min-height: 300px;
+    padding: 14px;
+}
+
+/* Club registrations table */
+.sk-admin .sk-club-section h3    { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.sk-admin .sk-club-table         { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.sk-admin .sk-club-row           { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid #f0f0f0; }
+.sk-admin .sk-club-row:last-child { border-bottom: none; }
+.sk-admin .sk-club-row span      { font-size: 13px; font-weight: 500; }
+.sk-admin .sk-club-actions       { display: flex; gap: 6px; }
+.sk-admin .sk-view-all-link      { text-align: right; font-size: 12px; color: var(--muted); margin-top: 8px; cursor: pointer; }
+
+
+/* ─────────────────────────────────────
+   5. STUDENT DASHBOARD  (.sk-student)
+   ───────────────────────────────────── */
+
+/* Schedule card */
+.sk-student .sk-card-schedule   { flex: 2; }
+.sk-student .sk-card-schedule .sk-card-title { font-size: 14px; font-weight: 500; margin-bottom: 44px; }
+.sk-student .sk-view-all        { text-align: right; font-size: 12px; color: var(--muted); cursor: pointer; }
+
+/* Profile card */
+.sk-student .sk-card-profile {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+}
+.sk-student .sk-card-profile i   { font-size: 26px; color: var(--red); }
+.sk-student .sk-profile-sub      { font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+.sk-student .sk-profile-class    { font-size: 32px; font-weight: 800; line-height: 1; }
+.sk-student .sk-profile-sem      { font-size: 10px; color: var(--muted); }
+.sk-student .sk-profile-name     { font-size: 16px; font-weight: 600; }
+
+/* Announcement bordered card */
+.sk-student .sk-card-announce {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+}
+.sk-student .sk-card-announce h3 {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 50px;
+}
+
+/* Club cards */
+.sk-student .sk-card-clubs      { flex: 1; }
+.sk-student .sk-card-clubs h3   { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+.sk-student .sk-club-icon       { font-size: 34px; color: var(--muted); margin: 10px 0; }
+.sk-student .sk-club-btn-row    { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Notes */
+.sk-student .sk-notes-section      { margin-top: 18px; }
+.sk-student .sk-notes-section h3   { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+.sk-student .sk-notes-row          { display: flex; gap: 14px; align-items: flex-start; }
+.sk-student .sk-notes-area         { flex: 2; background: var(--red-pale); border-radius: 12px; padding: 18px; min-height: 160px; position: relative; }
+.sk-student .sk-notes-area .sk-view-all { position: absolute; bottom: 12px; right: 14px; }
+.sk-student .sk-new-note           { flex: 1; background: #e8f0e4; border: 2px solid #5a8a4a; border-radius: 12px; padding: 18px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.sk-student .sk-new-note .sk-pins  { font-size: 24px; }
+.sk-student .sk-new-note p         { font-size: 16px; font-weight: 500; }
+
+
+/* ─────────────────────────────────────
+   6. ANNOUNCEMENTS PAGE  (.sk-announce-page)
+   ───────────────────────────────────── */
+
+.sk-announce-page .sk-announce-form-box {
+    margin-bottom: 20px;
+}
+.sk-announce-page .sk-announce-form-box span {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+}
+.sk-announce-page .sk-announce-form-box textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    resize: none;
+    height: 80px;
+    color: var(--muted);
+    font-family: inherit;
+    outline: none;
+}
+.sk-announce-page .sk-announce-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+.sk-announce-page .sk-announce-form-footer i { font-size: 18px; color: var(--muted); cursor: pointer; }
+
+.sk-announce-page .sk-announce-list-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.sk-announce-page .sk-announce-list {
+    display: flex;
+    flex-direction: column;
+}
+.sk-announce-page .sk-announce-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+}
+.sk-announce-page .sk-announce-item:last-child { border-bottom: none; }
+/* ─────────────────────────────────────
+   7. CLUBS PAGE (ADMIN)
+   ───────────────────────────────────── */
+
+.sk-clubs-stat-row {
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.sk-clubs-stat-card {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+
+.sk-clubs-stat-card i {
+    font-size: 22px;
+    color: var(--red);
+    margin-bottom: 4px;
+}
+
+.sk-clubs-stat-name {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.sk-clubs-stat-count {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+.sk-clubs-stat-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+}
+/* ─────────────────────────────────────
+   8. STUDENT CLUB REGISTRATION PAGE
+   ───────────────────────────────────── */
+
+.sk-club-page-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.sk-club-register-card {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 32px 36px 36px;
+    background: var(--red-pale);
+    border-radius: 14px;
+}
+
+.sk-club-register-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.sk-club-register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sk-club-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sk-club-field label {
+    font-size: 12px;
+    color: var(--text);
+}
+
+.sk-club-field input,
+.sk-club-field select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    font-size: 13px;
+    color: var(--text);
+    outline: none;
+    appearance: none;
+}
+
+.sk-club-field input:focus,
+.sk-club-field select:focus {
+    border-color: var(--red);
+}
+
+.sk-club-register-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    text-align: center;
+}
+/* ─────────────────────────────────────
+   8. STUDENT CLUB REGISTRATION PAGE 
+   ───────────────────────────────────── */
+/* Page title */
+.sk-club-page-title {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Card container */
+.sk-club-register-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #e9dddd; /* soft pale red */
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.sk-club-register-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #c62828;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form layout */
+.sk-club-register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Field group */
+.sk-club-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Labels */
+.sk-club-field label {
+    font-size: 13px;
+    color: #333;
+}
+
+/* Inputs (pill shape like image) */
+.sk-club-field input,
+.sk-club-field select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #bbb;
+    border-radius: 25px; /* ⬅️ KEY CHANGE */
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* Focus */
+.sk-club-field input:focus,
+.sk-club-field select:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.15);
+}
+
+/* Button */
+.sk-club-register-btn {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 30px; /* ⬅️ fully rounded */
+    background: #c62828;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Button hover */
+.sk-club-register-btn:hover {
+    background: #a61b1b;
+}
+
+/* Optional responsiveness */
+@media (min-width: 768px) {
+    .sk-club-register-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .sk-club-register-btn {
+        grid-column: span 2;
+    }
+}
+/* ─────────────────────────────
+   PROFILE SETTINGS PAGE (FIXED)
+   ───────────────────────────── */
+
+/* MAIN CARD */
+.sk-page .sk-settings-card {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px 40px;
+    background: #efefef;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* HEADER */
+.sk-page .sk-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.sk-page .sk-settings-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.sk-page .sk-settings-header i {
+    font-size: 22px;
+    color: #888;
+}
+
+/* PROFILE SECTION */
+.sk-page .sk-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.sk-page .sk-profile-pic {
+    width: 180px;
+    height: 180px;
+    background: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sk-page .sk-profile-pic i {
+    font-size: 40px;
+    color: #999;
+}
+
+.sk-page .sk-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* GRID FORM */
+.sk-page .sk-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+    margin-bottom: 25px;
+}
+
+/* LABELS */
+.sk-page .sk-settings-form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* INPUTS */
+.sk-page .sk-settings-form input,
+.sk-page .sk-settings-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.sk-page .sk-settings-form input:focus,
+.sk-page .sk-settings-form select:focus {
+    border-color: #9b2335;
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.1);
+}
+
+/* PASSWORD SECTION */
+.sk-page .sk-settings-password {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+    max-width: 350px;
+}
+
+/* ACTION BUTTONS */
+.sk-page .sk-settings-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* LOGOUT */
+.sk-page .sk-settings-logout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+/* BUTTONS */
+.sk-page .sk-btn {
+    background: #9b2335;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.sk-page .sk-btn:hover {
+    background: #7a1a28;
+}
+
+.sk-page .sk-btn-outline {
+    background: transparent;
+    color: #9b2335;
+    border: 1px solid #9b2335;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.sk-page .sk-btn-outline:hover {
+    background: #9b2335;
+    color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sk-page .sk-settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sk-page .sk-profile-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sk-page .sk-profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+
+    .sk-page .sk-settings-card {
+        padding: 20px;
+    }
+}
