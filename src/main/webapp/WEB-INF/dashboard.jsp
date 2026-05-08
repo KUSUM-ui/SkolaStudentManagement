@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skola - Student Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/skola.css" />
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css" />
 </head>
 
 <%

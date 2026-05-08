@@ -6,13 +6,13 @@
     <title>Profile Settings</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/skola.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css">
 </head>
 
 <body class="sk-page">
 
 <div class="sk-app">
-	<jsp:include page="/WEB-INF/fragments/_sidebar_admin.jsp">
+	<jsp:include page="/WEB-INF/_sidebar_admin.jsp">
 	    <jsp:param name="activePage" value="settings"/>
 	</jsp:include>
 
@@ -39,7 +39,9 @@
                 </div>
             </div>
 
-            <form class="sk-settings-form">
+            <form class="sk-settings-form"
+            action="${pageContext.request.contextPath}/ProfileServlet"
+            method="post">
 
                 <div class="sk-settings-grid">
 
@@ -105,7 +107,7 @@
 </main>
 </div>
 
-<jsp:include page="/WEB-INF/fragments/_footer.jsp"/>
+<jsp:include page="/WEB-INF/_footer.jsp"/>
 
 </body>
 </html>

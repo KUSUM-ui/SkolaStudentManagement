@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login – Skola</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/skola.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css" />
 </head>
 <body>
 
