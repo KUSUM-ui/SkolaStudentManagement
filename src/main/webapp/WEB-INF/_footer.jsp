@@ -14,7 +14,7 @@
         </div>
 
         <div class="sk-footer-col">
-            <a href="#">Home</a>
+            <a href="/WEB-INF/index.jsp">Home</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
         </div>

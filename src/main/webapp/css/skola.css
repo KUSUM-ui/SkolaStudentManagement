@@ -1103,6 +1103,229 @@ h1 {
     font-size: 13px;
     margin-bottom: 16px;
 }
+/* ── Add these to your skola.css ── */
+
+/* Genre row */
+.sk-announce-genre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sk-announce-genre label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a4a4a;
+  white-space: nowrap;
+}
+
+.sk-genre-select {
+  padding: 7px 32px 7px 12px;
+  border: 1.5px solid #c8a0a0;
+  border-radius: 8px;
+  background-color: #fff8f8;
+  font-size: 0.875rem;
+  color: #2d2d2d;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b1c1c' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.2s;
+}
+
+.sk-genre-select:focus {
+  border-color: #9b1c1c;
+  box-shadow: 0 0 0 3px rgba(155, 28, 28, 0.1);
+}
+
+/* Label row with filter buttons */
+.sk-announce-list-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+.sk-announce-filter {
+  display: flex;
+  gap: 6px;
+}
+
+.sk-filter-btn {
+  padding: 5px 14px;
+  border: 1.5px solid #c8a0a0;
+  border-radius: 20px;
+  background: transparent;
+  font-size: 0.8rem;
+  color: #7f1d1d;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sk-filter-btn:hover {
+  background-color: #f5dada;
+}
+
+.sk-filter-btn.active {
+  background-color: #7f1d1d;
+  color: #fff;
+  border-color: #7f1d1d;
+}
+/* ─────────────────────────────────────
+   ANNOUNCEMENT EXTRA STYLES
+   ───────────────────────────────────── */
+
+/* Alerts */
+.sk-alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sk-alert-success {
+    background: #eafaf1;
+    color: #1e8449;
+}
+
+.sk-alert-error {
+    background: #ffecec;
+    color: #c0392b;
+}
+
+/* Title input */
+.sk-announce-title-input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
+.sk-announce-title-input:focus {
+    border-color: var(--red);
+}
+
+/* Upload preview */
+.sk-upload-preview {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+/* Upload name */
+.sk-upload-name {
+    font-size: 13px;
+    color: var(--text);
+}
+
+/* Icon buttons */
+.sk-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sk-icon-btn:hover {
+    background: var(--red-light);
+}
+
+.sk-icon-btn i {
+    font-size: 18px;
+    color: var(--red);
+}
+
+/* Announcement card */
+.sk-announce-item {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    background: white;
+}
+
+/* Header */
+.sk-announce-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Badge */
+.sk-announce-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.sk-badge-academics {
+    background: #e8f0ff;
+    color: #1d4ed8;
+}
+
+.sk-badge-non-academics {
+    background: #fff4e5;
+    color: #b45309;
+}
+
+/* Image */
+.sk-announce-img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+/* Attachment */
+.sk-announce-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    text-decoration: none;
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sk-announce-attachment:hover {
+    text-decoration: underline;
+}
+
+/* Empty message */
+.sk-empty-msg {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -1123,4 +1346,169 @@ h1 {
     .sk-page .sk-settings-card {
         padding: 20px;
     }
+}
+/* =========================================
+   FINAL ANNOUNCEMENT PAGE FIX
+   ========================================= */
+
+.sk-announce-page .sk-main {
+    background: #fafafa;
+}
+
+/* FORM CARD */
+.sk-announce-page .sk-announce-form-box {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+/* TITLE INPUT */
+.sk-announce-page .sk-announce-title-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* TEXTAREA */
+.sk-announce-page .sk-announce-form-box textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    resize: vertical;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+}
+
+/* FOOTER */
+.sk-announce-page .sk-announce-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* ICON BUTTON */
+.sk-announce-page .sk-icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f5dde0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sk-announce-page .sk-icon-btn:hover {
+    background: #e7c9cd;
+}
+
+.sk-announce-page .sk-icon-btn i {
+    color: #9b2335;
+    font-size: 18px;
+}
+
+/* POST BUTTON */
+.sk-announce-page .sk-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* ANNOUNCEMENT LIST */
+.sk-announce-page .sk-announce-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* CARD */
+.sk-announce-page .sk-announce-item {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+/* HEADER */
+.sk-announce-page .sk-announce-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* BADGES */
+.sk-announce-page .sk-announce-badge {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sk-announce-page .sk-badge-academics {
+    background: #e8f0ff;
+    color: #1d4ed8;
+}
+
+.sk-announce-page .sk-badge-non-academics {
+    background: #fff4e5;
+    color: #b45309;
+}
+
+/* IMAGE */
+.sk-announce-page .sk-announce-img {
+    width: 100%;
+    margin-top: 14px;
+    border-radius: 10px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* ATTACHMENT */
+.sk-announce-page .sk-announce-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    color: #9b2335;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sk-announce-page .sk-announce-attachment:hover {
+    text-decoration: underline;
+}
+
+/* FILTER */
+.sk-announce-page .sk-announce-filter {
+    display: flex;
+    gap: 8px;
+}
+
+.sk-announce-page .sk-filter-btn {
+    border: 1px solid #d9b6bb;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sk-announce-page .sk-filter-btn.active {
+    background: #9b2335;
+    color: white;
+    border-color: #9b2335;
 }
