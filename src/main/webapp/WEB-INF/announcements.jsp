@@ -9,7 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skola - Announcements</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css" />
+<link rel="stylesheet"
+href="${pageContext.request.contextPath}/css/skola.css?v=2" />
 </head>
 
 <body class="sk-page sk-announce-page">
