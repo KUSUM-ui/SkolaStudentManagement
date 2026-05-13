@@ -1,5 +1,7 @@
 package com.SkolaStudentManagement.controller;
 
+import com.SkolaStudentManagement.DAO.StudentsSettingsDAO;
+import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.utils.DBConnection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,7 +16,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // If already logged in, skip login page
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("adminId") != null) {
             response.sendRedirect(request.getContextPath() + "/ProfileServlet");
@@ -29,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
         String email    = request.getParameter("email");
         String password = request.getParameter("password");
-        String role     = request.getParameter("role"); // "admin" or "student"
+        String role     = request.getParameter("role");
 
         if (email == null || email.trim().isEmpty() ||
             password == null || password.trim().isEmpty()) {
@@ -62,13 +63,13 @@ public class LoginServlet extends HttpServlet {
 
             if (rs.next()) {
                 HttpSession session = req.getSession(true);
-                session.setAttribute("adminId",    rs.getInt("admin_id"));
-                session.setAttribute("firstName",  rs.getString("first_name"));
-                session.setAttribute("lastName",   rs.getString("last_name"));
-                session.setAttribute("email",      rs.getString("email"));
-                session.setAttribute("phone",      rs.getString("phone"));
-                session.setAttribute("role",       "admin");
-                res.sendRedirect(req.getContextPath() + "/dashboard"); // your admin dashboard URL
+                session.setAttribute("adminId",   rs.getInt("admin_id"));
+                session.setAttribute("firstName", rs.getString("first_name"));
+                session.setAttribute("lastName",  rs.getString("last_name"));
+                session.setAttribute("email",     rs.getString("email"));
+                session.setAttribute("phone",     rs.getString("phone"));
+                session.setAttribute("role",      "admin");
+                res.sendRedirect(req.getContextPath() + "/dashboard");
             } else {
                 req.setAttribute("error", "Invalid email or password.");
                 req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, res);
@@ -86,8 +87,9 @@ public class LoginServlet extends HttpServlet {
                               String email, String password)
             throws ServletException, IOException {
 
-        // Adjust column names below if your Student table differs
-        String sql = "SELECT student_id, first_name, last_name, email " +
+        String sql = "SELECT student_id, first_name, last_name, dob, gender, " +
+                     "email, phone, password, grade_level, faculty_id, " +
+                     "image, admin_id, section_id " +
                      "FROM Student WHERE email = ? AND password = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -98,14 +100,28 @@ public class LoginServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+                // Build full model object
+                SettingsStudentModel student = new SettingsStudentModel();
+                student.setStudentId(rs.getInt("student_id"));
+                student.setFirstName(rs.getString("first_name"));
+                student.setLastName(rs.getString("last_name"));
+                student.setDob(rs.getDate("dob"));
+                student.setGender(rs.getString("gender"));
+                student.setEmail(rs.getString("email"));
+                student.setPhone(rs.getString("phone"));
+                student.setPassword(rs.getString("password"));
+                student.setGradeLevel(rs.getString("grade_level"));
+                student.setFacultyId(rs.getInt("faculty_id"));
+                student.setImage(rs.getString("image"));
+                student.setAdminId(rs.getInt("admin_id"));
+                student.setSectionId(rs.getString("section_id"));
+
                 HttpSession session = req.getSession(true);
-                session.setAttribute("studentId",  rs.getInt("student_id"));
-                session.setAttribute("firstName",  rs.getString("first_name"));
-                session.setAttribute("lastName",   rs.getString("last_name"));
-                session.setAttribute("email",      rs.getString("email"));
-                session.setAttribute("role",       "student");
-                res.sendRedirect(req.getContextPath() + "/"
-                		+ "/WEB-INF/dashboard.jsp"); // your student dashboard URL
+                session.setAttribute("student",   student); // full object for settings page
+                session.setAttribute("studentId", student.getStudentId()); // convenience
+                session.setAttribute("role",      "student");
+
+                res.sendRedirect(req.getContextPath() + "/WEB-INF/dashboard.jsp");
             } else {
                 req.setAttribute("error", "Invalid email or password.");
                 req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, res);
