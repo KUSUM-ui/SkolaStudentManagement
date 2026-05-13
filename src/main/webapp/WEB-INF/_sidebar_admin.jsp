@@ -20,7 +20,7 @@
     <!-- NAVIGATION -->
     <nav class="sk-nav">
 
-        <a href="${pageContext.request.contextPath}/admin/dashboard"
+        <a href="${pageContext.request.contextPath}/AdminDashboardServlet"
            class="<%= "dashboard".equals(activeAdmin) ? "active" : "" %>">
             <i class="ri-layout-grid-line"></i> Dashboard
         </a>
@@ -45,12 +45,12 @@
             <i class="ri-bar-chart-line"></i> Reports
         </a>
 
-        <a href="${pageContext.request.contextPath}/admin/announcements"
+        <a href="${pageContext.request.contextPath}/AnnouncementServlet"
            class="<%= "announcements".equals(activeAdmin) ? "active" : "" %>">
             <i class="ri-megaphone-line"></i> Announcements
         </a>
 
-        <a href="${pageContext.request.contextPath}/admin/settings"
+        <a href="${pageContext.request.contextPath}/SettingsStudentServlet"
            class="<%= "settings".equals(activeAdmin) ? "active" : "" %>">
             <i class="ri-settings-3-line"></i> Settings
         </a>

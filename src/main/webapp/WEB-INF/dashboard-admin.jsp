@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skola - Admin Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/skola.css" />
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css" />
 </head>
 
 <%
@@ -18,7 +18,7 @@
 <div class="sk-app">
 
   <!-- ── SIDEBAR ── -->
-  <jsp:include page="/WEB-INF/fragments/_sidebar_admin.jsp">
+  <jsp:include page="/WEB-INF/_sidebar_admin.jsp">
     <jsp:param name="activePage" value="dashboard"/>
   </jsp:include>
 
@@ -99,7 +99,7 @@
 </div>
 
 <!-- ── FOOTER ── -->
-<jsp:include page="/WEB-INF/fragments/_footer.jsp"/>
+<jsp:include page="/WEB-INF/_footer.jsp"/>
 
 </body>
 </html>

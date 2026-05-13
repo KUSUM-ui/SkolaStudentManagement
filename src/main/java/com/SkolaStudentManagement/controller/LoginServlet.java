@@ -121,7 +121,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("studentId", student.getStudentId()); // convenience
                 session.setAttribute("role",      "student");
 
-                res.sendRedirect(req.getContextPath() + "/WEB-INF/dashboard.jsp");
+                res.sendRedirect(req.getContextPath() + "/AdminDashboardServlet");
             } else {
                 req.setAttribute("error", "Invalid email or password.");
                 req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, res);
