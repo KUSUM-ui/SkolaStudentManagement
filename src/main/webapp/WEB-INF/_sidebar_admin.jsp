@@ -1,19 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<%
-    String activeAdmin = request.getParameter("activePage");
-    if (activeAdmin == null) {
-        activeAdmin = "";
-    }
-%>
 
 <aside class="sk-sidebar">
 
     <!-- LOGO -->
     <div class="nav-logo">
-        <img src="<%= request.getContextPath() %>/resources/images/logo.png"
-             alt="SKOLA"
-             class="logo-img" />
+        <img src="${pageContext.request.contextPath}/resources/images/logo.png"
+             alt="SKOLA" class="logo-img" />
         <span class="logo-text">SKOLA</span>
     </div>
 
@@ -21,37 +14,32 @@
     <nav class="sk-nav">
 
         <a href="${pageContext.request.contextPath}/AdminDashboardServlet"
-           class="<%= "dashboard".equals(activeAdmin) ? "active" : "" %>">
+           class="${param.activePage == 'dashboard' ? 'active' : ''}">
             <i class="ri-layout-grid-line"></i> Dashboard
         </a>
 
         <a href="${pageContext.request.contextPath}/admin/students"
-           class="<%= "students".equals(activeAdmin) ? "active" : "" %>">
+           class="${param.activePage == 'students' ? 'active' : ''}">
             <i class="ri-group-line"></i> Students
         </a>
 
-        <a href="${pageContext.request.contextPath}/admin/teacher"
-           class="<%= "teacher".equals(activeAdmin) ? "active" : "" %>">
-            <i class="ri-user-line"></i> Teacher
-        </a>
-
-        <a href="${pageContext.request.contextPath}/admin/clubs"
-           class="<%= "clubs".equals(activeAdmin) ? "active" : "" %>">
-            <i class="ri-team-line"></i> Clubs
+        <a href="${pageContext.request.contextPath}/AdminClassServlet"
+           class="${param.activePage == 'class' ? 'active' : ''}">
+            <i class="ri-book-open-line"></i> Class
         </a>
 
         <a href="${pageContext.request.contextPath}/admin/reports"
-           class="<%= "reports".equals(activeAdmin) ? "active" : "" %>">
+           class="${param.activePage == 'reports' ? 'active' : ''}">
             <i class="ri-bar-chart-line"></i> Reports
         </a>
 
         <a href="${pageContext.request.contextPath}/AnnouncementServlet"
-           class="<%= "announcements".equals(activeAdmin) ? "active" : "" %>">
+           class="${param.activePage == 'announcements' ? 'active' : ''}">
             <i class="ri-megaphone-line"></i> Announcements
         </a>
 
-        <a href="${pageContext.request.contextPath}/SettingsStudentServlet"
-           class="<%= "settings".equals(activeAdmin) ? "active" : "" %>">
+        <a href="${pageContext.request.contextPath}/SettingsAdminServlet"
+           class="${param.activePage == 'settings' ? 'active' : ''}">
             <i class="ri-settings-3-line"></i> Settings
         </a>
 
