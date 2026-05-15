@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,20 +34,21 @@
 
 
                 <%-- ════════════════════════════════════════
-                     SECTION 1 · PROFILE PICTURE  (editable)
+                     SECTION 1 · PROFILE PICTURE
                      ════════════════════════════════════════ --%>
                 <div class="sk-settings-section">
-
                     <div class="sk-profile-section">
 
-                        <div class="sk-profile-pic">
+                        <%-- Circle container — inline style guarantees sizing --%>
+                        <div style="width:120px; height:120px; border-radius:50%; overflow:hidden; background:#dcdcdc; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
                             <c:choose>
                                 <c:when test="${not empty student.image}">
                                     <img src="${pageContext.request.contextPath}/${student.image}"
-                                         alt="Profile">
+                                         alt="Profile"
+                                         style="width:120px; height:120px; object-fit:cover; border-radius:50%; display:block;">
                                 </c:when>
                                 <c:otherwise>
-                                    <i class="ri-user-3-line"></i>
+                                    <i class="ri-user-3-line" style="font-size:48px; color:#aaa;"></i>
                                 </c:otherwise>
                             </c:choose>
                         </div>
@@ -61,11 +62,15 @@
                             <form action="${pageContext.request.contextPath}/SettingsStudentServlet"
                                   method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="action" value="updateImage">
-                                <label for="image" class="sk-btn">
-                                    <i class="ri-upload-2-line"></i> Choose
-                                </label>
-                                <input type="file" id="image" name="image" accept="image/*">
-                                <button type="submit" class="sk-btn">Upload</button>
+                                <div class="sk-profile-actions-row">
+                                    <label for="image" class="sk-btn">
+                                        <i class="ri-upload-2-line"></i> Choose
+                                    </label>
+                                    <input type="file" id="image" name="image"
+                                           accept="image/jpeg,image/png,image/gif,image/webp"
+                                           style="display:none;">
+                                    <button type="submit" class="sk-btn">Upload</button>
+                                </div>
                             </form>
 
                             <form action="${pageContext.request.contextPath}/SettingsStudentServlet"
@@ -86,47 +91,38 @@
                     <h3>Personal Information</h3>
 
                     <div class="sk-settings-grid">
-
                         <div>
                             <label>First Name</label>
                             <input type="text" value="${student.firstName}" disabled>
                         </div>
-
                         <div>
                             <label>Last Name</label>
                             <input type="text" value="${student.lastName}" disabled>
                         </div>
-
                         <div>
                             <label>Email Address</label>
                             <input type="email" value="${student.email}" disabled>
                         </div>
-
                         <div>
                             <label>Date of Birth</label>
                             <input type="text" value="${student.dob}" disabled>
                         </div>
-
                         <div>
                             <label>Gender</label>
                             <input type="text" value="${student.gender}" disabled>
                         </div>
-
                         <div>
                             <label>Grade Level</label>
                             <input type="text" value="${student.gradeLevel}" disabled>
                         </div>
-
                         <div>
                             <label>Section</label>
                             <input type="text" value="${student.sectionId}" disabled>
                         </div>
-
                         <div>
                             <label>Faculty ID</label>
                             <input type="text" value="${student.facultyId}" disabled>
                         </div>
-
                     </div>
                 </div>
 
@@ -145,13 +141,12 @@
                             <div>
                                 <label for="phone">Phone Number</label>
                                 <input type="text" id="phone" name="phone"
-                                       placeholder="+977"
-                                       value="${student.phone}">
+                                       placeholder="+977" value="${student.phone}">
                             </div>
                         </div>
 
                         <div class="sk-settings-actions">
-                            <button type="reset"  class="sk-btn-outline">Cancel</button>
+                            <button type="reset" class="sk-btn-outline">Cancel</button>
                             <button type="submit" class="sk-btn">Save</button>
                         </div>
                     </form>
@@ -171,22 +166,19 @@
                         <div class="sk-settings-password">
                             <label for="currentPassword">Current Password</label>
                             <input type="password" id="currentPassword"
-                                   name="currentPassword"
-                                   placeholder="Enter current password">
+                                   name="currentPassword" placeholder="Enter current password">
 
                             <label for="newPassword">New Password</label>
                             <input type="password" id="newPassword"
-                                   name="newPassword"
-                                   placeholder="Enter new password">
+                                   name="newPassword" placeholder="Enter new password">
 
                             <label for="confirmPassword">Confirm New Password</label>
                             <input type="password" id="confirmPassword"
-                                   name="confirmPassword"
-                                   placeholder="Confirm new password">
+                                   name="confirmPassword" placeholder="Confirm new password">
                         </div>
 
                         <div class="sk-settings-actions">
-                            <button type="reset"  class="sk-btn-outline">Cancel</button>
+                            <button type="reset" class="sk-btn-outline">Cancel</button>
                             <button type="submit" class="sk-btn">Update Password</button>
                         </div>
                     </form>

@@ -2105,30 +2105,275 @@ h1 {
     border-top: 1px solid var(--border);
 }
 
-/* ── 9. Quick JS snippet — paste in your JSP <script> block
-   to hide empty alerts at runtime (most reliable method):
+/* ─────────────────────────────────────
+   SETTINGS PAGE — PROFILE PIC FIX
+   Append to bottom of skola.css
+   ───────────────────────────────────── */
 
-   document.addEventListener('DOMContentLoaded', function () {
-     document.querySelectorAll('.sk-alert').forEach(function (el) {
-       if (!el.textContent.trim()) el.style.display = 'none';
-     });
-   });
+/* Profile pic — image fills the circle correctly */
+.sk-page .sk-profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
 
-   AND to wire the custom Choose button to the hidden file input:
+.sk-page .sk-profile-pic .sk-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
 
-   var chooseBtn = document.querySelector('.sk-choose-btn');
-   var fileInput = document.querySelector('input[type="file"]');
-   if (chooseBtn && fileInput) {
-     chooseBtn.addEventListener('click', function () {
-       fileInput.click();
-     });
-     fileInput.addEventListener('change', function () {
-       var label = document.querySelector('.sk-file-name');
-       if (label) label.textContent = fileInput.files[0] ? fileInput.files[0].name : '';
-     });
-   }
-── */
+.sk-page .sk-profile-pic i {
+    font-size: 48px;
+    color: #aaa;
+}
 
+/* Profile info — name and email next to pic */
+.sk-page .sk-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
+.sk-page .sk-profile-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
 
+.sk-page .sk-profile-info span {
+    font-size: 13px;
+    color: var(--muted);
+}
 
+/* Profile actions — Choose/Upload on one row, Remove below */
+.sk-page .sk-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.sk-page .sk-profile-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hide native file input — label acts as the button */
+.sk-page input[type="file"] {
+    display: none;
+}
+
+/* Settings section spacing */
+.sk-page .sk-settings-section {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-settings-section:last-of-type {
+    border-bottom: none;
+}
+
+.sk-page .sk-settings-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+/* Read-only disabled inputs — slightly greyed out */
+.sk-page .sk-settings-grid input:disabled,
+.sk-page .sk-settings-grid select:disabled {
+    background: #f5f5f5;
+    color: #555;
+    cursor: not-allowed;
+    border-color: #e0e0e0;
+}
+
+.sk-page .sk-settings-grid label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.sk-page .sk-profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sk-page .sk-profile-pic img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+}
+/* PROFILE IMAGE HARD FIX */
+.sk-profile-pic {
+    width: 120px !important;
+    height: 120px !important;
+    min-width: 120px !important;
+    min-height: 120px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #dcdcdc !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+}
+
+.sk-profile-pic img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+ STUDENT SCHEDULE PAGE
+   ───────────────────────────────────── */
+ 
+/* Topbar right side */
+.sk-stusch-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+ 
+/* Search */
+.sk-stusch-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    background: #fafafa;
+    width: 220px;
+}
+ 
+.sk-stusch-search-wrap i {
+    color: var(--muted);
+    font-size: 15px;
+    flex-shrink: 0;
+}
+ 
+.sk-stusch-search {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text);
+    width: 100%;
+}
+ 
+.sk-stusch-search::placeholder {
+    color: var(--muted);
+}
+ 
+/* Section label */
+.sk-stusch-section-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+ 
+/* Table wrapper */
+.sk-stusch-table-wrap {
+    border: 1px solid var(--red-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+ 
+/* Table */
+.sk-stusch-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: #fff;
+}
+ 
+/* Header */
+.sk-stusch-table thead tr {
+    background: var(--red-pale);
+}
+ 
+.sk-stusch-th {
+    padding: 13px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    border-right: 1px solid var(--red-light);
+    border-bottom: 2px solid var(--red-light);
+}
+ 
+.sk-stusch-th:last-child {
+    border-right: none;
+}
+ 
+/* Day column — slightly wider */
+.sk-stusch-th-day {
+    width: 140px;
+}
+ 
+/* Body rows */
+.sk-stusch-tr:hover {
+    background: #fdf5f6;
+}
+ 
+.sk-stusch-td {
+    padding: 13px 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+}
+ 
+.sk-stusch-td:last-child {
+    border-right: none;
+}
+ 
+.sk-stusch-tr:last-child .sk-stusch-td {
+    border-bottom: none;
+}
+ 
+/* Day cell — bold */
+.sk-stusch-td-day {
+    font-weight: 500;
+}
+ 
+/* Module cell */
+.sk-stusch-td-module {
+    color: var(--text);
+}
+ 
