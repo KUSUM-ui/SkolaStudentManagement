@@ -1,5 +1,7 @@
 package com.SkolaStudentManagement.controller;
 
+import com.SkolaStudentManagement.Model.AnnouncementModel;
+import com.SkolaStudentManagement.Service.AnnouncementService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,40 +12,37 @@ import jakarta.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import com.SkolaStudentManagement.DAO.AnnouncementDAO;
-import com.SkolaStudentManagement.Model.AnnouncementModel;
-
-@WebServlet(asyncSupported = true, urlPatterns = { "/AnnouncementServlet" })
+@WebServlet(asyncSupported = true, urlPatterns = {"/AnnouncementServlet"})
 @MultipartConfig(
-    fileSizeThreshold = 1024 * 1024,      // 1 MB — keep in memory below this
-    maxFileSize       = 10 * 1024 * 1024, // 10 MB max per file
-    maxRequestSize    = 20 * 1024 * 1024  // 20 MB max total request
+        fileSizeThreshold = 1024 * 1024,       // 1 MB
+        maxFileSize       = 10 * 1024 * 1024,  // 10 MB per file
+        maxRequestSize    = 20 * 1024 * 1024   // 20 MB total
 )
 public class AnnouncementServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-
-    private final AnnouncementDAO dao = new AnnouncementDAO();
-
-    // Folder inside your webapp to store uploads
     private static final String UPLOAD_DIR = "uploads";
 
+    // ── Use Service, not DAO directly ─────────────────────────────────────────
+    private final AnnouncementService announcementService = new AnnouncementService();
+
+    // ── GET: load and display all announcements ───────────────────────────────
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<AnnouncementModel> announcements = dao.getAllAnnouncements();
+            List<AnnouncementModel> announcements = announcementService.getAllAnnouncements();
             request.setAttribute("announcements", announcements);
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMessage", "Could not load announcements.");
         }
-        request.getRequestDispatcher("/WEB-INF/announcements.jsp")
-               .forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/announcements.jsp").forward(request, response);
     }
 
+    // ── POST: create a new announcement ──────────────────────────────────────
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -54,77 +53,66 @@ public class AnnouncementServlet extends HttpServlet {
         String content = request.getParameter("content");
         String genre   = request.getParameter("genre");
 
-        if (title == null || title.trim().isEmpty()
-                || content == null || content.trim().isEmpty()
-                || genre == null || genre.trim().isEmpty()) {
+        try {
+            // ── Resolve upload directory ──────────────────────────────────────
+            String appPath   = request.getServletContext().getRealPath("");
+            String uploadPath = appPath + File.separator + UPLOAD_DIR;
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) uploadDir.mkdirs();
 
-            request.setAttribute("errorMessage", "All fields are required.");
+            // ── Handle image upload ───────────────────────────────────────────
+            String imagePath = saveUploadedFile(request.getPart("imageFile"), uploadPath);
 
-        } else {
-            try {
-                // ── Resolve upload directory on disk ─────────────────────────
-                String appPath  = request.getServletContext().getRealPath("");
-                String uploadPath = appPath + File.separator + UPLOAD_DIR;
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) uploadDir.mkdirs();
+            // ── Handle attachment upload ──────────────────────────────────────
+            String attachmentPath = saveUploadedFile(request.getPart("attachmentFile"), uploadPath);
 
-                // ── Handle image upload ───────────────────────────────────────
-                String imagePath = null;
-                Part imagePart = request.getPart("imageFile");
-                if (imagePart != null && imagePart.getSize() > 0) {
-                    String imageFileName = extractFileName(imagePart);
-                    if (imageFileName != null && !imageFileName.isEmpty()) {
-                        imagePart.write(uploadPath + File.separator + imageFileName);
-                        imagePath = UPLOAD_DIR + "/" + imageFileName;
-                    }
-                }
+            // ── TODO: replace hardcoded 1 with session admin ID ──────────────
+            // HttpSession session = request.getSession();
+            // int adminId = (int) session.getAttribute("adminId");
+            int adminId = 1;
 
-                // ── Handle attachment upload ──────────────────────────────────
-                String attachmentPath = null;
-                Part attachmentPart = request.getPart("attachmentFile");
-                if (attachmentPart != null && attachmentPart.getSize() > 0) {
-                    String attachFileName = extractFileName(attachmentPart);
-                    if (attachFileName != null && !attachFileName.isEmpty()) {
-                        attachmentPart.write(uploadPath + File.separator + attachFileName);
-                        attachmentPath = UPLOAD_DIR + "/" + attachFileName;
-                    }
-                }
+            // ── Delegate to Service (validation lives there) ──────────────────
+            boolean saved = announcementService.createAnnouncement(
+                    adminId, title, content, genre, imagePath, attachmentPath);
 
-                // ── Save to DB ────────────────────────────────────────────────
-                AnnouncementModel a = new AnnouncementModel();
-                a.setAdminId(1); // TODO: replace with session admin ID
-                a.setTitle(title.trim());
-                a.setContent(content.trim());
-                a.setGenre(genre.trim());
-                a.setImagePath(imagePath);
-                a.setAttachmentPath(attachmentPath);
-                a.setPublishedAt(LocalDateTime.now());
-
-                boolean saved = dao.addAnnouncement(a);
-                if (saved) {
-                    request.setAttribute("successMessage", "Announcement posted!");
-                } else {
-                    request.setAttribute("errorMessage", "Failed to post. Try again.");
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                request.setAttribute("errorMessage", "Error: " + e.getMessage());
+            if (saved) {
+                request.setAttribute("successMessage", "Announcement posted successfully!");
+            } else {
+                request.setAttribute("errorMessage", "Failed to post announcement. Please try again.");
             }
+
+        } catch (IllegalArgumentException e) {
+            // Validation errors from the Service layer
+            request.setAttribute("errorMessage", e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "Unexpected error: " + e.getMessage());
         }
 
         doGet(request, response);
     }
 
-    // Extract the original filename from a Part header
+    // ── Helper: save an uploaded Part to disk, return relative path or null ──
+    private String saveUploadedFile(Part part, String uploadPath) throws IOException, ServletException {
+        if (part == null || part.getSize() == 0) return null;
+
+        String fileName = extractFileName(part);
+        if (fileName == null || fileName.isEmpty()) return null;
+
+        // Sanitize filename to prevent path traversal
+        fileName = new File(fileName).getName();
+
+        part.write(uploadPath + File.separator + fileName);
+        return UPLOAD_DIR + "/" + fileName;
+    }
+
+    // ── Helper: extract original filename from Content-Disposition header ────
     private String extractFileName(Part part) {
         String contentDisp = part.getHeader("content-disposition");
         if (contentDisp == null) return null;
         for (String token : contentDisp.split(";")) {
             if (token.trim().startsWith("filename")) {
-                return token.substring(token.indexOf('=') + 1)
-                            .trim()
-                            .replace("\"", "");
+                return token.substring(token.indexOf('=') + 1).trim().replace("\"", "");
             }
         }
         return null;

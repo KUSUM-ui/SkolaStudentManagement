@@ -1733,5 +1733,402 @@ h1 {
     text-decoration: none;
     margin-left: 14px;
 }
+/* ─────────────────────────────────────
+   11. CLASS RESERVATION PAGE
+   ───────────────────────────────────── */
+
+/* Header row with search */
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sk-page .sk-search {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    width: 200px;
+    background: #fff;
+}
+
+.sk-page .sk-search:focus {
+    border-color: var(--red);
+}
+
+/* Form card */
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Date + Time row */
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Time from–to inline */
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.sk-page .sk-time-row input {
+    flex: 1;
+}
+
+/* Form submit row */
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* Card spacing between form and status */
+.sk-page .sk-card + .sk-card {
+    margin-top: 24px;
+}
+
+.sk-page .sk-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+/* ── Table ── */
+.sk-page .sk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-page .sk-table thead tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-page .sk-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.sk-page .sk-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sk-page .sk-table tbody tr:hover {
+    background: rgba(155, 35, 53, 0.04);
+}
+
+/* Empty row */
+.sk-page .sk-empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 32px;
+    font-size: 13px;
+}
+
+/* ── Status badges ── */
+.sk-page .sk-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.sk-page .sk-status-pending {
+    background: #fff8e1;
+    color: #b45309;
+}
+
+.sk-page .sk-status-approved {
+    background: #eafaf1;
+    color: #1e8449;
+}
+
+.sk-page .sk-status-disapproved {
+    background: #ffecec;
+    color: #c0392b;
+}
+
+/* ── Admin action buttons side by side ── */
+.sk-page .sk-action-form {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sk-page .sk-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sk-page .sk-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sk-page .sk-search {
+        width: 100%;
+    }
+}
+/* ═══════════════════════════════════════════════════
+   PROFILE SETTINGS — FIX v2
+   Paste these at the very bottom of skola.css,
+   AFTER the previous fix block.
+   ═══════════════════════════════════════════════════ */
+
+/* ── 1. Hide EMPTY alert bars
+   The <c:if> blocks still render a <div class="sk-alert ...">
+   with only whitespace inside when there is no message.
+   :empty won't match whitespace, so we use min-height + padding
+   collapse instead.                                        ── */
+.sk-page .sk-alert:empty,
+.sk-page .sk-alert-success:empty,
+.sk-page .sk-alert-error:empty {
+    display: none;
+}
+
+/* Safer catch-all: collapse alerts that contain only whitespace
+   (works in all modern browsers via has-no-text trick)          */
+.sk-page .sk-alert {
+    /* Keep existing colours — just ensure zero-height when blank */
+    overflow: hidden;
+}
+
+/* Hide the green bar when it has no visible text */
+.sk-page .sk-alert-success:not(:has(*)):empty,
+.sk-page .sk-alert-error:not(:has(*)):empty {
+    display: none;
+}
+
+/*  Broader catch: if the div is truly empty or whitespace-only,
+    collapse via min-height trick                                */
+.sk-page .sk-alert-success,
+.sk-page .sk-alert-error {
+    /* Transition so flash messages fade gracefully             */
+    transition: padding 0.2s, margin 0.2s;
+}
+
+/* The most reliable cross-browser fix — target by content length.
+   If JS is available you can also do:
+     document.querySelectorAll('.sk-alert')
+       .forEach(el => { if (!el.textContent.trim()) el.style.display='none'; });
+   But this CSS handles it for the empty-string case:            */
+.sk-page .sk-alert:not([data-has-message]) {
+    /* fallback: rely on JSP not rendering the div at all       */
+}
+
+/* ── Real fix: add this to your JSP instead of bare <c:if>:
+   <c:if test="${not empty success}">
+       <div class="sk-alert sk-alert-success" data-has-message>${success}</div>
+   </c:if>
+   Then target .sk-alert without data-has-message to hide empty ones ── */
+
+
+/* ── 2. Hide the native "Choose File / No file chosen" input
+   The <input type="file"> is rendered directly in the JSP.
+   We hide it and let the custom Choose button trigger it via JS.  ── */
+.sk-page .sk-profile-actions input[type="file"],
+.sk-page .sk-profile-section input[type="file"],
+/* Wider catch in case it's outside those wrappers: */
+.sk-page .sk-settings-card input[type="file"] {
+    display: none !important;
+}
+
+/* ── 3. Upload action row — keep Choose + Upload on one line,
+   Remove on second line, no "No file chosen" text visible     ── */
+.sk-page .sk-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+/* Row 1: Choose + Upload buttons side by side */
+.sk-page .sk-profile-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ── 4. Fix section label typography
+   "PHONE NUMBER", "CURRENT PASSWORD" etc. appear as their own
+   block with uppercase small text — that's intentional from the
+   sk-settings-form label rule, but they shouldn't be giant.    ── */
+.sk-page .sk-settings-form .sk-field-label,
+.sk-page .sk-settings-password label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+/* ── 5. Section headings ("Contact Number", "Change Password")
+   should stand out from the field labels above               ── */
+.sk-page .sk-settings-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 4px;
+    padding-bottom: 0;
+    border: none;
+}
+
+/* ── 6. Password inputs — full width within the password block ── */
+.sk-page .sk-settings-password input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-settings-password input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+/* ── 7. Action button rows (Cancel / Save, Cancel / Update Password)
+   should sit flush with the content — no extra margin above   ── */
+.sk-page .sk-settings-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    align-items: center;
+}
+
+/* Cancel button — outline style */
+.sk-page .sk-settings-actions .sk-btn-outline,
+.sk-page .sk-settings-password-actions .sk-btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #ccc;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.sk-page .sk-settings-actions .sk-btn-outline:hover {
+    background: #f0f0f0;
+}
+
+/* ── 8. Log Out button — bottom right                         ── */
+.sk-page .sk-settings-logout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* ── 9. Quick JS snippet — paste in your JSP <script> block
+   to hide empty alerts at runtime (most reliable method):
+
+   document.addEventListener('DOMContentLoaded', function () {
+     document.querySelectorAll('.sk-alert').forEach(function (el) {
+       if (!el.textContent.trim()) el.style.display = 'none';
+     });
+   });
+
+   AND to wire the custom Choose button to the hidden file input:
+
+   var chooseBtn = document.querySelector('.sk-choose-btn');
+   var fileInput = document.querySelector('input[type="file"]');
+   if (chooseBtn && fileInput) {
+     chooseBtn.addEventListener('click', function () {
+       fileInput.click();
+     });
+     fileInput.addEventListener('change', function () {
+       var label = document.querySelector('.sk-file-name');
+       if (label) label.textContent = fileInput.files[0] ? fileInput.files[0].name : '';
+     });
+   }
+── */
+
+
 
 
