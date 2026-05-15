@@ -1,41 +1,39 @@
 package skola;
 
 import jakarta.servlet.ServletException;
-
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import com.service.TotalStudent;
 
-/**
- * Servlet implementation class AdminStudent
- */
 @WebServlet("/AdminStudent")
 public class AdminStudent extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public AdminStudent() {
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/AdminStudent.jsp").forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        TotalStudent totalStudentService = new TotalStudent();
+        int totalStudents = 0;
 
+        try {
+            totalStudents = totalStudentService.getTotalStudentCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("totalStudents", totalStudents);
+        request.getRequestDispatcher("/WEB-INF/pages/AdminStudent.jsp")
+               .forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
