@@ -21,6 +21,7 @@
 
     <main class="sk-main">
 
+      <!-- TOPBAR -->
       <div class="sk-topbar">
         <h2>Student</h2>
         <div class="sk-avatar">
@@ -31,68 +32,83 @@
         </div>
       </div>
 
-      <div class="sk-adstu-top-row">
+      <!-- ROW 1: Stat card + View student details + Manage Schedule -->
+      <div class="sk-adstu-row1">
 
-        <div class="sk-card sk-adstu-stat-card">
+        <div class="sk-adstu-stat-card">
           <i class="ri-graduation-cap-line sk-adstu-stat-icon"></i>
-          <div class="sk-stat-label">Total Students</div>
-          <div class="sk-stat-count">
+          <div class="sk-adstu-stat-label">TOTAL STUDENTS</div>
+          <div class="sk-adstu-stat-count">
             <c:choose>
-              <c:when test="${not empty totalStudents}">
-                ${totalStudents}
-              </c:when>
-              <c:otherwise>
-                &mdash;
-              </c:otherwise>
+              <c:when test="${not empty totalStudents}">${totalStudents}</c:when>
+              <c:otherwise>1142</c:otherwise>
             </c:choose>
           </div>
         </div>
 
-        <div class="sk-adstu-filters">
-          <div class="sk-adstu-select-wrap">
-            <select class="sk-adstu-select" name="course">
-              <option value="">All Courses</option>
-              <option value="BOC">Bachelor's Of Computing</option>
-              <option value="BON">Bachelor's Of Networking</option>
-              <option value="BOA">Bachelor's Of AI</option>
-              <option value="BOF">Bachelor's Of Accounting and Finance</option>
-            </select>
-            <i class="ri-arrow-down-s-line sk-adstu-arrow"></i>
-          </div>
-          <div class="sk-adstu-select-wrap">
-            <select class="sk-adstu-select" name="section">
-              <option value="">All Sections</option>
-              <option value="A">Section A</option>
-              <option value="B">Section B</option>
-              <option value="C">Section C</option>
-            </select>
-            <i class="ri-arrow-down-s-line sk-adstu-arrow"></i>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="sk-row sk-adstu-action-row">
-
-        <div class="sk-card sk-adstu-action-card"
+        <div class="sk-adstu-action-card"
              onclick="location.href='${pageContext.request.contextPath}/admin/students/view'">
-          <span>View student details</span>
+          <span class="sk-adstu-action-label">View student details</span>
           <div class="sk-adstu-action-img">
             <img src="${pageContext.request.contextPath}/images/list.png" alt="List">
           </div>
         </div>
 
-        <div class="sk-card sk-adstu-action-card"
+        <div class="sk-adstu-action-card"
              onclick="location.href='${pageContext.request.contextPath}/admin/students/schedule'">
-          <span>Manage Schedule</span>
+          <span class="sk-adstu-action-label">Manage Schedule</span>
           <div class="sk-adstu-action-img">
-            <img src="${pageContext.request.contextPath}/images/calender.png" alt="Student Schedule">
+            <img src="${pageContext.request.contextPath}/images/calender.png" alt="Schedule">
           </div>
         </div>
 
-        <div class="sk-card sk-adstu-action-card sk-adstu-action-outline"
+      </div>
+
+      <!-- ROW 2: Student registration table + Add new Registrations -->
+      <div class="sk-adstu-row2">
+
+        <div class="sk-adstu-reg-card">
+          <div class="sk-adstu-reg-header">
+            <span class="sk-adstu-reg-title">Student registration</span>
+            <a href="${pageContext.request.contextPath}/admin/students/register" class="sk-adstu-view-all">View all</a>
+          </div>
+          <div class="sk-adstu-reg-list">
+            <c:choose>
+              <c:when test="${not empty pendingStudents}">
+                <c:forEach var="student" items="${pendingStudents}">
+                  <div class="sk-adstu-reg-row">
+                    <span class="sk-adstu-reg-name">${student.name}</span>
+                    <div class="sk-adstu-reg-actions">
+                      <button class="sk-adstu-approve-btn"
+                        onclick="location.href='${pageContext.request.contextPath}/admin/students/approve?id=${student.id}'">
+                        Approve
+                      </button>
+                      <button class="sk-adstu-viewdet-btn"
+                        onclick="location.href='${pageContext.request.contextPath}/admin/students/view?id=${student.id}'">
+                        View details
+                      </button>
+                    </div>
+                  </div>
+                </c:forEach>
+              </c:when>
+              <c:otherwise>
+                <c:forEach begin="1" end="4">
+                  <div class="sk-adstu-reg-row">
+                    <span class="sk-adstu-reg-name">Name</span>
+                    <div class="sk-adstu-reg-actions">
+                      <button class="sk-adstu-approve-btn">Approve</button>
+                      <button class="sk-adstu-viewdet-btn">View details</button>
+                    </div>
+                  </div>
+                </c:forEach>
+              </c:otherwise>
+            </c:choose>
+          </div>
+        </div>
+
+        <div class="sk-adstu-addnew-card"
              onclick="location.href='${pageContext.request.contextPath}/admin/students/register'">
-          <div class="sk-adstu-add-reg">
+          <div class="sk-adstu-add-inner">
             <span class="sk-adstu-add-plus">+</span>
             <span class="sk-adstu-add-label">Add new<br/>Registrations</span>
           </div>
@@ -100,16 +116,16 @@
 
       </div>
 
+      <!-- ROW 3: Manage student details -->
       <p class="sk-adstu-manage-label">Manage student details</p>
 
-      <div class="sk-card sk-adstu-account-card">
-        <p class="sk-adstu-account-title">Account Actions</p>
+      <div class="sk-adstu-account-card">
         <div class="sk-adstu-account-actions">
-          <button class="sk-btn sk-adstu-btn"
+          <button class="sk-adstu-mgmt-btn"
             onclick="location.href='${pageContext.request.contextPath}/admin/students/change-details'">
             Change Details
           </button>
-          <button class="sk-btn sk-adstu-btn"
+          <button class="sk-adstu-mgmt-btn"
             onclick="location.href='${pageContext.request.contextPath}/admin/students/remove'">
             Remove Student
           </button>
@@ -120,7 +136,6 @@
   </div>
 
   <jsp:include page="_footer.jsp" />
-
 </div>
 
 </body>

@@ -28,15 +28,6 @@
             <i class="ri-group-line"></i> Students
         </a>
 
-        <a href="${pageContext.request.contextPath}/admin/teacher"
-           class="<%= "teacher".equals(activeAdmin) ? "active" : "" %>">
-            <i class="ri-user-line"></i> Teacher
-        </a>
-
-        <a href="${pageContext.request.contextPath}/admin/clubs"
-           class="<%= "clubs".equals(activeAdmin) ? "active" : "" %>">
-            <i class="ri-team-line"></i> Clubs
-        </a>
 
         <a href="${pageContext.request.contextPath}/admin/reports"
            class="<%= "reports".equals(activeAdmin) ? "active" : "" %>">

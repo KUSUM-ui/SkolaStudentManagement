@@ -2,7 +2,7 @@ package com.model;
 
 import java.sql.Timestamp;
 
-public class Notes {
+public class CreateNote {
     private int noteId;
     private int studentId;
     private String noteTitle;
