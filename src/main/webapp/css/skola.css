@@ -2376,4 +2376,96 @@ h1 {
 .sk-stusch-td-module {
     color: var(--text);
 }
+
+/* ─────────────────────────────────────
+   14. STUDENT DASHBOARD — ANNOUNCEMENT CARD
+   Add this to the bottom of your skola.css
+   ───────────────────────────────────── */
+
+/* Announcement card override */
+.sk-dash-announce-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+}
+
+.sk-dash-announce-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.sk-dash-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+/* List of announcements */
+.sk-dash-ann-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Individual announcement item */
+.sk-dash-ann-item {
+    padding: 14px 16px;
+    background: #fdf5f6;
+    border-radius: 10px;
+    border-left: 3px solid var(--red);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Header: title + badge side by side */
+.sk-dash-ann-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sk-dash-ann-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Content text */
+.sk-dash-ann-content {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Announcement image */
+.sk-dash-ann-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 6px;
+}
+
+/* Date */
+.sk-dash-ann-date {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+/* Empty state */
+.sk-dash-ann-empty {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 20px 0;
+}
  

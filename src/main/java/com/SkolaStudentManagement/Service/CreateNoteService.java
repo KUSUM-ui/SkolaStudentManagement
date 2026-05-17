@@ -3,6 +3,7 @@ package com.SkolaStudentManagement.Service;
 import com.SkolaStudentManagement.DAO.CreateNoteDAO;
 import com.SkolaStudentManagement.Model.CreateNote;
 
+
 public class CreateNoteService {
 
     private final CreateNoteDAO createNoteDAO = new CreateNoteDAO();
@@ -17,6 +18,6 @@ public class CreateNoteService {
         createNote.setNoteTitle(title != null ? title.trim() : "");
         createNote.setNoteContent(content.trim());
 
-        return CreateNoteDAO.saveNote(createNote);
+        return createNoteDAO.saveNote(createNote);
     }
 }

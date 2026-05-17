@@ -1,7 +1,7 @@
-package skola;
+package com.SkolaStudentManagement.controller;
 
-import com.model.Notes;
-import com.service.NotesService;
+import com.SkolaStudentManagement.Model.Notes;
+import com.SkolaStudentManagement.Service.NotesService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,7 +35,7 @@ public class NotesServlet extends HttpServlet {
         List<Notes> notesList = notesService.getNotesByStudentId(studentId);
         request.setAttribute("notesList", notesList);
 
-        request.getRequestDispatcher("/WEB-INF/pages/notes.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/notes.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

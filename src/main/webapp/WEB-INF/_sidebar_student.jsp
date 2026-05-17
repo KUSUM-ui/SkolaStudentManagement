@@ -39,7 +39,7 @@
             <i class="ri-book-open-line"></i> Class
         </a>
 
-        <a href="${pageContext.request.contextPath}/student/schedule"
+        <a href="${pageContext.request.contextPath}/StudentScheduleServlet"
            class="${param.activePage == 'schedule' ? 'active' : ''}">
             <i class="ri-calendar-line"></i> Schedule
         </a>

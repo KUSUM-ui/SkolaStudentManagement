@@ -1,16 +1,20 @@
-package skola;
+package com.SkolaStudentManagement.controller;
 
-import com.service.CreateNoteService;
+import com.SkolaStudentManagement.Model.CreateNote;
+import com.SkolaStudentManagement.Service.CreateNoteService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-
-@WebServlet("/student/notes/create")
+/**
+ * Servlet implementation class createnotesServlet
+ */
+@WebServlet(asyncSupported = true, urlPatterns = { "/createnotesServlet" })
 public class createnotesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -22,7 +26,7 @@ public class createnotesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/createnotes.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/createnotes.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +36,7 @@ public class createnotesServlet extends HttpServlet {
         Integer studentId = (session != null) ? (Integer) session.getAttribute("student_id") : null;
 
         if (studentId == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return;
         }
 

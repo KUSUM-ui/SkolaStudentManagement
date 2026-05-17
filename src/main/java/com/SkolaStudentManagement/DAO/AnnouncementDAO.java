@@ -29,7 +29,7 @@ public class AnnouncementDAO {
         }
     }
 
-    // READ ALL
+    // READ ALL (for announcements page)
     public List<AnnouncementModel> getAllAnnouncements() throws SQLException {
         String sql = "SELECT * FROM Announcement ORDER BY published_at DESC";
         List<AnnouncementModel> list = new ArrayList<>();
@@ -39,16 +39,25 @@ public class AnnouncementDAO {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                AnnouncementModel a = new AnnouncementModel();
-                a.setAnnouncementId(rs.getInt("announcement_id"));
-                a.setAdminId(rs.getInt("admin_id"));
-                a.setTitle(rs.getString("title"));
-                a.setContent(rs.getString("content"));
-                a.setGenre(rs.getString("genre"));
-                a.setImagePath(rs.getString("image_path"));
-                a.setAttachmentPath(rs.getString("attachment_path"));
-                a.setPublishedAt(rs.getTimestamp("published_at").toLocalDateTime());
-                list.add(a);
+                list.add(mapRow(rs));
+            }
+        }
+        return list;
+    }
+
+    // READ LATEST N (for student dashboard card)
+    public List<AnnouncementModel> getLatestAnnouncements(int limit) throws SQLException {
+        String sql = "SELECT * FROM Announcement ORDER BY published_at DESC LIMIT ?";
+        List<AnnouncementModel> list = new ArrayList<>();
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, limit);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
             }
         }
         return list;
@@ -63,18 +72,7 @@ public class AnnouncementDAO {
 
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    AnnouncementModel a = new AnnouncementModel();
-                    a.setAnnouncementId(rs.getInt("announcement_id"));
-                    a.setAdminId(rs.getInt("admin_id"));
-                    a.setTitle(rs.getString("title"));
-                    a.setContent(rs.getString("content"));
-                    a.setGenre(rs.getString("genre"));
-                    a.setImagePath(rs.getString("image_path"));
-                    a.setAttachmentPath(rs.getString("attachment_path"));
-                    a.setPublishedAt(rs.getTimestamp("published_at").toLocalDateTime());
-                    return a;
-                }
+                if (rs.next()) return mapRow(rs);
             }
         }
         return null;
@@ -113,5 +111,20 @@ public class AnnouncementDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    // ── Private mapper ────────────────────────────────────────────────
+    private AnnouncementModel mapRow(ResultSet rs) throws SQLException {
+        AnnouncementModel a = new AnnouncementModel();
+        a.setAnnouncementId(rs.getInt("announcement_id"));
+        a.setAdminId(rs.getInt("admin_id"));
+        a.setTitle(rs.getString("title"));
+        a.setContent(rs.getString("content"));
+        a.setGenre(rs.getString("genre"));
+        a.setImagePath(rs.getString("image_path"));
+        a.setAttachmentPath(rs.getString("attachment_path"));
+        Timestamp ts = rs.getTimestamp("published_at");
+        if (ts != null) a.setPublishedAt(ts.toLocalDateTime());
+        return a;
     }
 }

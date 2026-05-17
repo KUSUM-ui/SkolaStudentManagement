@@ -15,7 +15,7 @@
 <div class="sk-page sk-student">
   <div class="sk-app">
 
-    <jsp:include page="_sidebar_admin.jsp">
+    <jsp:include page="/WEB-INF/_sidebar_student.jsp">
       <jsp:param name="activePage" value="students"/>
     </jsp:include>
 
@@ -23,7 +23,7 @@
 
       <div class="sk-topbar">
         <div class="sk-on-back-row">
-          <a href="${pageContext.request.contextPath}/notesServlet" class="sk-on-back">
+          <a href="${pageContext.request.contextPath}/NotesServlet" class="sk-on-back">
             <i class="ri-arrow-left-s-line"></i> Create note
           </a>
         </div>
@@ -62,7 +62,7 @@
     </main>
   </div>
 
-  <jsp:include page="_footer.jsp" />
+  <jsp:include page="/WEB-INF/_footer.jsp" />
 </div>
 
 </body>
