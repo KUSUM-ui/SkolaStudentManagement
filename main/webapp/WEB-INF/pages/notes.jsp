@@ -16,18 +16,20 @@
 <div class="sk-page sk-student">
   <div class="sk-app">
 
-    <jsp:include page="_sidebar_admin.jsp">
-      <jsp:param name="activePage" value="students"/>
+    <jsp:include page="_sidebar_student.jsp">
+      <jsp:param name="activePage" value="notes"/>
     </jsp:include>
 
     <main class="sk-main">
 
       <div class="sk-topbar">
         <h2>Welcome, ${sessionScope.first_name}</h2>
-        <div class="sk-search">
+        <form action="${pageContext.request.contextPath}/student/notes" method="get" class="sk-search">
           <i class="ri-search-line"></i>
-          <span>Search</span>
-        </div>
+          <input type="text" name="search" placeholder="Search notes..."
+                 value="${param.search}"
+                 style="border:none; outline:none; background:transparent; width:100%; font-size:13px; font-family:inherit;"/>
+        </form>
       </div>
 
       <c:if test="${not empty noteSuccess}">
@@ -44,9 +46,9 @@
       <c:if test="${not empty notesList}">
         <div class="sk-notes-pinned-row">
           <c:forEach var="note" items="${notesList}" end="3">
-            <div class="sk-note-pin-card">
+            <a href="${pageContext.request.contextPath}/student/notes/view?id=${note.noteId}" class="sk-note-pin-card">
               <c:out value="${note.noteTitle}"/>
-            </div>
+            </a>
           </c:forEach>
         </div>
       </c:if>
@@ -65,16 +67,23 @@
         <div class="sk-notes-list">
           <c:choose>
             <c:when test="${empty notesList}">
-              <p class="sk-notes-empty">No notes available.</p>
+              <c:choose>
+                <c:when test="${not empty param.search}">
+                  <p class="sk-notes-empty">No notes found for "<c:out value="${param.search}"/>".</p>
+                </c:when>
+                <c:otherwise>
+                  <p class="sk-notes-empty">No notes available.</p>
+                </c:otherwise>
+              </c:choose>
             </c:when>
             <c:otherwise>
               <c:forEach var="note" items="${notesList}">
-                <div class="sk-note-item">
+                <a href="${pageContext.request.contextPath}/student/notes/view?id=${note.noteId}" class="sk-note-item">
                   <span class="sk-note-title"><c:out value="${note.noteTitle}"/></span>
                   <span class="sk-note-date">
                     <fmt:formatDate value="${note.noteCreatedAt}" pattern="dd MMM, yyyy"/>
                   </span>
-                </div>
+                </a>
                 <hr class="sk-note-divider"/>
               </c:forEach>
             </c:otherwise>

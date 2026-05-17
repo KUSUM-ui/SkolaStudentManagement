@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class StudentdashboardServlet
  */
-@WebServlet("/StudentdashboardServlet")
+@WebServlet("/student/dashboard")
 public class StudentdashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,5 +37,5 @@ public class StudentdashboardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 }

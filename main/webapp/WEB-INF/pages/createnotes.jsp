@@ -15,15 +15,15 @@
 <div class="sk-page sk-student">
   <div class="sk-app">
 
-    <jsp:include page="_sidebar_admin.jsp">
-      <jsp:param name="activePage" value="students"/>
+    <jsp:include page="_sidebar_student.jsp">
+      <jsp:param name="activePage" value="notes"/>
     </jsp:include>
 
     <main class="sk-main">
 
       <div class="sk-topbar">
         <div class="sk-on-back-row">
-          <a href="${pageContext.request.contextPath}/notesServlet" class="sk-on-back">
+          <a href="${pageContext.request.contextPath}/student/notes" class="sk-on-back">
             <i class="ri-arrow-left-s-line"></i> Create note
           </a>
         </div>
@@ -43,7 +43,7 @@
         <c:remove var="noteError" scope="session"/>
       </c:if>
 
-      <form action="${pageContext.request.contextPath}/student/createnotes"
+      <form action="${pageContext.request.contextPath}/student/notes/create"
             method="post" class="sk-cn-form">
 
         <input type="text" name="title" placeholder="Title" class="sk-cn-title"
@@ -67,4 +67,3 @@
 
 </body>
 </html>
-    

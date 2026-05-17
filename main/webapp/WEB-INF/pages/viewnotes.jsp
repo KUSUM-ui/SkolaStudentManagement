@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SKOLA - View Students</title>
+  <title>SKOLA - View Note</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/notes.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -16,8 +16,8 @@
   <div class="sk-app">
 
     <!-- SIDEBAR -->
-        <jsp:include page="_sidebar_admin.jsp">
-      <jsp:param name="activePage" value="students"/>
+    <jsp:include page="_sidebar_admin.jsp">
+      <jsp:param name="activePage" value="notes"/>
     </jsp:include>
 
     <!-- MAIN -->
@@ -39,19 +39,19 @@
       <!-- NOTE EDITOR -->
       <div class="sk-on-editor">
         <div class="sk-on-header">
-          <span class="sk-on-title">Title</span>
-          <a href="${pageContext.request.contextPath}/student/notes/delete?id=${note.id}" class="sk-on-delete">
+          <span class="sk-on-title">${note.noteTitle}</span>
+          <a href="${pageContext.request.contextPath}/student/notes/view?action=delete&id=${note.noteId}" class="sk-on-delete">
             <i class="ri-delete-bin-line"></i> Delete
           </a>
         </div>
-        <textarea class="sk-on-textarea">Content</textarea>
+        <textarea class="sk-on-textarea">${note.noteContent}</textarea>
       </div>
 
     </main>
   </div>
 
   <!-- FOOTER -->
-   <jsp:include page="_footer.jsp" />
+  <jsp:include page="_footer.jsp" />
 
 </div>
 </body>

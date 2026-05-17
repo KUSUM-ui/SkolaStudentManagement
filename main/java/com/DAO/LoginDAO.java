@@ -8,28 +8,34 @@ import com.utils.DBConfig;
 public class LoginDAO {
 
     public String getUserByEmail(String email, String role) throws Exception {
-
-        
-        String table;
-        if ("admin".equalsIgnoreCase(role)) {
-            table = "admin";
-        } else {
-            table = "student";
-        }
-
+        // ✅ Capital letters to match your DB table names
+        String table = "admin".equalsIgnoreCase(role) ? "Admin" : "Student";
         String sql = "SELECT password FROM " + table + " WHERE email = ?";
 
         try (Connection con = DBConfig.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-
             pst.setString(1, email);
-
             try (ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
                     return rs.getString("password");
                 }
-                return null; // email not found in this table
+                return null;
             }
         }
+    }
+
+    // ✅ SQL lives here in DAO, not in servlet or service
+    public int getStudentIdByEmail(String email) throws Exception {
+        String sql = "SELECT student_id FROM Student WHERE email = ?";
+        try (Connection con = DBConfig.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, email);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("student_id");
+                }
+            }
+        }
+        return -1;
     }
 }

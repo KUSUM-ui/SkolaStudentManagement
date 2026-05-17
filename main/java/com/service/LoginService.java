@@ -1,27 +1,22 @@
 package com.service;
 
 import com.DAO.LoginDAO;
-import com.utils.PasswordUtil;
-
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginService {
 
+    private final LoginDAO loginDAO = new LoginDAO();
+
     public boolean login(String email, String password, String role) throws Exception {
-
-        if (email == null || email.trim().isEmpty() ||
-            password == null || password.trim().isEmpty()) {
-            throw new IllegalArgumentException("Email and password are required.");
-        }
-
-        LoginDAO dao = new LoginDAO();
-        String storedHash = dao.getUserByEmail(email.trim(), role);
-        System.out.println("DB stored hash: " + storedHash);
-
-        if (storedHash == null) {
+        String hashedPassword = loginDAO.getUserByEmail(email, role);
+        if (hashedPassword == null) {
             return false;
         }
-
-        return PasswordUtil.checkPassword(password, storedHash);
+        return BCrypt.checkpw(password, hashedPassword);
     }
-    
+
+    // ✅ Delegates to DAO — no SQL here
+    public int getStudentId(String email) throws Exception {
+        return loginDAO.getStudentIdByEmail(email);
+    }
 }

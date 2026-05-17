@@ -7,13 +7,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 
 @WebServlet("/student/notes/create")
 public class createnotesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     private final CreateNoteService createNoteService = new CreateNoteService();
 
     public createnotesServlet() {
@@ -27,7 +25,6 @@ public class createnotesServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession(false);
         Integer studentId = (session != null) ? (Integer) session.getAttribute("student_id") : null;
 
@@ -47,6 +44,7 @@ public class createnotesServlet extends HttpServlet {
             session.setAttribute("noteError", "Failed to save note. Content cannot be empty.");
         }
 
-        response.sendRedirect(request.getContextPath() + "/createnotesServlet");
+        // ✅ Fixed: matches the @WebServlet mapping above
+        response.sendRedirect(request.getContextPath() + "/student/notes/create");
     }
 }

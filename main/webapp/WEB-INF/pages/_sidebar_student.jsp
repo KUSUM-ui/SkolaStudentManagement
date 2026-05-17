@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <aside class="sk-sidebar">
 
@@ -7,7 +8,6 @@
         <img src="${pageContext.request.contextPath}/images/logo.png"
              alt="SKOLA"
              class="logo-img" />
-
         <span class="logo-text">SKOLA</span>
     </div>
 
@@ -22,13 +22,19 @@
 
         <a href="${pageContext.request.contextPath}/student/notes"
            class="${param.activePage == 'notes' ? 'active' : ''}">
-            <i class="ri-sticky-note-line"></i>
+            <i class="ri-book-2-line"></i>
             Notes
+        </a>
+
+        <a href="${pageContext.request.contextPath}/student/class"
+           class="${param.activePage == 'class' ? 'active' : ''}">
+            <i class="ri-team-line"></i>
+            Class
         </a>
 
         <a href="${pageContext.request.contextPath}/student/schedule"
            class="${param.activePage == 'schedule' ? 'active' : ''}">
-            <i class="ri-calendar-line"></i>
+            <i class="ri-bar-chart-2-line"></i>
             Schedule
         </a>
 
