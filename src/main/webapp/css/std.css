@@ -3272,3 +3272,64 @@ h1 {
 .sk-page .sk-view-empty p {
     font-size: 13px;
 }
+/* ── Today's Schedule Table ── */
+.sk-student .sk-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.sk-student .sk-schedule-table thead tr {
+    background: var(--red-light);
+}
+
+.sk-student .sk-schedule-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-student .sk-schedule-table th:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.sk-student .sk-schedule-table th:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.sk-student .sk-schedule-table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.sk-student .sk-schedule-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.sk-student .sk-schedule-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.sk-student .sk-card-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sk-student .sk-schedule-empty {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+.sk-student .sk-today-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sk-student .sk-today-label strong {
+    color: var(--red);
+}

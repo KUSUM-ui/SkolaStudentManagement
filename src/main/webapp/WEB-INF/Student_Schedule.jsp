@@ -22,20 +22,11 @@
     <main class="sk-main">
 
       <div class="sk-topbar">
-        <h2>Schedule</h2>
-        <div class="sk-stusch-topbar-right">
-          <div class="sk-stusch-search-wrap">
-            <i class="ri-search-line"></i>
-            <input type="text" class="sk-stusch-search" placeholder="Search" name="search"/>
-          </div>
-          <div class="sk-avatar">
-            <img src="${pageContext.request.contextPath}/img/student-avatar.png"
-                 alt="Student"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
-            <i class="ri-user-line" style="display:none;"></i>
-          </div>
-        </div>
-      </div>
+	    <h2>Schedule</h2>
+	    <a href="${pageContext.request.contextPath}/studentProfileServlet" style="text-decoration:none; color:inherit; margin-left:auto;">
+	        <div class="sk-avatar"><i class="ri-user-line"></i></div>
+	    </a>
+	</div>
 
       <!-- Section label -->
       <div class="sk-stusch-section-label">Section - Schedule</div>

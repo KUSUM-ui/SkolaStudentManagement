@@ -1,7 +1,9 @@
 package com.SkolaStudentManagement.controller;
 
 import com.SkolaStudentManagement.Model.Notes;
+import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.Service.NotesService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,22 +24,27 @@ public class NotesServlet extends HttpServlet {
         super();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-        Integer studentId = (session != null) ? (Integer) session.getAttribute("student_id") : null;
-
-        if (studentId == null) {
-            studentId = 5;
+        if (session == null || session.getAttribute("student") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
         }
+
+        SettingsStudentModel student = (SettingsStudentModel) session.getAttribute("student");
+        int studentId = student.getStudentId();
 
         List<Notes> notesList = notesService.getNotesByStudentId(studentId);
         request.setAttribute("notesList", notesList);
+        request.setAttribute("student", student);
 
         request.getRequestDispatcher("/WEB-INF/notes.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);

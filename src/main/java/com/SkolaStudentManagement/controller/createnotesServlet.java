@@ -1,6 +1,7 @@
 package com.SkolaStudentManagement.controller;
 
 import com.SkolaStudentManagement.Model.CreateNote;
+import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.Service.CreateNoteService;
 
 import jakarta.servlet.ServletException;
@@ -20,20 +21,38 @@ public class createnotesServlet extends HttpServlet {
         super();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/createnotes.jsp").forward(request, response);
-    }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        Integer studentId = (session != null) ? (Integer) session.getAttribute("student_id") : null;
-
-        if (studentId == null) {
+        if (session == null || session.getAttribute("student") == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
+
+        // Move flash messages from session → request so JSP can display them
+        request.setAttribute("noteSuccess", session.getAttribute("noteSuccess"));
+        request.setAttribute("noteError",   session.getAttribute("noteError"));
+        session.removeAttribute("noteSuccess");
+        session.removeAttribute("noteError");
+
+        request.getRequestDispatcher("/WEB-INF/createnotes.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("student") == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        // Pull student_id from the model stored in session
+        SettingsStudentModel student = (SettingsStudentModel) session.getAttribute("student");
+        int studentId = student.getStudentId();
 
         String title   = request.getParameter("title");
         String content = request.getParameter("body");
@@ -45,7 +64,6 @@ public class createnotesServlet extends HttpServlet {
         } else {
             session.setAttribute("noteError", "Failed to save note. Content cannot be empty.");
         }
-
 
         response.sendRedirect(request.getContextPath() + "/student/notes/create");
     }

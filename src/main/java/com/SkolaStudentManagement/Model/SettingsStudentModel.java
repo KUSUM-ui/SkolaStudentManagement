@@ -13,6 +13,7 @@ public class SettingsStudentModel {
     private String phone;
     private String password;
     private String gradeLevel;
+    private String semester;
     private int    facultyId;
     private String image;
     private int    adminId;
@@ -24,7 +25,7 @@ public class SettingsStudentModel {
 
     public SettingsStudentModel(int studentId, String firstName, String lastName, Date dob,
                    String gender, String email, String phone, String password,
-                   String gradeLevel, int facultyId, String image,
+                   String gradeLevel, String semester, int facultyId, String image,
                    int adminId, String sectionId) {
         this.studentId  = studentId;
         this.firstName  = firstName;
@@ -35,6 +36,7 @@ public class SettingsStudentModel {
         this.phone      = phone;
         this.password   = password;
         this.gradeLevel = gradeLevel;
+        this.semester   = semester;
         this.facultyId  = facultyId;
         this.image      = image;
         this.adminId    = adminId;
@@ -43,46 +45,49 @@ public class SettingsStudentModel {
 
     // ── Getters & Setters ─────────────────────────────────────────────
 
-    public int    getStudentId()               { return studentId; }
-    public void   setStudentId(int studentId)  { this.studentId = studentId; }
+    public int    getStudentId()                   { return studentId; }
+    public void   setStudentId(int studentId)      { this.studentId = studentId; }
 
-    public String getFirstName()               { return firstName; }
-    public void   setFirstName(String firstName) { this.firstName = firstName; }
+    public String getFirstName()                   { return firstName; }
+    public void   setFirstName(String firstName)   { this.firstName = firstName; }
 
-    public String getLastName()                { return lastName; }
-    public void   setLastName(String lastName) { this.lastName = lastName; }
+    public String getLastName()                    { return lastName; }
+    public void   setLastName(String lastName)     { this.lastName = lastName; }
 
-    public Date   getDob()                     { return dob; }
-    public void   setDob(Date dob)             { this.dob = dob; }
+    public Date   getDob()                         { return dob; }
+    public void   setDob(Date dob)                 { this.dob = dob; }
 
-    public String getGender()                  { return gender; }
-    public void   setGender(String gender)     { this.gender = gender; }
+    public String getGender()                      { return gender; }
+    public void   setGender(String gender)         { this.gender = gender; }
 
-    public String getEmail()                   { return email; }
-    public void   setEmail(String email)       { this.email = email; }
+    public String getEmail()                       { return email; }
+    public void   setEmail(String email)           { this.email = email; }
 
-    public String getPhone()                   { return phone; }
-    public void   setPhone(String phone)       { this.phone = phone; }
+    public String getPhone()                       { return phone; }
+    public void   setPhone(String phone)           { this.phone = phone; }
 
-    public String getPassword()                { return password; }
-    public void   setPassword(String password) { this.password = password; }
+    public String getPassword()                    { return password; }
+    public void   setPassword(String password)     { this.password = password; }
 
-    public String getGradeLevel()              { return gradeLevel; }
+    public String getGradeLevel()                  { return gradeLevel; }
     public void   setGradeLevel(String gradeLevel) { this.gradeLevel = gradeLevel; }
 
-    public int    getFacultyId()               { return facultyId; }
-    public void   setFacultyId(int facultyId)  { this.facultyId = facultyId; }
+    public String getSemester()                    { return semester; }
+    public void   setSemester(String semester)     { this.semester = semester; }
 
-    public String getImage()                   { return image; }
-    public void   setImage(String image)       { this.image = image; }
+    public int    getFacultyId()                   { return facultyId; }
+    public void   setFacultyId(int facultyId)      { this.facultyId = facultyId; }
 
-    public int    getAdminId()                 { return adminId; }
-    public void   setAdminId(int adminId)      { this.adminId = adminId; }
+    public String getImage()                       { return image; }
+    public void   setImage(String image)           { this.image = image; }
 
-    public String getSectionId()               { return sectionId; }
-    public void   setSectionId(String sectionId) { this.sectionId = sectionId; }
+    public int    getAdminId()                     { return adminId; }
+    public void   setAdminId(int adminId)          { this.adminId = adminId; }
 
-    // ── Helper ────────────────────────────────────────────────────────
+    public String getSectionId()                   { return sectionId; }
+    public void   setSectionId(String sectionId)   { this.sectionId = sectionId; }
+
+    // ── Helpers ───────────────────────────────────────────────────────
 
     public String getFullName() {
         return firstName + " " + lastName;
