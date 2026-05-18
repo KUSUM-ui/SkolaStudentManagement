@@ -1,47 +1,52 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%--
+  Student Sidebar Fragment
+  ────────────────────────
+  Include this fragment on every student page:
+
+      <jsp:include page="/WEB-INF/_sidebar_student.jsp">
+          <jsp:param name="activePage" value="dashboard"/>
+      </jsp:include>
+
+  Valid activePage values:
+      dashboard | notes | class | schedule | settings
+--%>
 
 <aside class="sk-sidebar">
 
     <!-- LOGO -->
     <div class="nav-logo">
-        <img src="${pageContext.request.contextPath}/images/logo.png"
-             alt="SKOLA"
-             class="logo-img" />
+        <img src="${pageContext.request.contextPath}/resources/images/logo.png"
+             alt="SKOLA" class="logo-img" />
         <span class="logo-text">SKOLA</span>
     </div>
 
-    <!-- NAVIGATION -->
     <nav class="sk-nav">
 
-        <a href="${pageContext.request.contextPath}/student/dashboard"
+        <a href="${pageContext.request.contextPath}/StudentDashboardServlet"
            class="${param.activePage == 'dashboard' ? 'active' : ''}">
-            <i class="ri-layout-grid-line"></i>
-            Dashboard
+            <i class="ri-layout-grid-line"></i> Dashboard
         </a>
 
         <a href="${pageContext.request.contextPath}/student/notes"
            class="${param.activePage == 'notes' ? 'active' : ''}">
-            <i class="ri-book-2-line"></i>
-            Notes
+            <i class="ri-sticky-note-line"></i> Notes
         </a>
 
-        <a href="${pageContext.request.contextPath}/student/class"
+        <a href="${pageContext.request.contextPath}/ClassReservationServlet"
            class="${param.activePage == 'class' ? 'active' : ''}">
-            <i class="ri-team-line"></i>
-            Class
+            <i class="ri-book-open-line"></i> Class
         </a>
 
-        <a href="${pageContext.request.contextPath}/student/schedule"
+        <a href="${pageContext.request.contextPath}/StudentScheduleServlet"
            class="${param.activePage == 'schedule' ? 'active' : ''}">
-            <i class="ri-bar-chart-2-line"></i>
-            Schedule
+            <i class="ri-calendar-line"></i> Schedule
         </a>
 
-        <a href="${pageContext.request.contextPath}/student/settings"
+        <a href="${pageContext.request.contextPath}/SettingsStudentServlet"
            class="${param.activePage == 'settings' ? 'active' : ''}">
-            <i class="ri-settings-3-line"></i>
-            Settings
+            <i class="ri-settings-3-line"></i> Settings
         </a>
 
     </nav>

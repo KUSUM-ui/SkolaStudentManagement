@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
                 SessionUtil.setAttribute(request, "userEmail", email.trim());
                 SessionUtil.setAttribute(request, "userRole", role.trim().toLowerCase());
 
-                // ✅ Store student_id in session for student role
+                
                 if ("student".equalsIgnoreCase(role.trim())) {
                     int studentId = service.getStudentId(email.trim());
                     if (studentId != -1) {
