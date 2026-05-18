@@ -8,7 +8,7 @@ import com.utils.DBConfig;
 public class LoginDAO {
 
     public String getUserByEmail(String email, String role) throws Exception {
-        // ✅ Capital letters to match your DB table names
+        
         String table = "admin".equalsIgnoreCase(role) ? "Admin" : "Student";
         String sql = "SELECT password FROM " + table + " WHERE email = ?";
 
@@ -24,7 +24,7 @@ public class LoginDAO {
         }
     }
 
-    // ✅ SQL lives here in DAO, not in servlet or service
+    
     public int getStudentIdByEmail(String email) throws Exception {
         String sql = "SELECT student_id FROM Student WHERE email = ?";
         try (Connection con = DBConfig.getConnection();

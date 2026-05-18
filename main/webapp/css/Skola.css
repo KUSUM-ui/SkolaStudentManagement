@@ -36,433 +36,266 @@ body {
    2. LOGIN PAGE
    ───────────────────────────────────── */
 
-.navbar {
-    padding: 16px 40px;
-}
-
-.logo-wrap {
+.sk-login-page {
     display: flex;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+}
+
+.sk-login-left {
+    width: 44%;
+    min-height: 100vh;
+    background: #9b2335;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sk-login-center-brand {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+    padding-right: 60px;
 }
 
-.logo-img {
-    width: 36px;
-    height: 36px;
+.sk-login-logo-img {
+    width: 160px;
+    height: 160px;
     object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
+    margin-right: -8px;
 }
 
-.logo-text {
+.sk-login-logo-text {
     font-family: Georgia, 'Times New Roman', serif;
     font-style: italic;
     font-weight: 900;
-    font-size: 30px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #2d2d2d;
+    font-size: 72px;
+    letter-spacing: 4px;
+    color: #ffffff;
+    line-height: 1;
 }
 
-.page-center {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 16px 60px;
-}
-
-.card {
-    background: #f5dde0;
-    border-radius: 14px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-    padding: 48px 48px 56px;
+.sk-login-bottom-brand {
     width: 100%;
-    max-width: 540px;
+    padding: 0 44px 44px;
+    position: relative;
+    z-index: 2;
 }
 
-.tabs {
+.sk-login-welcome {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+    line-height: 1.1;
+}
+
+.sk-login-tagline {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.sk-login-blob {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.13);
+    z-index: 1;
+}
+
+.sk-login-blob-1 {
+    width: 300px;
+    height: 300px;
+    bottom: -70px;
+    right: -80px;
+}
+
+.sk-login-blob-2 {
+    width: 190px;
+    height: 190px;
+    bottom: 80px;
+    right: 50px;
+}
+
+.sk-login-blob-3 {
+    width: 130px;
+    height: 130px;
+    top: 40px;
+    right: 20px;
+}
+
+.sk-login-right {
+    flex: 1;
     display: flex;
-    margin-bottom: 32px;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    background: #ffffff;
 }
 
-.tabs input[type="radio"] {
+.sk-login-form-wrap {
+    width: 100%;
+    max-width: 420px;
+}
+
+.sk-login-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: #2d2d2d;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.sk-login-sub {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.sk-login-tabs {
+    display: flex;
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 0px;
+    gap: 4px;
+}
+
+.sk-login-tabs input[type="radio"] {
     display: none;
 }
 
-.tabs label {
+.sk-login-tabs label {
     flex: 1;
     text-align: center;
-    padding: 12px 0;
-    font-size: 15px;
-    color: #2d2d2d;
+    padding: 9px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a7a7a;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
+    border-radius: 7px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
 }
 
 #tab-admin:checked ~ label[for="tab-admin"],
 #tab-student:checked ~ label[for="tab-student"] {
-    border-bottom: 2px solid #9b2335;
-    font-weight: 600;
+    background: #ffffff;
     color: #9b2335;
+    font-weight: 700;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
 }
 
-h1 {
-    font-size: 42px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 10px;
-    color: #2d2d2d;
+.sk-login-error {
+    background: #ffecec;
+    color: #9b2335;
+    border-left: 3px solid #9b2335;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
 }
 
-.subtitle {
-    text-align: center;
-    font-size: 18px;
-    color: #7a7a7a;
-    margin-bottom: 32px;
+.sk-login-field {
+    margin-bottom: 16px;
 }
 
-.field {
-    margin-bottom: 20px;
-}
-
-.field label {
+.sk-login-field label {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 600;
     color: #2d2d2d;
     margin-bottom: 6px;
 }
 
-.field input {
-    width: 100%;
-    padding: 14px 16px;
+.sk-login-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sk-login-input-icon {
+    position: absolute;
+    left: 13px;
     font-size: 15px;
-    border: 1px solid #e0e0e0;
-    background: #ffffff;
-    border-radius: 8px;
-    outline: none;
+    color: #b0b0b0;
+    pointer-events: none;
+    line-height: 1;
 }
 
-.field input:focus {
-    border-color: #9b2335;
-}
-
-.btn-login {
+.sk-login-input-wrap input {
     width: 100%;
-    padding: 14px;
-    margin-top: 8px;
+    padding: 12px 16px 12px 40px;
+    font-size: 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fafafa;
+    color: #2d2d2d;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.sk-login-input-wrap input::placeholder {
+    color: #c0c0c0;
+}
+
+.sk-login-input-wrap input:focus {
+    border-color: #9b2335;
+    background: #ffffff;
+}
+
+.sk-login-btn {
+    width: 100%;
+    padding: 13px;
     background: #9b2335;
     color: #ffffff;
     border: none;
-    font-size: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+    font-family: inherit;
+    margin-top: 8px;
 }
 
-.btn-login:hover {
+.sk-login-btn:hover {
     background: #7a1a28;
 }
 
-.forgot {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #7a7a7a;
-    text-decoration: none;
+@media (max-width: 768px) {
+    .sk-login-page {
+        flex-direction: column;
+    }
+    .sk-login-left {
+        width: 100%;
+        min-height: 320px;
+    }
+    .sk-login-center-brand {
+        padding-right: 0;
+    }
+    .sk-login-logo-img { width: 100px; height: 100px; }
+    .sk-login-logo-text { font-size: 48px; }
+    .sk-login-welcome { font-size: 28px; }
+    .sk-login-bottom-brand { padding: 0 28px 32px; }
+    .sk-login-right {
+        padding: 40px 24px 56px;
+    }
 }
-
-.forgot:hover {
-    color: #2d2d2d;
-    text-decoration: underline;
-}
-
-/* ─────────────────────────────────────
-   3. SHARED DASHBOARD LAYOUT
-   Scoped under .sk-page
-   ───────────────────────────────────── */
-
-.sk-page {
-    --red:        #9b2335;
-    --red-hover:  #7a1a28;
-    --red-pale:   #f5dde0;
-    --red-light:  #e8c4c9;
-    --white:      #ffffff;
-    --text:       #2d2d2d;
-    --muted:      #7a7a7a;
-    --border:     #e0e0e0;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: var(--white);
-    color: var(--text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.sk-page .sk-app {
-    display: flex;
-    flex: 1;
-}
-
-/* ── Sidebar ── */
-.sk-page .sk-sidebar {
-    width: 200px;
-    min-height: 100vh;
-    background: var(--red-pale);
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    flex-shrink: 0;
-}
-
-/* ── Sidebar logo ── */
-.sk-page .sk-sidebar .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    padding: 0 4px;
-}
-
-.sk-page .sk-sidebar .logo-img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    flex-shrink: 0;
-}
-
-.sk-page .sk-sidebar .logo-text {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 1px;
-}
-
-/* ── Nav links ── */
-.sk-page .sk-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.sk-page .sk-nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 500;
-    transition: background 0.15s;
-}
-
-.sk-page .sk-nav a i {
-    font-size: 17px;
-    font-family: 'remixicon' !important;
-    font-style: normal;
-}
-
-.sk-page .sk-nav a:hover {
-    background: var(--red-light);
-}
-
-.sk-page .sk-nav a.active {
-    background: var(--red) !important;
-    color: var(--white) !important;
-}
-
-.sk-page .sk-nav a.active i {
-    color: var(--white) !important;
-}
-
-/* ── Main content area ── */
-.sk-page .sk-main {
-    flex: 1;
-    padding: 28px 32px;
-    background: var(--white);
-}
-
-/* ── Topbar ── */
-.sk-page .sk-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.sk-page .sk-topbar h2 {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-/* ── Avatar ── */
-.sk-page .sk-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-}
-
-.sk-page .sk-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.sk-page .sk-avatar i {
-    font-size: 26px;
-    color: #aaa;
-}
-
-/* ── Search ── */
-.sk-page .sk-search {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 3px;
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.sk-page .sk-search i {
-    font-size: 15px;
-}
-
-/* ── Generic card ── */
-.sk-page .sk-card {
-    background: var(--red-pale);
-    border-radius: 12px;
-    padding: 18px;
-}
-
-/* ── Generic row ── */
-.sk-page .sk-row {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 18px;
-}
-
-/* ── Solid button ── */
-.sk-page .sk-btn {
-    display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 16px;
-    font-size: 13px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.sk-page .sk-btn:hover {
-    background: var(--red-hover);
-}
-
-/* ── Outline button ── */
-.sk-page .sk-btn-outline {
-    display: inline-block;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid #bbb;
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 13px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.sk-page .sk-btn-outline:hover {
-    background: var(--red-pale);
-}
-
-/* ── Footer ── */
-.sk-page .sk-footer {
-    background: var(--red);
-    color: var(--white);
-    padding: 32px 48px 14px;
-}
-
-.sk-page .sk-footer-top {
-    display: flex;
-    gap: 60px;
-    margin-bottom: 24px;
-}
-
-.sk-page .sk-footer-brand {
-    flex: 1.5;
-}
-
-.sk-page .sk-footer-brand .sk-footer-logo {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.sk-page .sk-footer-brand p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-}
-
-.sk-page .sk-footer-col a {
-    display: block;
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 13px;
-    margin-bottom: 6px;
-}
-
-.sk-page .sk-footer-col a:hover {
-    color: var(--white);
-}
-
-.sk-page .sk-footer-col h4 {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    opacity: 0.8;
-}
-
-.sk-page .sk-footer-contact p {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 5px;
-}
-
-.sk-page .sk-footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: rgba(255,255,255,0.55);
-}
-
-.sk-page .sk-footer-bottom a {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    margin-left: 14px;
-}
-
-
 /* ─────────────────────────────────────
    4. ADMIN DASHBOARD  (.sk-admin)
    ───────────────────────────────────── */

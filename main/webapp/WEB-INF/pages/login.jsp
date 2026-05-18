@@ -7,58 +7,73 @@
     <meta charset="UTF-8">
     <title>Login – Skola</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Skola.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 <body>
 
-<div class="navbar">
-    <span class="logo">Skola</span>
-</div>
+<div class="sk-login-page">
 
-<div class="sk-page login">
+    <div class="sk-login-left">
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
+        <div class="sk-login-center-brand">
+            <img src="${pageContext.request.contextPath}/images/logo.png" alt="Skola Logo" class="sk-login-logo-img" />
+            <span class="sk-login-logo-text">KOLA</span>
+        </div>
 
-        <div class="page-center">
-            <div class="card">
+        <div class="sk-login-bottom-brand">
+            <h2 class="sk-login-welcome">Welcome back</h2>
+            <p class="sk-login-tagline">Login to continue.</p>
+        </div>
 
-                <div class="tabs">
+        <div class="sk-login-blob sk-login-blob-1"></div>
+        <div class="sk-login-blob sk-login-blob-2"></div>
+        <div class="sk-login-blob sk-login-blob-3"></div>
+    </div>
+
+    <div class="sk-login-right">
+        <div class="sk-login-form-wrap">
+
+            <h1 class="sk-login-title">Login</h1>
+            <p class="sk-login-sub">Enter your credentials to continue.</p>
+
+            <form action="${pageContext.request.contextPath}/login" method="post">
+
+                <div class="sk-login-tabs">
                     <input type="radio" name="role" id="tab-admin" value="admin" checked />
                     <label for="tab-admin">Admin</label>
-
                     <input type="radio" name="role" id="tab-student" value="student" />
                     <label for="tab-student">Student</label>
                 </div>
 
-                <h1>Login</h1>
-                <p class="subtitle">Enter your credentials to continue.</p>
-
-               
                 <c:if test="${not empty error}">
-                    <p style="color: #ff4d4f; background: #ffecec; padding: 8px; border-radius: 5px; margin-bottom: 10px;">
+                    <div class="sk-login-error">
                         ${error}
-                    </p>
+                    </div>
                 </c:if>
 
-                <div class="field">
-                    <label for="email">Email*</label>
-                    <input type="text" id="email" name="email" value="${param.email}" />
+                <div class="sk-login-field">
+                    <label for="email">Email</label>
+                    <div class="sk-login-input-wrap">
+                        <i class="ri-mail-line sk-login-input-icon"></i>
+                        <input type="text" id="email" name="email" value="${param.email}" placeholder="Enter your email" />
+                    </div>
                 </div>
 
-                <div class="field">
-                    <label for="password">Password*</label>
-                    <input type="password" id="password" name="password" />
+                <div class="sk-login-field">
+                    <label for="password">Password</label>
+                    <div class="sk-login-input-wrap">
+                        <i class="ri-lock-line sk-login-input-icon"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" />
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-login">Login</button>
+   
 
-                <a href="${pageContext.request.contextPath}/forgotpassword" class="forgot">
-                    Forgot Password?
-                </a>
+                <button type="submit" class="sk-login-btn">Login</button>
 
-            </div>
+            </form>
         </div>
-
-    </form>
+    </div>
 
 </div>
 
