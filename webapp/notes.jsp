@@ -1,46 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"/>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>student - notes</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css">
+  <title>SKOLA - Notes</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
 
 <div class="sk-page sk-student">
-
   <div class="sk-app">
 
-    <!-- SIDEBAR -->
-    <%@ include file="sidebar.jsp" %>
+    <jsp:include page="sidebar.jsp">
+      <jsp:param name="activePage" value="students"/>
+    </jsp:include>
 
-    <!-- MAIN -->
     <main class="sk-main">
 
-      <!-- TOPBAR -->
       <div class="sk-topbar">
-        <h2>Welcome, </h2>
-        <div class="sk-search">
+        <h2>Welcome, ${sessionScope.first_name}</h2>
+        <div class="sk-search" style="margin-left: auto; margin-right: 16px;">
           <i class="ri-search-line"></i>
           <span>Search</span>
         </div>
+        <a href="${pageContext.request.contextPath}/studentProfileServlet" style="text-decoration:none; color:inherit;">
+        <div class="sk-avatar"><i class="ri-user-line"></i></div>
+    	</a>
       </div>
 
+      <c:if test="${not empty noteSuccess}">
+        <p class="sk-msg-success">${noteSuccess}</p>
+        <c:remove var="noteSuccess" scope="session"/>
+      </c:if>
+
+      <c:if test="${not empty noteError}">
+        <p class="sk-msg-error">${noteError}</p>
+        <c:remove var="noteError" scope="session"/>
+      </c:if>
+
       <!-- PINNED NOTES ROW -->
-      <div class="sk-notes-pinned-row">
-        <div class="sk-note-pin-card">Title</div>
-        <div class="sk-note-pin-card">Title</div>
-        <div class="sk-note-pin-card">Title</div>
-        <div class="sk-note-pin-card">Title</div>
-      </div>
+      <c:if test="${not empty notesList}">
+        <div class="sk-notes-pinned-row">
+          <c:forEach var="note" items="${notesList}" end="3">
+            <div class="sk-note-pin-card">
+              <c:out value="${note.noteTitle}"/>
+            </div>
+          </c:forEach>
+        </div>
+      </c:if>
 
       <!-- CREATE NEW BUTTON -->
       <div class="sk-notes-create-row">
-        <button class="sk-notes-create-btn" onclick="location.href='createnotes.jsp'">+ &nbsp; Create new</button>
+        <a href="${pageContext.request.contextPath}/createnotesServlet" class="sk-notes-create-btn">
+          + &nbsp; Create new
+        </a>
       </div>
 
       <!-- ALL NOTES LIST -->
@@ -48,28 +66,31 @@
         <p class="sk-notes-list-label">All notes</p>
 
         <div class="sk-notes-list">
-          <div class="sk-note-item">
-            <span class="sk-note-title">Title</span>
-            <span class="sk-note-date">11 May, 2026</span>
-          </div>
-          <hr class="sk-note-divider"/>
-          <div class="sk-note-item">
-            <span class="sk-note-title">Title</span>
-            <span class="sk-note-date">11 May, 2026</span>
-          </div>
-          <hr class="sk-note-divider"/>
+          <c:choose>
+            <c:when test="${empty notesList}">
+              <p class="sk-notes-empty">No notes available.</p>
+            </c:when>
+            <c:otherwise>
+              <c:forEach var="note" items="${notesList}">
+                <div class="sk-note-item">
+                  <span class="sk-note-title"><c:out value="${note.noteTitle}"/></span>
+                  <span class="sk-note-date">
+                    <fmt:formatDate value="${note.noteCreatedAt}" pattern="dd MMM, yyyy"/>
+                  </span>
+                </div>
+                <hr class="sk-note-divider"/>
+              </c:forEach>
+            </c:otherwise>
+          </c:choose>
         </div>
+
       </div>
 
     </main>
+  </div>
 
-  </div><!-- end sk-app -->
-
-  <!-- FOOTER -->
-  <%@ include file="footer.jsp" %>
-
-</div><!-- end sk-page -->
+  <jsp:include page="footer.jsp" />
+</div>
 
 </body>
 </html>
-    

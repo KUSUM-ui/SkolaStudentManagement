@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"/>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>student - opennotes</title>
-  <link rel="stylesheet" type="text/css" href="skola.css">
+  <title>SKOLA - View Students</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -16,23 +16,24 @@
   <div class="sk-app">
 
     <!-- SIDEBAR -->
-    <%@ include file="sidebar.jsp" %>
+        <jsp:include page="sidebar.jsp">
+      <jsp:param name="activePage" value="students"/>
+    </jsp:include>
 
     <!-- MAIN -->
     <main class="sk-main">
 
       <!-- TOPBAR -->
       <div class="sk-topbar">
-        <div class="sk-on-back-row">
-          <a href="${pageContext.request.contextPath}/student/notes" class="sk-on-back">
-            <i class="ri-arrow-left-s-line"></i> My Notes
-          </a>
-        </div>
-        <div class="sk-search">
-          <i class="ri-search-line"></i>
-          <span>Search</span>
-        </div>
-      </div>
+		    <div class="sk-on-back-row">
+		        <a href="${pageContext.request.contextPath}/student/notes" class="sk-on-back">
+		            <i class="ri-arrow-left-s-line"></i> My Notes
+		        </a>
+		    </div>
+		    <a href="${pageContext.request.contextPath}/studentProfileServlet" style="text-decoration:none; color:inherit; margin-left:auto;">
+		        <div class="sk-avatar"><i class="ri-user-line"></i></div>
+		    </a>
+		</div>
 
       <!-- NOTE EDITOR -->
       <div class="sk-on-editor">
@@ -49,7 +50,7 @@
   </div>
 
   <!-- FOOTER -->
-  <%@ include file="footer.jsp" %>
+   <jsp:include page="footer.jsp" />
 
 </div>
 </body>
