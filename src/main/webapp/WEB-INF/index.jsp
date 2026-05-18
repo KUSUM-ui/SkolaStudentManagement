@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/header.jsp">
-    <jsp:param name="activePage" value="home"/>
-</jsp:include>
+    <jsp:include page="/WEB-INF/header.jsp">
+        <jsp:param name="activePage" value="home"/>
+    </jsp:include>
 
     <!-- HERO -->
     <section class="home-hero">
@@ -66,39 +66,38 @@
             <h2>Everything your institution needs</h2>
         </div>
         <div class="home-features-grid">
-    <div class="home-feature-card">
-        <div class="home-feature-icon"><i class="ri-group-line"></i></div>
-        <h3>Student Management</h3>
-        <p>Complete student lifecycle management — from enrollment to graduation. Maintain rich profiles and track progress.</p>
-    </div>
-    <div class="home-feature-card">
-        <div class="home-feature-icon"><i class="ri-bar-chart-line"></i></div>
-        <h3>Reports</h3>
-        <p>Comprehensive academic reports giving institutions clear insight into student performance and progress.</p>
-    </div>
-    <div class="home-feature-card">
-        <div class="home-feature-icon"><i class="ri-calendar-line"></i></div>
-        <h3>Class Booking</h3>
-        <p>Students can easily reserve classroom slots and manage bookings with admin approval workflows.</p>
-    </div>
-    <div class="home-feature-card">
-        <div class="home-feature-icon"><i class="ri-sticky-note-line"></i></div>
-        <h3>Notes</h3>
-        <p>Create, organize, and access personal academic notes anytime — all stored in one convenient place.</p>
-    </div>
-    <div class="home-feature-card">
-        <div class="home-feature-icon"><i class="ri-calendar-schedule-line"></i></div>
-        <h3>Manage Schedule</h3>
-        <p>View your section's full weekly schedule with module timings, organized clearly by day and time.</p>
-    </div>
-</div>
+            <div class="home-feature-card">
+                <div class="home-feature-icon"><i class="ri-group-line"></i></div>
+                <h3>Student Management</h3>
+                <p>Complete student lifecycle management — from enrollment to graduation. Maintain rich profiles and track progress.</p>
+            </div>
+            <div class="home-feature-card">
+                <div class="home-feature-icon"><i class="ri-bar-chart-line"></i></div>
+                <h3>Reports</h3>
+                <p>Comprehensive academic reports giving institutions clear insight into student performance and progress.</p>
+            </div>
+            <div class="home-feature-card">
+                <div class="home-feature-icon"><i class="ri-calendar-line"></i></div>
+                <h3>Class Booking</h3>
+                <p>Students can easily reserve classroom slots and manage bookings with admin approval workflows.</p>
+            </div>
+            <div class="home-feature-card">
+                <div class="home-feature-icon"><i class="ri-sticky-note-line"></i></div>
+                <h3>Notes</h3>
+                <p>Create, organize, and access personal academic notes anytime — all stored in one convenient place.</p>
+            </div>
+            <div class="home-feature-card">
+                <div class="home-feature-icon"><i class="ri-calendar-schedule-line"></i></div>
+                <h3>Manage Schedule</h3>
+                <p>View your section's full weekly schedule with module timings, organized clearly by day and time.</p>
+            </div>
         </div>
     </section>
 
     <!-- PORTALS -->
     <section class="home-portals">
         <div class="home-section-header">
-            <p class="home-eyebrow" style="color:rgba(255,255,255,0.6);">Access Portals</p>
+            <p class="home-eyebrow" style="color:rgba(255,255,255,0.55);">Access Portals</p>
             <h2 style="color:#fff;">Where do you belong?</h2>
         </div>
         <div class="home-portals-grid">
@@ -113,14 +112,13 @@
                 <div class="home-portal-icon"><i class="ri-user-line"></i></div>
                 <p class="home-portal-tag">Student Access</p>
                 <h3>Student Dashboard</h3>
-                <p class="home-portal-desc">Your academic journey, visualized. View Schedules, create notes, book classes and be updated with announcements.</p>
+                <p class="home-portal-desc">Your academic journey, visualized. View schedules, create notes, book classes and stay updated with announcements.</p>
                 <span class="home-portal-link">Enter Student Portal <i class="ri-arrow-right-line"></i></span>
             </a>
         </div>
     </section>
 
-     <!-- FOOTER -->
-  <jsp:include page="/WEB-INF/footer.jsp"/>
+    <jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>

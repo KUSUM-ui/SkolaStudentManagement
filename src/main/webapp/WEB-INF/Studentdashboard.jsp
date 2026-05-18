@@ -1,20 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Skola</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/skola.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/std.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body class="sk-page sk-student">
 
     <div class="sk-app">
 
-        <jsp:include page="/WEB-INF/_sidebar_student.jsp">
+        <jsp:include page="/WEB-INF/_sidebar_admin.jsp">
             <jsp:param name="activePage" value="dashboard"/>
         </jsp:include>
 
@@ -22,17 +22,11 @@
 
             <!-- Topbar -->
             <div class="sk-topbar">
-                <h2>Welcome, ${student.firstName}</h2>
-                <div class="sk-stusch-topbar-right">
-                    <div class="sk-stusch-search-wrap">
-                        <i class="ri-search-line"></i>
-                        <input type="text" class="sk-stusch-search" placeholder="Search"/>
-                    </div>
-                    <div class="sk-avatar">
-                        <i class="ri-user-line"></i>
-                    </div>
-                </div>
-            </div>
+			    <h2>Welcome, ${sessionScope.studentName}</h2>
+			    <a href="${pageContext.request.contextPath}/studentProfileServlet" style="text-decoration:none; color:inherit; margin-left:auto;">
+			        <div class="sk-avatar"><i class="ri-user-line"></i></div>
+			    </a>
+			</div>
 
             <!-- Row 1: Schedule + Profile -->
             <div class="sk-row">
@@ -43,45 +37,24 @@
 
                 <div class="sk-card sk-card-profile">
                     <i class="ri-graduation-cap-line"></i>
-                    <span class="sk-profile-sub">COMPUTING</span>
+                    <span class="sk-profile-sub">Computing</span>
                     <span class="sk-profile-class">${student.gradeLevel}</span>
                     <span class="sk-profile-sem">Semester 4</span>
                     <span class="sk-profile-name">${student.firstName} ${student.lastName}</span>
                 </div>
             </div>
 
-            <!-- Announcement card -->
-            <div class="sk-card sk-card-announce sk-dash-announce-card">
+            <!-- Announcement -->
+            <div class="sk-card sk-card-announce">
                 <h3>Announcement</h3>
-                <hr class="sk-dash-divider"/>
                 <c:choose>
                     <c:when test="${not empty announcements}">
-                        <div class="sk-dash-ann-list">
-                            <c:forEach var="ann" items="${announcements}">
-                                <div class="sk-dash-ann-item">
-                                    <div class="sk-dash-ann-header">
-                                        <strong class="sk-dash-ann-title">${ann.title}</strong>
-                                        <span class="sk-announce-badge sk-badge-${ann.genre}">${ann.genre}</span>
-                                    </div>
-                                    <p class="sk-dash-ann-content">${ann.content}</p>
-                                    <c:if test="${not empty ann.imagePath}">
-                                        <img src="${pageContext.request.contextPath}/${ann.imagePath}"
-                                             alt="announcement image"
-                                             class="sk-dash-ann-img"/>
-                                    </c:if>
-                                    <small class="sk-dash-ann-date">
-                                        <fmt:parseDate value="${ann.publishedAt}"
-                                                       pattern="yyyy-MM-dd'T'HH:mm:ss"
-                                                       var="parsedDate" type="both"/>
-                                        <fmt:formatDate value="${parsedDate}"
-                                                        pattern="dd MMM yyyy, hh:mm a"/>
-                                    </small>
-                                </div>
-                            </c:forEach>
-                        </div>
+                        <c:forEach var="ann" items="${announcements}">
+                            <p class="sk-dash-ann-item">${ann.message}</p>
+                        </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <p class="sk-dash-ann-empty">No announcements yet.</p>
+                        <p class="sk-dash-ann-empty"></p>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -102,9 +75,9 @@
                         <div class="sk-view-all">View all</div>
                     </div>
                     <div class="sk-new-note">
-                        <span class="sk-pins">📌</span>
+                        
                         <p>Create<br/>new note</p>
-                        <a href="${pageContext.request.contextPath}/NotesServlet" class="sk-btn">Create</a>
+                        <a href="${pageContext.request.contextPath}/notes.jsp" class="sk-btn">Create</a>
                     </div>
                 </div>
             </div>
