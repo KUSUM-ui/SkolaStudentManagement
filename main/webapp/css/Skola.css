@@ -2749,3 +2749,215 @@ h1 {
         gap: 12px;
     }
 }
+/* ─────────────────────────────────────
+   Admin-Class
+   ───────────────────────────────────── */
+
+/* Header row with search */
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sk-page .sk-search {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    width: 200px;
+    background: #fff;
+}
+
+.sk-page .sk-search:focus {
+    border-color: var(--red);
+}
+
+/* Form card */
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Date + Time row */
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Time from–to inline */
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.sk-page .sk-time-row input {
+    flex: 1;
+}
+
+/* Form submit row */
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* Card spacing between form and status */
+.sk-page .sk-card + .sk-card {
+    margin-top: 24px;
+}
+
+.sk-page .sk-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+/* ── Table ── */
+.sk-page .sk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-page .sk-table thead tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-page .sk-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.sk-page .sk-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sk-page .sk-table tbody tr:hover {
+    background: rgba(155, 35, 53, 0.04);
+}
+
+/* Empty row */
+.sk-page .sk-empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 32px;
+    font-size: 13px;
+}
+
+/* ── Status badges ── */
+.sk-page .sk-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.sk-page .sk-status-pending {
+    background: #fff8e1;
+    color: #b45309;
+}
+
+.sk-page .sk-status-approved {
+    background: #eafaf1;
+    color: #1e8449;
+}
+
+.sk-page .sk-status-disapproved {
+    background: #ffecec;
+    color: #c0392b;
+}
+
+/* ── Admin action buttons side by side ── */
+.sk-page .sk-action-form {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sk-page .sk-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sk-page .sk-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sk-page .sk-search {
+        width: 100%;
+    }
+}
