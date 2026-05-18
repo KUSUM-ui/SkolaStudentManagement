@@ -8,16 +8,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
 
-/**
- * Servlet implementation class createnotesServlet
- */
-@WebServlet(asyncSupported = true, urlPatterns = { "/createnotesServlet" })
+@WebServlet("/student/notes/create")
 public class createnotesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     private final CreateNoteService createNoteService = new CreateNoteService();
 
     public createnotesServlet() {
@@ -31,12 +27,11 @@ public class createnotesServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession(false);
         Integer studentId = (session != null) ? (Integer) session.getAttribute("student_id") : null;
 
         if (studentId == null) {
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
@@ -51,6 +46,7 @@ public class createnotesServlet extends HttpServlet {
             session.setAttribute("noteError", "Failed to save note. Content cannot be empty.");
         }
 
-        response.sendRedirect(request.getContextPath() + "/createnotesServlet");
+       
+        response.sendRedirect(request.getContextPath() + "/student/notes/create");
     }
 }

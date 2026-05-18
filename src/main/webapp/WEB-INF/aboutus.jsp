@@ -26,9 +26,10 @@
       <li><a href="${pageContext.request.contextPath}/AboutusServlet" class="active">About Us</a></li>
       <li><a href="${pageContext.request.contextPath}/ContactUsServlet">Contact Us</a></li>
     </ul>
-    <a href="${pageContext.request.contextPath}/login.jsp">
-      <button class="btn-login">Login</button>
-    </a>
+           <div style="display:flex; align-items:center; gap:10px;">
+           <a href="<%=request.getContextPath()%>/register" class="home-nav-btn-outline">Register</a>
+           <a href="<%=request.getContextPath()%>/login" class="home-nav-btn">Login</a>
+           </div>
   </nav>
 
   <!-- ABOUT HERO SECTION -->
@@ -154,9 +155,9 @@
       </div>
       <div class="footer-contact">
         <p class="footer-col-title">Contact</p>
-        <p>✉ skola@edu.np</p>
-        <p>📞 977+ 9741877269</p>
-        <p>📍 Suryabinayak, BKT</p>
+        <p> skola@edu.np</p>
+        <p> 977+ 9741877269</p>
+        <p> Suryabinayak, BKT</p>
       </div>
     </div>
     <div class="footer-bottom">

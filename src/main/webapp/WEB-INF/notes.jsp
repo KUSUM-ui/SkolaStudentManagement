@@ -16,7 +16,7 @@
 <div class="sk-page sk-student">
   <div class="sk-app">
 
-    <jsp:include page="/WEB-INF/_sidebar_admin.jsp">
+    <jsp:include page="/WEB-INF/_sidebar_student.jsp">
       <jsp:param name="activePage" value="students"/>
     </jsp:include>
 
@@ -53,7 +53,7 @@
 
       <!-- CREATE NEW BUTTON -->
       <div class="sk-notes-create-row">
-        <a href="${pageContext.request.contextPath}/createnotesServlet" class="sk-notes-create-btn">
+        <a href="${pageContext.request.contextPath}/student/notes/create" class="sk-notes-create-btn">
           + &nbsp; Create new
         </a>
       </div>

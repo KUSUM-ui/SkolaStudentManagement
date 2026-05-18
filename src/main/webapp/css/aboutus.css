@@ -110,7 +110,36 @@ nav {
     background: var(--crimson);
     transition: width 0.25s ease;
 }
+/* ── NAV BUTTONS ── */
+.home-nav-btn {
+    background: #9b2335;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s;
+}
 
+.home-nav-btn:hover { background: #7a1a28; }
+
+.home-nav-btn-outline {
+    background: transparent;
+    color: #9b2335;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1.5px solid #9b2335;
+    transition: background 0.15s, color 0.15s;
+}
+
+.home-nav-btn-outline:hover {
+    background: #9b2335;
+    color: #fff;
+}
 .nav-links a:hover { color: var(--ink); }
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; }

@@ -1,7 +1,6 @@
 package com.SkolaStudentManagement.Model;
 
 import java.time.LocalDateTime;
-
 public class ContactModel {
 
     private int           id;
