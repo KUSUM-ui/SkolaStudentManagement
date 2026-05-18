@@ -4183,3 +4183,56 @@ body {
         gap: 6px;
     }
 }
+/* ─────────────────────────────────────
+   26. STUDENT REGISTRATION PAGE (EDIT-STYLE)
+   ───────────────────────────────────── */
+
+.sk-page .sk-reg-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px 0 48px;
+}
+
+.sk-page .sk-reg-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    padding: 32px 40px 36px;
+    margin-bottom: 0;
+}
+
+.sk-page .sk-reg-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.sk-page .sk-reg-select:focus {
+    border-color: var(--red);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-reg-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .sk-page .sk-reg-card {
+        padding: 24px 20px 28px;
+    }
+}
