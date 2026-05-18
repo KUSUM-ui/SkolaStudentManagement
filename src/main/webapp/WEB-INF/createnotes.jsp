@@ -43,7 +43,7 @@
         <c:remove var="noteError" scope="session"/>
       </c:if>
 
-      <form action="${pageContext.request.contextPath}/student/createnotes"
+      <form action="${pageContext.request.contextPath}/student/notes/create"
             method="post" class="sk-cn-form">
 
         <input type="text" name="title" placeholder="Title" class="sk-cn-title"

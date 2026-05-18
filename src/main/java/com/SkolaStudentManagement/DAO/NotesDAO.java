@@ -16,13 +16,10 @@ public class NotesDAO {
         List<Notes> notesList = new ArrayList<>();
         String sql = "SELECT note_id, student_id, note_title, note_content, note_created_at " +
                      "FROM Notes WHERE student_id = ? ORDER BY note_created_at DESC";
-
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setInt(1, studentId);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
                 Notes note = new Notes();
                 note.setNoteId(rs.getInt("note_id"));
@@ -32,11 +29,34 @@ public class NotesDAO {
                 note.setNoteCreatedAt(rs.getTimestamp("note_created_at"));
                 notesList.add(note);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return notesList;
+    }
 
+    public List<Notes> searchNotesByTitle(int studentId, String keyword) {
+        List<Notes> notesList = new ArrayList<>();
+        String sql = "SELECT note_id, student_id, note_title, note_content, note_created_at " +
+                     "FROM Notes WHERE student_id = ? AND LOWER(note_title) LIKE ? " +
+                     "ORDER BY note_created_at DESC";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, studentId);
+            ps.setString(2, "%" + keyword.toLowerCase().trim() + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Notes note = new Notes();
+                note.setNoteId(rs.getInt("note_id"));
+                note.setStudentId(rs.getInt("student_id"));
+                note.setNoteTitle(rs.getString("note_title"));
+                note.setNoteContent(rs.getString("note_content"));
+                note.setNoteCreatedAt(rs.getTimestamp("note_created_at"));
+                notesList.add(note);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return notesList;
     }
 }

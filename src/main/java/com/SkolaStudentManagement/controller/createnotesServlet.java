@@ -46,7 +46,7 @@ public class createnotesServlet extends HttpServlet {
             session.setAttribute("noteError", "Failed to save note. Content cannot be empty.");
         }
 
-       
+
         response.sendRedirect(request.getContextPath() + "/student/notes/create");
     }
 }

@@ -12,25 +12,9 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-   <nav>
-        <a href="HomeServlet" class="nav-brand">
-          <div class="nav-logo">
-      <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
-      
-    </div>
-            <span class="nav-wordmark">Skola</span>
-        </a>
-    <ul class="nav-links">
-      <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/AboutusServlet" class="active">About Us</a></li>
-      <li><a href="${pageContext.request.contextPath}/ContactUsServlet">Contact Us</a></li>
-    </ul>
-           <div style="display:flex; align-items:center; gap:10px;">
-           <a href="<%=request.getContextPath()%>/register" class="home-nav-btn-outline">Register</a>
-           <a href="<%=request.getContextPath()%>/login" class="home-nav-btn">Login</a>
-           </div>
-  </nav>
+<jsp:include page="/WEB-INF/header.jsp">
+    <jsp:param name="activePage" value="about"/>
+</jsp:include>
 
   <!-- ABOUT HERO SECTION -->
   <section class="au-hero">
@@ -137,38 +121,8 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
-          <span class="logo-text white">SKOLA</span>
-        </div>
-        <p>The Academic Curator for institutions that value excellence, aesthetics,
-           and efficiency in every digital touchpoint.</p>
-      </div>
-      <div class="footer-links">
-        <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
-        <a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a>
-        <a href="${pageContext.request.contextPath}/index.jsp#contact">Contact Us</a>
-      </div>
-      <div class="footer-contact">
-        <p class="footer-col-title">Contact</p>
-        <p> skola@edu.np</p>
-        <p> 977+ 9741877269</p>
-        <p> Suryabinayak, BKT</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2024 Relume. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookies Settings</a>
-      </div>
-    </div>
-  </footer>
+   <!-- FOOTER -->
+  <jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.SkolaStudentManagement.Model;
 
 import java.sql.Timestamp;
 
+
 public class Notes {
     private int noteId;
     private int studentId;

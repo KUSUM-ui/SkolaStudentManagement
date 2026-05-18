@@ -2,6 +2,8 @@ package com.SkolaStudentManagement.Model;
 
 import java.sql.Timestamp;
 
+
+
 public class CreateNote {
     private int noteId;
     private int studentId;

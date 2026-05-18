@@ -6,163 +6,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SKOLA – Contact Us</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/contactus.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css"/>
 </head>
 <body>
 
-  <!-- ── NAVBAR (matches home/about) ── -->
-   <nav>
-        <a href="HomeServlet" class="nav-brand">
-          <div class="nav-logo">
-      <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
-      
-    </div>
-            <span class="nav-wordmark">Skola</span>
-        </a>
+  <jsp:include page="/WEB-INF/header.jsp">
+    <jsp:param name="activePage" value="contact"/>
+  </jsp:include>
 
-        <ul class="nav-links">
-      <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
-      <li><a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a></li>
-      <li><a href="${pageContext.request.contextPath}/ContactUsServlet" class="active">Contact Us</a></li>
-    </ul>
+  <!-- CONTACT MAIN -->
+  <section class="pub-contact">
 
-        <div class="nav-right">
-            <a href="login.jsp" class="btn-nav-login">Login</a>
-        </div>
-    </nav>
+    <!-- LEFT INFO -->
+    <div class="pub-contact-info">
+      <p class="home-eyebrow">Get in touch</p>
+      <h2>Let's start a <span>conversation.</span></h2>
 
-  <!-- ── HERO BANNER ── -->
-  <section class="cu-banner">
-    <img src="<%=request.getContextPath()%>/resources/images/contactbg.png" alt="Contact Banner" />
-    <div class="cu-banner-overlay">
-      <p class="banner-eyebrow"><i class="fa-solid fa-envelope"></i> &nbsp; Reach Out</p>
-      <h1>Contact Us</h1>
-      
-    </div>
-  </section>
-
-  <!-- ── MAIN CONTENT ── -->
-  <section class="cu-main">
-
-    <!-- LEFT: Info -->
-    <div class="cu-info">
-      <p class="cu-info-eyebrow">Get in touch</p>
-      <h2 class="cu-info-heading">Let's start a <em>conversation.</em></h2>
-
-      <div class="cu-info-details">
-        <div class="cu-info-item">
-          <div class="cu-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+      <div class="pub-contact-items">
+        <div class="pub-contact-item">
+          <div class="pub-contact-icon"><i class="ri-map-pin-line"></i></div>
           <div>
-            <p class="cu-info-label">Address</p>
-            <p class="cu-info-value">Suryabinayak, Bhaktapur</p>
+            <p class="pub-contact-label">Address</p>
+            <p class="pub-contact-value">Suryabinayak, Bhaktapur</p>
           </div>
         </div>
-        <div class="cu-info-item">
-          <div class="cu-info-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="pub-contact-item">
+          <div class="pub-contact-icon"><i class="ri-phone-line"></i></div>
           <div>
-            <p class="cu-info-label">Phone number</p>
-            <p class="cu-info-value">977+ 9741877269</p>
+            <p class="pub-contact-label">Phone number</p>
+            <p class="pub-contact-value">977+ 9741877269</p>
           </div>
         </div>
-        <div class="cu-info-item">
-          <div class="cu-info-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="pub-contact-item">
+          <div class="pub-contact-icon"><i class="ri-mail-line"></i></div>
           <div>
-            <p class="cu-info-label">Email</p>
-            <p class="cu-info-value">skola@email.np</p>
+            <p class="pub-contact-label">Email</p>
+            <p class="pub-contact-value">skola@email.np</p>
           </div>
         </div>
       </div>
 
-      <div class="cu-social">
-        <p class="cu-social-title">Follow us</p>
-        <div class="cu-social-icons">
-          <a href="#" class="cu-social-btn" aria-label="Twitter">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a href="#" class="cu-social-btn" aria-label="Facebook">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a href="#" class="cu-social-btn" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
+      <div class="pub-social">
+        <p class="pub-social-title">Follow us</p>
+        <div class="pub-social-icons">
+          <a href="#" class="pub-social-btn" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="pub-social-btn" aria-label="Facebook"><i class="ri-facebook-line"></i></a>
+          <a href="#" class="pub-social-btn" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT: Form -->
-    <div class="cu-form-card">
-      <p class="form-card-eyebrow">Send a message</p>
-     
+    <!-- RIGHT FORM -->
+    <div class="pub-contact-form-card">
+      <p class="home-eyebrow">Send a message</p>
+      <h3>We'd love to hear from you</h3>
 
       <% String msg = (String) request.getAttribute("message"); %>
       <% if (msg != null) { %>
-        <p class="form-message <%= request.getAttribute("msgType") != null && request.getAttribute("msgType").equals("error") ? "error" : "success" %>">
-          <i class="fa-solid <%= request.getAttribute("msgType") != null && request.getAttribute("msgType").equals("error") ? "fa-circle-exclamation" : "fa-circle-check" %>"></i>
-          &nbsp;<%= msg %>
-        </p>
+        <div class="pub-form-msg <%= "error".equals(request.getAttribute("msgType")) ? "pub-form-error" : "pub-form-success" %>">
+          <i class="<%= "error".equals(request.getAttribute("msgType")) ? "ri-error-warning-line" : "ri-checkbox-circle-line" %>"></i>
+          <%= msg %>
+        </div>
       <% } %>
 
-      <form action="<%=request.getContextPath()%>/ContactUsServlet" method="post">
-        <div class="form-row">
-          <div class="form-group">
+      <form action="<%=request.getContextPath()%>/ContactUsServlet" method="post" class="pub-form">
+        <div class="pub-form-row">
+          <div class="pub-form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required
-                   value="<%= request.getAttribute("formName") != null ? request.getAttribute("formName") : "" %>" />
+                   value="<%= request.getAttribute("formName") != null ? request.getAttribute("formName") : "" %>"/>
           </div>
-          <div class="form-group">
+          <div class="pub-form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required
-                   value="<%= request.getAttribute("formEmail") != null ? request.getAttribute("formEmail") : "" %>" />
+                   value="<%= request.getAttribute("formEmail") != null ? request.getAttribute("formEmail") : "" %>"/>
           </div>
         </div>
-        <div class="form-group">
+        <div class="pub-form-group">
           <label for="message">Your Message</label>
           <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
         </div>
-        <button type="submit" class="btn-send">
-          Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
+        <button type="submit" class="home-btn-primary">
+          Send Message <i class="ri-send-plane-line"></i>
         </button>
       </form>
     </div>
 
   </section>
 
-  <!-- ── FOOTER (matches aboutus.jsp exactly) ── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="SKOLA" class="logo-img" />
-          <span class="logo-text white">SKOLA</span>
-        </div>
-        <p>The Academic Curator for institutions that value excellence, aesthetics,
-           and efficiency in every digital touchpoint.</p>
-      </div>
-      <div class="footer-links">
-        <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
-        <a href="${pageContext.request.contextPath}/AboutusServlet">About Us</a>
-        <a href="${pageContext.request.contextPath}/ContactUsServlet">Contact Us</a>
-      </div>
-      <div class="footer-contact">
-        <p class="footer-col-title">Contact</p>
-        <p>✉ skola@edu.np</p>
-        <p>📞 977+ 9741877269</p>
-        <p>📍 Suryabinayak, BKT</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2024 Relume. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookies Settings</a>
-      </div>
-    </div>
-  </footer>
+  <!-- FOOTER -->
+  <jsp:include page="/WEB-INF/footer.jsp"/>
 
 </body>
 </html>
