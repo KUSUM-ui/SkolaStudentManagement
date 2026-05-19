@@ -7,6 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SKOLA - Notes</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/notes.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -17,7 +18,7 @@
   <div class="sk-app">
 
     <jsp:include page="/WEB-INF/_sidebar_student.jsp">
-      <jsp:param name="activePage" value="students"/>
+      <jsp:param name="activePage" value="notes"/>
     </jsp:include>
 
     <main class="sk-main">
@@ -44,9 +45,10 @@
       <c:if test="${not empty notesList}">
         <div class="sk-notes-pinned-row">
           <c:forEach var="note" items="${notesList}" end="3">
-            <div class="sk-note-pin-card">
-              <c:out value="${note.noteTitle}"/>
-            </div>
+            <a href="${pageContext.request.contextPath}/student/notes/view?id=${note.noteId}"
+            class="sk-note-pin-card" style="text-decoration:none; color:inherit;">
+            <c:out value="${note.noteTitle}"/>
+            </a>
           </c:forEach>
         </div>
       </c:if>
@@ -69,12 +71,13 @@
             </c:when>
             <c:otherwise>
               <c:forEach var="note" items="${notesList}">
-                <div class="sk-note-item">
-                  <span class="sk-note-title"><c:out value="${note.noteTitle}"/></span>
-                  <span class="sk-note-date">
-                    <fmt:formatDate value="${note.noteCreatedAt}" pattern="dd MMM, yyyy"/>
-                  </span>
-                </div>
+              <a href="${pageContext.request.contextPath}/student/notes/view?id=${note.noteId}" 
+              class="sk-note-item">
+              <span class="sk-note-title"><c:out value="${note.noteTitle}"/></span>
+              <span class="sk-note-date">
+              <fmt:formatDate value="${note.noteCreatedAt}" pattern="dd MMM, yyyy"/>
+              </span>
+              </a>
                 <hr class="sk-note-divider"/>
               </c:forEach>
             </c:otherwise>

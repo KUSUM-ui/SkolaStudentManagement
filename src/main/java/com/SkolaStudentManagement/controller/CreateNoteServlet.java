@@ -1,6 +1,7 @@
 package com.SkolaStudentManagement.controller;
 
 import com.SkolaStudentManagement.Model.CreateNote;
+
 import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.Service.CreateNoteService;
 
@@ -13,11 +14,11 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/student/notes/create")
-public class createnotesServlet extends HttpServlet {
+public class CreateNoteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final CreateNoteService createNoteService = new CreateNoteService();
 
-    public createnotesServlet() {
+    public CreateNoteServlet () {
         super();
     }
 
@@ -56,8 +57,11 @@ public class createnotesServlet extends HttpServlet {
 
         String title   = request.getParameter("title");
         String content = request.getParameter("body");
+        
+      
 
         boolean saved = createNoteService.saveNote(studentId, title, content);
+      
 
         if (saved) {
             session.setAttribute("noteSuccess", "Note saved successfully!");

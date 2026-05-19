@@ -1,4 +1,5 @@
 package com.SkolaStudentManagement.Service;
+
 import com.SkolaStudentManagement.DAO.ViewnotesDAO;
 import com.SkolaStudentManagement.Model.Viewnotes;
 import java.util.List;
@@ -13,5 +14,9 @@ public class ViewnotesService {
 
     public List<Viewnotes> getNotesByStudentId(int studentId) {
         return viewnotesDAO.getNotesByStudentId(studentId);
+    }
+
+    public boolean deleteNote(int noteId) {
+        return viewnotesDAO.deleteNote(noteId);
     }
 }

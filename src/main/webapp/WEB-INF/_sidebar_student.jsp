@@ -34,7 +34,7 @@
             <i class="ri-sticky-note-line"></i> Notes
         </a>
 
-        <a href="${pageContext.request.contextPath}/ClassReservationServlet"
+        <a href="${pageContext.request.contextPath}/student/ClassReservation"
            class="${param.activePage == 'class' ? 'active' : ''}">
             <i class="ri-book-open-line"></i> Class
         </a>

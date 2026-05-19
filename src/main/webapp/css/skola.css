@@ -23,7 +23,6 @@
 
 body {
     font-family: sans-serif;
-
     min-height: 100vh;
 }
 
@@ -52,7 +51,7 @@ body {
 
 /* LOGIN CARD */
 .card {
-    background: #f5dde0; /* matches --red-pale */
+    background: #f5dde0;
     border-radius: 14px;
     box-shadow: 0 6px 24px rgba(0,0,0,0.10);
     padding: 48px 48px 56px;
@@ -87,7 +86,6 @@ body {
     color: #9b2335;
 }
 
-/* TEXT */
 h1 {
     font-size: 42px;
     font-weight: 800;
@@ -103,7 +101,6 @@ h1 {
     margin-bottom: 32px;
 }
 
-/* INPUT FIELDS */
 .field {
     margin-bottom: 20px;
 }
@@ -129,7 +126,6 @@ h1 {
     border-color: #9b2335;
 }
 
-/* BUTTON */
 .btn-login {
     width: 100%;
     padding: 14px;
@@ -147,7 +143,6 @@ h1 {
     background: #7a1a28;
 }
 
-/* FORGOT LINK */
 .forgot {
     display: block;
     text-align: center;
@@ -163,9 +158,10 @@ h1 {
 }
 
 
+/* ─────────────────────────────────────
+   3. SHARED DASHBOARD LAYOUT
+   ───────────────────────────────────── */
 
-
-/* CSS variables — theme colours */
 .sk-page {
     --red:        #9b2335;
     --red-hover:  #7a1a28;
@@ -184,13 +180,12 @@ h1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* App wrapper */
 .sk-page .sk-app {
     display: flex;
     flex: 1;
 }
 
-/* ── Sidebar ── */
+/* ── Sidebar (UNCHANGED) ── */
 .sk-page .sk-sidebar {
     width: 200px;
     min-height: 100vh;
@@ -202,7 +197,6 @@ h1 {
     flex-shrink: 0;
 }
 
-/* ── Logo (reused in sidebar & footer) ── */
 .sk-page .sk-logo {
     display: flex;
     align-items: center;
@@ -223,7 +217,6 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* ── Nav links ── */
 .sk-page .sk-nav {
     display: flex;
     flex-direction: column;
@@ -241,15 +234,41 @@ h1 {
     font-weight: 500;
     transition: background 0.15s;
 }
-.sk-page .sk-nav a i { font-size: 17px; }
+.sk-page .sk-nav a i {
+    font-size: 17px;
+    font-family: 'remixicon' !important;
+    font-style: normal;
+}
 .sk-page .sk-nav a:hover  { background: var(--red-light); }
-.sk-page .sk-nav a.active { background: var(--red); color: var(--white); }
+.sk-page .sk-nav a.active { background: var(--red) !important; color: var(--white) !important; }
+.sk-page .sk-nav a.active i { color: var(--white) !important; }
+
+.sk-page .sk-sidebar .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0 8px;
+    text-decoration: none;
+}
+.sk-page .sk-sidebar .nav-logo .logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+.sk-page .sk-sidebar .nav-logo .logo-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 1px;
+}
 
 /* ── Main content area ── */
 .sk-page .sk-main {
     flex: 1;
     padding: 28px 32px;
-    background: var(--white);
+    background: #f3f4f6;
 }
 
 /* ── Topbar ── */
@@ -257,22 +276,35 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 .sk-page .sk-topbar h2 {
     font-size: 22px;
     font-weight: 700;
+    color: var(--text);
 }
 .sk-page .sk-avatar {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: #ccc;
+    background: var(--red-pale);
+    border: 2px solid var(--red-light);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+.sk-page .sk-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.sk-page .sk-avatar i {
+    font-size: 22px;
+    color: var(--red);
 }
 .sk-page .sk-search {
     display: flex;
@@ -287,45 +319,56 @@ h1 {
 
 /* ── Generic pale card ── */
 .sk-page .sk-card {
-    background: var(--red-pale);
-    border-radius: 12px;
-    padding: 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
 }
 
 /* ── Generic row ── */
 .sk-page .sk-row {
     display: flex;
-    gap: 14px;
-    margin-bottom: 18px;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
 /* ── Solid button ── */
 .sk-page .sk-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: var(--red);
     color: var(--white);
     border: none;
-    border-radius: 6px;
-    padding: 6px 16px;
+    border-radius: 8px;
+    padding: 8px 18px;
     font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
+    font-family: inherit;
+    transition: background 0.18s;
 }
 .sk-page .sk-btn:hover { background: var(--red-hover); }
 
 /* ── Outline button ── */
 .sk-page .sk-btn-outline {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: transparent;
     color: var(--text);
     border: 1px solid #bbb;
-    border-radius: 6px;
-    padding: 6px 14px;
+    border-radius: 8px;
+    padding: 8px 16px;
     font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
     text-decoration: none;
+    font-family: inherit;
+    transition: all 0.15s;
 }
-.sk-page .sk-btn-outline:hover { background: var(--red-pale); }
+.sk-page .sk-btn-outline:hover { background: var(--red-pale); border-color: var(--red-light); }
 
 /* ── Footer ── */
 .sk-page .sk-footer {
@@ -392,20 +435,14 @@ h1 {
    4. ADMIN DASHBOARD  (.sk-admin)
    ───────────────────────────────────── */
 
-/* Announcement post box */
-.sk-admin .sk-announce-box {
-    flex: 2;
-}
+.sk-admin .sk-announce-box { flex: 2; }
 .sk-admin .sk-announce-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
-.sk-admin .sk-announce-header span {
-    font-size: 14px;
-    font-weight: 500;
-}
+.sk-admin .sk-announce-header span { font-size: 14px; font-weight: 500; }
 .sk-admin .sk-announce-box textarea {
     width: 100%;
     background: var(--white);
@@ -427,7 +464,6 @@ h1 {
 }
 .sk-admin .sk-announce-footer i { font-size: 18px; color: var(--muted); cursor: pointer; }
 
-/* Faculty stat card */
 .sk-admin .sk-stat-card {
     flex: 1;
     display: flex;
@@ -439,7 +475,6 @@ h1 {
 .sk-admin .sk-stat-count     { font-size: 38px; font-weight: 800; line-height: 1; }
 .sk-admin .sk-stat-desc      { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
-/* Action cards */
 .sk-admin .sk-action-card {
     flex: 1;
     display: flex;
@@ -450,12 +485,10 @@ h1 {
 .sk-admin .sk-action-card span { font-size: 13px; font-weight: 500; }
 .sk-admin .sk-action-card i    { font-size: 44px; color: var(--red); opacity: 0.75; }
 
-/* Mid layout */
 .sk-admin .sk-mid-row  { display: flex; gap: 14px; margin-bottom: 20px; }
 .sk-admin .sk-mid-left { flex: 2; }
 .sk-admin .sk-mid-right { flex: 1; }
 
-/* Recent activities box */
 .sk-admin .sk-recent-label { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
 .sk-admin .sk-recent-box {
     background: var(--red-pale);
@@ -464,7 +497,6 @@ h1 {
     padding: 14px;
 }
 
-/* Club registrations table */
 .sk-admin .sk-club-section h3    { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
 .sk-admin .sk-club-table         { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
 .sk-admin .sk-club-row           { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid #f0f0f0; }
@@ -478,302 +510,638 @@ h1 {
    5. STUDENT DASHBOARD  (.sk-student)
    ───────────────────────────────────── */
 
-/* Schedule card */
-.sk-student .sk-card-schedule   { flex: 2; }
-.sk-student .sk-card-schedule .sk-card-title { font-size: 14px; font-weight: 500; margin-bottom: 44px; }
-.sk-student .sk-view-all        { text-align: right; font-size: 12px; color: var(--muted); cursor: pointer; }
+/* ── Main background ── */
+.sk-student .sk-main {
+    background: #ffffff;
+}
 
-/* Profile card */
+/* ── Row 1: Schedule + Profile ── */
+.sk-student .sk-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: stretch;
+}
+
+/* ── Schedule card ── */
+.sk-student .sk-card-schedule {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+}
+
+.sk-student .sk-card-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.sk-student .sk-today-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-student .sk-today-label strong {
+    color: var(--red);
+}
+
+.sk-student .sk-view-all {
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+/* ── Schedule table ── */
+.sk-student .sk-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-student .sk-schedule-table thead tr {
+    background: #f8f4f5;
+    border-radius: 8px;
+}
+
+.sk-student .sk-schedule-table th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-student .sk-schedule-table th:first-child { border-radius: 8px 0 0 8px; }
+.sk-student .sk-schedule-table th:last-child  { border-radius: 0 8px 8px 0; }
+
+.sk-student .sk-schedule-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.sk-student .sk-schedule-table tbody tr:last-child td { border-bottom: none; }
+.sk-student .sk-schedule-table tbody tr:hover { background: #fdf5f6; }
+
+.sk-student .sk-schedule-empty {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+    padding: 24px 0;
+}
+
+/* ── Profile card ── */
 .sk-student .sk-card-profile {
     flex: 1;
+    background: var(--red);
+    border-radius: 16px;
+    padding: 24px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 7px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
-.sk-student .sk-card-profile i   { font-size: 26px; color: var(--red); }
-.sk-student .sk-profile-sub      { font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
-.sk-student .sk-profile-class    { font-size: 32px; font-weight: 800; line-height: 1; }
-.sk-student .sk-profile-sem      { font-size: 10px; color: var(--muted); }
-.sk-student .sk-profile-name     { font-size: 16px; font-weight: 600; }
 
-/* Announcement bordered card */
-.sk-student .sk-card-announce {
+.sk-student .sk-card-profile::before {
+    content: '';
+    position: absolute;
+    top: -24px; right: -24px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+
+.sk-student .sk-card-profile::after {
+    content: '';
+    position: absolute;
+    bottom: -18px; left: -18px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.sk-student .sk-card-profile i {
+    font-size: 30px;
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.15);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.25);
+    margin-bottom: 2px;
+}
+
+.sk-student .sk-profile-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+.sk-student .sk-profile-class {
+    font-size: 34px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.sk-student .sk-profile-sem {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+}
+
+.sk-student .sk-profile-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* ── Announcement card ── */
+.sk-card-announce {
     background: var(--white);
     border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+}
+
+.sk-announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-announcement-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.sk-announcement-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.sk-announcement-container::-webkit-scrollbar { width: 4px; }
+.sk-announcement-container::-webkit-scrollbar-track { background: transparent; }
+.sk-announcement-container::-webkit-scrollbar-thumb { background: var(--red-light); border-radius: 4px; }
+
+.sk-announcement-card {
+    background: #fdf4f5;
+    border: 1px solid #f0d8db;
     border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 18px;
+    padding: 14px 16px;
+    transition: transform 0.15s ease;
 }
-.sk-student .sk-card-announce h3 {
-    font-size: 14px;
+
+.sk-announcement-card:hover {
+    transform: translateY(-1px);
+}
+
+.sk-ann-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.sk-announcement-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    flex: 1;
+}
+
+.sk-ann-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: capitalize;
+}
+
+.sk-ann-badge-academics    { background: #e8f0ff; color: #1d4ed8; }
+.sk-ann-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+.sk-announcement-content {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.sk-ann-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.sk-ann-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    color: var(--red);
+    font-size: 12px;
     font-weight: 500;
-    text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 50px;
+    text-decoration: none;
 }
 
-/* Club cards */
-.sk-student .sk-card-clubs      { flex: 1; }
-.sk-student .sk-card-clubs h3   { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
-.sk-student .sk-club-icon       { font-size: 34px; color: var(--muted); margin: 10px 0; }
-.sk-student .sk-club-btn-row    { display: flex; gap: 8px; flex-wrap: wrap; }
+.sk-ann-attachment:hover { text-decoration: underline; }
 
-/* Notes */
-.sk-student .sk-notes-section      { margin-top: 18px; }
-.sk-student .sk-notes-section h3   { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
-.sk-student .sk-notes-row          { display: flex; gap: 14px; align-items: flex-start; }
-.sk-student .sk-notes-area         { flex: 2; background: var(--red-pale); border-radius: 12px; padding: 18px; min-height: 160px; position: relative; }
-.sk-student .sk-notes-area .sk-view-all { position: absolute; bottom: 12px; right: 14px; }
-.sk-student .sk-new-note           { flex: 1; background: #e8f0e4; border: 2px solid #5a8a4a; border-radius: 12px; padding: 18px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.sk-student .sk-new-note .sk-pins  { font-size: 24px; }
-.sk-student .sk-new-note p         { font-size: 16px; font-weight: 500; }
+.sk-empty-state {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 32px 0;
+}
+
+/* ── Notes section ── */
+.sk-student .sk-notes-section {
+    margin-top: 0;
+}
+
+.sk-student .sk-notes-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.sk-student .sk-notes-row {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.sk-student .sk-notes-area {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    min-height: 140px;
+    position: relative;
+}
+
+.sk-student .sk-notes-area p {
+    font-size: 13px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-student .sk-notes-area p:last-of-type {
+    border-bottom: none;
+}
+
+.sk-student .sk-notes-area .sk-view-all {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-notes-area .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+.sk-student .sk-new-note {
+    flex: 1;
+    background: #fdf4f5;
+    border: 1.5px dashed #d4848e;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sk-student .sk-new-note:hover {
+    background: #e6f4ec;
+}
+
+.sk-student .sk-new-note .sk-pins {
+    font-size: 28px;
+}
+.sk-student .sk-new-note:hover {
+    background: #f5dde0;
+}
+
+.sk-student .sk-new-note p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #9b2335;
+}
 
 
 /* ─────────────────────────────────────
    6. ANNOUNCEMENTS PAGE  (.sk-announce-page)
    ───────────────────────────────────── */
 
-.sk-announce-page .sk-announce-form-box {
-    margin-bottom: 20px;
+.sk-announce-page .sk-main {
+    background: #fafafa;
 }
+
+.sk-announce-page .sk-announce-form-box {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
 .sk-announce-page .sk-announce-form-box span {
     font-size: 14px;
     font-weight: 500;
     display: block;
     margin-bottom: 8px;
 }
+
+.sk-announce-page .sk-announce-title-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
+.sk-announce-page .sk-announce-title-input:focus {
+    border-color: var(--red);
+}
+
 .sk-announce-page .sk-announce-form-box textarea {
     width: 100%;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 13px;
-    resize: none;
-    height: 80px;
-    color: var(--muted);
+    min-height: 120px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    resize: vertical;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
     font-family: inherit;
     outline: none;
 }
+
 .sk-announce-page .sk-announce-form-footer {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 8px;
-}
-.sk-announce-page .sk-announce-form-footer i { font-size: 18px; color: var(--muted); cursor: pointer; }
-
-.sk-announce-page .sk-announce-list-label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-.sk-announce-page .sk-announce-list {
-    display: flex;
-    flex-direction: column;
-}
-.sk-announce-page .sk-announce-item {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text);
-}
-.sk-announce-page .sk-announce-item:last-child { border-bottom: none; }
-
-
-
-/* Optional responsiveness */
-@media (min-width: 768px) {
-    .sk-club-register-form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .sk-club-register-btn {
-        grid-column: span 2;
-    }
-}
-/* ─────────────────────────────
-   PROFILE SETTINGS PAGE (FIXED)
-   ───────────────────────────── */
-
-/* MAIN CARD */
-.sk-page .sk-settings-card {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 30px 40px;
-    background: #efefef;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    margin-top: 14px;
 }
 
-/* HEADER */
-.sk-page .sk-settings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.sk-page .sk-settings-header h2 {
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.sk-page .sk-settings-header i {
-    font-size: 22px;
-    color: #888;
-}
-
-/* PROFILE SECTION */
-.sk-page .sk-profile-section {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 35px;
-}
-
-.sk-page .sk-profile-pic {
-    width: 180px;
-    height: 180px;
-    background: #dcdcdc;
+.sk-announce-page .sk-icon-btn {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
+    background: #f5dde0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.sk-page .sk-profile-pic i {
-    font-size: 40px;
-    color: #999;
-}
-
-.sk-page .sk-profile-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* GRID FORM */
-.sk-page .sk-settings-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 30px;
-    margin-bottom: 25px;
-}
-
-/* LABELS */
-.sk-page .sk-settings-form label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 6px;
-    color: #333;
-}
-
-/* INPUTS */
-.sk-page .sk-settings-form input,
-.sk-page .sk-settings-form select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background: #fff;
-    font-size: 14px;
-    transition: 0.2s ease;
-}
-
-.sk-page .sk-settings-form input:focus,
-.sk-page .sk-settings-form select:focus {
-    border-color: #9b2335;
-    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.1);
-}
-
-/* PASSWORD SECTION */
-.sk-page .sk-settings-password {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
-    max-width: 350px;
-}
-
-/* ACTION BUTTONS */
-.sk-page .sk-settings-actions {
-    display: flex;
-    gap: 10px;
-}
-
-/* LOGOUT */
-.sk-page .sk-settings-logout {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 30px;
-}
-
-/* BUTTONS */
-.sk-page .sk-btn {
-    background: #9b2335;
-    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
     border: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s ease;
 }
 
-.sk-page .sk-btn:hover {
-    background: #7a1a28;
-}
+.sk-announce-page .sk-icon-btn:hover { background: #e7c9cd; }
 
-.sk-page .sk-btn-outline {
-    background: transparent;
+.sk-announce-page .sk-icon-btn i {
     color: #9b2335;
-    border: 1px solid #9b2335;
-    padding: 10px 18px;
-    border-radius: 6px;
+    font-size: 18px;
+}
+
+.sk-announce-page .sk-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.sk-announce-page .sk-announce-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-announce-page .sk-announce-item {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.sk-announce-page .sk-announce-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sk-announce-page .sk-announce-badge {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sk-announce-page .sk-badge-academics    { background: #e8f0ff; color: #1d4ed8; }
+.sk-announce-page .sk-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+.sk-announce-page .sk-announce-img {
+    width: 100%;
+    margin-top: 14px;
+    border-radius: 10px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.sk-announce-page .sk-announce-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    color: #9b2335;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sk-announce-page .sk-announce-attachment:hover { text-decoration: underline; }
+
+.sk-announce-page .sk-announce-filter { display: flex; gap: 8px; }
+
+.sk-announce-page .sk-filter-btn {
+    border: 1px solid #d9b6bb;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: 0.2s ease;
+    font-size: 12px;
+    font-family: inherit;
+    color: var(--text);
+    transition: 0.2s;
 }
 
-.sk-page .sk-btn-outline:hover {
+.sk-announce-page .sk-filter-btn.active {
     background: #9b2335;
-    color: #fff;
+    color: white;
+    border-color: #9b2335;
 }
-/* ─────────────────────────────────────
-   9. SIDEBAR LOGO & LAYOUT (shared)
-   ───────────────────────────────────── */
 
-.sk-page .sk-sidebar .nav-logo {
+/* Genre row */
+.sk-announce-genre {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 4px 0 8px;
-    text-decoration: none;
+    margin-bottom: 10px;
 }
 
-.sk-page .sk-sidebar .nav-logo .logo-img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
+.sk-announce-genre label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    white-space: nowrap;
 }
 
-.sk-page .sk-sidebar .nav-logo .logo-text {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 1px;
+.sk-genre-select {
+    padding: 7px 32px 7px 12px;
+    border: 1.5px solid #c8a0a0;
+    border-radius: 8px;
+    background-color: #fff8f8;
+    font-size: 0.875rem;
+    color: #2d2d2d;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b1c1c' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: border-color 0.2s;
 }
 
+.sk-genre-select:focus {
+    border-color: #9b1c1c;
+    box-shadow: 0 0 0 3px rgba(155, 28, 28, 0.1);
+}
 
+.sk-announce-list-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2d2d2d;
+}
 
-/* Empty state */
+.sk-announce-filter {
+    display: flex;
+    gap: 6px;
+}
+
+.sk-filter-btn {
+    padding: 5px 14px;
+    border: 1.5px solid #c8a0a0;
+    border-radius: 20px;
+    background: transparent;
+    font-size: 0.8rem;
+    color: #7f1d1d;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.sk-filter-btn:hover { background-color: #f5dada; }
+
+.sk-filter-btn.active {
+    background-color: #7f1d1d;
+    color: #fff;
+    border-color: #7f1d1d;
+}
+
+/* ─────────────────────────────────────
+   ALERTS
+   ───────────────────────────────────── */
+
+.sk-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.sk-alert:empty,
+.sk-alert-success:empty,
+.sk-alert-error:empty { display: none; }
+
+.sk-alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.sk-alert-error {
+    background: #fff1f2;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+}
+
 .sk-msg-empty {
     text-align: center;
     color: var(--muted);
@@ -781,7 +1149,6 @@ h1 {
     padding: 48px 0;
 }
 
-/* Error banner */
 .sk-msg-error {
     background: #ffecec;
     color: #c0392b;
@@ -791,7 +1158,6 @@ h1 {
     margin-bottom: 16px;
 }
 
-/* Success banner */
 .sk-msg-success {
     background: #eafaf1;
     color: #1e8449;
@@ -801,119 +1167,36 @@ h1 {
     margin-bottom: 16px;
 }
 
-
-/* Genre row */
-.sk-announce-genre {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+/* Empty / error states */
+.sk-empty-msg {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px;
+    font-size: 13px;
 }
 
-.sk-announce-genre label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #4a4a4a;
-  white-space: nowrap;
-}
-
-.sk-genre-select {
-  padding: 7px 32px 7px 12px;
-  border: 1.5px solid #c8a0a0;
-  border-radius: 8px;
-  background-color: #fff8f8;
-  font-size: 0.875rem;
-  color: #2d2d2d;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b1c1c' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  transition: border-color 0.2s;
-}
-
-.sk-genre-select:focus {
-  border-color: #9b1c1c;
-  box-shadow: 0 0 0 3px rgba(155, 28, 28, 0.1);
-}
-
-/* Label row with filter buttons */
-.sk-announce-list-label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px 0 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2d2d2d;
-}
-
-.sk-announce-filter {
-  display: flex;
-  gap: 6px;
-}
-
-.sk-filter-btn {
-  padding: 5px 14px;
-  border: 1.5px solid #c8a0a0;
-  border-radius: 20px;
-  background: transparent;
-  font-size: 0.8rem;
-  color: #7f1d1d;
-  cursor: pointer;
-  transition: background-color 0.15s, color 0.15s;
-}
-
-.sk-filter-btn:hover {
-  background-color: #f5dada;
-}
-
-.sk-filter-btn.active {
-  background-color: #7f1d1d;
-  color: #fff;
-  border-color: #7f1d1d;
-}
 /* ─────────────────────────────────────
-   ANNOUNCEMENT EXTRA STYLES
+   ICON BUTTONS (shared)
    ───────────────────────────────────── */
 
-/* Alerts */
-.sk-alert {
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    font-size: 13px;
-    font-weight: 500;
+.sk-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
 }
 
-.sk-alert-success {
-    background: #eafaf1;
-    color: #1e8449;
-}
+.sk-icon-btn:hover { background: var(--red-light); }
 
-.sk-alert-error {
-    background: #ffecec;
-    color: #c0392b;
-}
-
-/* Title input */
-.sk-announce-title-input {
-    width: 100%;
-    margin-bottom: 12px;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    background: white;
-}
-
-.sk-announce-title-input:focus {
-    border-color: var(--red);
+.sk-icon-btn i {
+    font-size: 18px;
+    color: var(--red);
 }
 
 /* Upload preview */
@@ -928,513 +1211,390 @@ h1 {
     border-radius: 8px;
 }
 
-/* Upload name */
 .sk-upload-name {
     font-size: 13px;
     color: var(--text);
 }
 
-/* Icon buttons */
-.sk-icon-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--red-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.2s;
+
+/* ─────────────────────────────────────
+   PROFILE SETTINGS PAGE
+   ───────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+.sk-page .sk-settings-wrap { max-width: 100%; padding: 0; }
+
+.sk-page .sk-settings-card {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: none;
 }
 
-.sk-icon-btn:hover {
-    background: var(--red-light);
+.sk-page .sk-settings-section {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
 }
 
-.sk-icon-btn i {
-    font-size: 18px;
-    color: var(--red);
-}
+.sk-page .sk-settings-section:last-of-type { border-bottom: none; }
 
-/* Announcement card */
-.sk-announce-item {
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 16px;
-    background: white;
-}
-
-/* Header */
-.sk-announce-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-/* Badge */
-.sk-announce-badge {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.sk-badge-academics {
-    background: #e8f0ff;
-    color: #1d4ed8;
-}
-
-.sk-badge-non-academics {
-    background: #fff4e5;
-    color: #b45309;
-}
-
-/* Image */
-.sk-announce-img {
-    width: 100%;
-    max-height: 240px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 12px;
-}
-
-/* Attachment */
-.sk-announce-attachment {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 12px;
-    text-decoration: none;
-    color: var(--red);
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.sk-announce-attachment:hover {
-    text-decoration: underline;
-}
-
-/* Empty message */
-.sk-empty-msg {
-    text-align: center;
-    color: var(--muted);
-    padding: 30px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .sk-page .sk-settings-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .sk-page .sk-profile-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .sk-page .sk-profile-pic {
-        width: 140px;
-        height: 140px;
-    }
-
-    .sk-page .sk-settings-card {
-        padding: 20px;
-    }
-}
-/* =========================================
-   FINAL ANNOUNCEMENT PAGE FIX
-   ========================================= */
-
-.sk-announce-page .sk-main {
-    background: #fafafa;
-}
-
-/* FORM CARD */
-.sk-announce-page .sk-announce-form-box {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-}
-
-/* TITLE INPUT */
-.sk-announce-page .sk-announce-title-input {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    font-size: 14px;
-}
-
-/* TEXTAREA */
-.sk-announce-page .sk-announce-form-box textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    resize: vertical;
-    background: #fff;
-    color: #333;
-    font-size: 14px;
-}
-
-/* FOOTER */
-.sk-announce-page .sk-announce-form-footer {
+.sk-page .sk-section-label {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 14px;
+    margin-bottom: 20px;
 }
 
-/* ICON BUTTON */
-.sk-announce-page .sk-icon-btn {
-    width: 42px;
-    height: 42px;
+.sk-page .sk-section-label i { font-size: 18px; color: var(--red); flex-shrink: 0; }
+
+.sk-page .sk-section-label h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    flex: 1;
+}
+
+.sk-page .sk-section-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: #f5f5f7;
+    border: 1px solid var(--border);
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.sk-page .sk-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-avatar-wrap { position: relative; flex-shrink: 0; }
+
+.sk-page .sk-avatar-img,
+.sk-page .sk-avatar-placeholder {
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: #f5dde0;
+    display: block;
+    object-fit: cover;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--red-light);
+}
+
+.sk-page .sk-avatar-placeholder {
+    background: var(--red-pale);
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
-.sk-announce-page .sk-icon-btn:hover {
-    background: #e7c9cd;
+.sk-page .sk-avatar-placeholder i { font-size: 40px; color: var(--red-light); }
+
+.sk-page .sk-avatar-badge {
+    position: absolute;
+    bottom: 4px; right: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid var(--white);
 }
 
-.sk-announce-page .sk-icon-btn i {
-    color: #9b2335;
-    font-size: 18px;
-}
-
-/* POST BUTTON */
-.sk-announce-page .sk-btn {
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
-/* ANNOUNCEMENT LIST */
-.sk-announce-page .sk-announce-list {
+.sk-page .sk-profile-meta {
+    flex: 1;
+    min-width: 160px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 5px;
 }
 
-/* CARD */
-.sk-announce-page .sk-announce-item {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+.sk-page .sk-profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
 }
 
-/* HEADER */
-.sk-announce-page .sk-announce-item-header {
+.sk-page .sk-profile-email,
+.sk-page .sk-profile-grade {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-/* BADGES */
-.sk-announce-page .sk-announce-badge {
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.sk-announce-page .sk-badge-academics {
-    background: #e8f0ff;
-    color: #1d4ed8;
-}
-
-.sk-announce-page .sk-badge-non-academics {
-    background: #fff4e5;
-    color: #b45309;
-}
-
-/* IMAGE */
-.sk-announce-page .sk-announce-img {
-    width: 100%;
-    margin-top: 14px;
-    border-radius: 10px;
-    max-height: 300px;
-    object-fit: cover;
-}
-
-/* ATTACHMENT */
-.sk-announce-page .sk-announce-attachment {
-    display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 12px;
-    color: #9b2335;
-    text-decoration: none;
     font-size: 13px;
-    font-weight: 500;
+    color: var(--muted);
 }
 
-.sk-announce-page .sk-announce-attachment:hover {
-    text-decoration: underline;
-}
-
-/* FILTER */
-.sk-announce-page .sk-announce-filter {
-    display: flex;
-    gap: 8px;
-}
-
-.sk-announce-page .sk-filter-btn {
-    border: 1px solid #d9b6bb;
-    background: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.sk-announce-page .sk-filter-btn.active {
-    background: #9b2335;
-    color: white;
-    border-color: #9b2335;
-}
-/* ── Nav links ── */
-.sk-page .sk-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.sk-page .sk-nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 500;
-    transition: background 0.15s;
-}
-
-.sk-page .sk-nav a i {
-    font-size: 17px;
-    font-family: 'remixicon' !important;
-    font-style: normal;
-}
-
-.sk-page .sk-nav a:hover {
-    background: var(--red-light);
-}
-
-.sk-page .sk-nav a.active {
-    background: var(--red) !important;
-    color: var(--white) !important;
-}
-
-.sk-page .sk-nav a.active i {
-    color: var(--white) !important;
-}
-
-/* ── Main content area ── */
-.sk-page .sk-main {
-    flex: 1;
-    padding: 28px 32px;
-    background: var(--white);
-}
-
-/* ── Topbar ── */
-.sk-page .sk-topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.sk-page .sk-topbar h2 {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-/* ── Avatar ── */
-.sk-page .sk-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 2px solid var(--border);
+.sk-page .sk-profile-email i,
+.sk-page .sk-profile-grade i {
+    font-size: 14px;
+    color: var(--red);
     flex-shrink: 0;
 }
 
-.sk-page .sk-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.sk-page .sk-avatar i {
-    font-size: 26px;
-    color: #aaa;
-}
-
-/* ── Search ── */
-.sk-page .sk-search {
+.sk-page .sk-avatar-actions {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.sk-page .sk-avatar-actions .sk-btn-remove {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 3px;
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.sk-page .sk-search i {
-    font-size: 15px;
-}
-
-/* ── Generic card ── */
-.sk-page .sk-card {
-    background: var(--red-pale);
-    border-radius: 12px;
-    padding: 18px;
-}
-
-/* ── Generic row ── */
-.sk-page .sk-row {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 18px;
-}
-
-/* ── Solid button ── */
-.sk-page .sk-btn {
-    display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 16px;
-    font-size: 13px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.sk-page .sk-btn:hover {
-    background: var(--red-hover);
-}
-
-/* ── Outline button ── */
-.sk-page .sk-btn-outline {
-    display: inline-block;
     background: transparent;
     color: var(--text);
-    border: 1px solid #bbb;
-    border-radius: 6px;
-    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
     font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
-    text-decoration: none;
+    font-family: inherit;
+    transition: all 0.15s;
 }
 
-.sk-page .sk-btn-outline:hover {
-    background: var(--red-pale);
+.sk-page .sk-avatar-actions .sk-btn-remove:hover {
+    background: #fff1f2;
+    border-color: var(--red-light);
+    color: var(--red);
 }
 
-/* ── Footer ── */
-.sk-page .sk-footer {
-    background: var(--red);
-    color: var(--white);
-    padding: 32px 48px 14px;
-}
+.sk-page input[type="file"] { display: none !important; }
 
-.sk-page .sk-footer-top {
-    display: flex;
-    gap: 60px;
-    margin-bottom: 24px;
-}
-
-.sk-page .sk-footer-brand {
-    flex: 1.5;
-}
-
-.sk-page .sk-footer-brand .sk-footer-logo {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.sk-page .sk-footer-brand p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-}
-
-.sk-page .sk-footer-col a {
-    display: block;
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 13px;
-    margin-bottom: 6px;
-}
-
-.sk-page .sk-footer-col a:hover {
-    color: var(--white);
-}
-
-.sk-page .sk-footer-col h4 {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    opacity: 0.8;
-}
-
-.sk-page .sk-footer-contact p {
+.sk-page .sk-avatar-btn-row {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-avatar-hint { font-size: 11px; color: var(--muted); margin: 0; }
+
+.sk-page .sk-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 28px;
+}
+
+.sk-page .sk-info-field label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: var(--muted);
     margin-bottom: 5px;
 }
 
-.sk-page .sk-footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 12px;
+.sk-page .sk-info-value {
+    background: #f5f5f7;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4b5563;
+    min-height: 40px;
+    line-height: 1.4;
+}
+
+.sk-page .sk-settings-form label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.sk-page .sk-settings-form input[type="text"],
+.sk-page .sk-settings-form input[type="password"],
+.sk-page .sk-settings-form input[type="email"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.sk-page .sk-settings-form input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 28px;
+    margin-bottom: 4px;
+}
+
+.sk-page .sk-settings-password {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 380px;
+    margin-bottom: 4px;
+}
+
+.sk-page .sk-settings-password label { margin-top: 12px; }
+.sk-page .sk-settings-password label:first-child { margin-top: 0; }
+
+.sk-page .sk-settings-password input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-settings-password input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-settings-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.sk-page .sk-settings-logout {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+}
+
+.sk-page .sk-settings-grid input:disabled,
+.sk-page .sk-settings-grid select:disabled {
+    background: #f5f5f5;
+    color: #555;
+    cursor: not-allowed;
+    border-color: #e0e0e0;
+}
+
+/* PROFILE IMAGE */
+.sk-profile-pic {
+    width: 120px !important;
+    height: 120px !important;
+    min-width: 120px !important;
+    min-height: 120px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #dcdcdc !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+}
+
+.sk-profile-pic img {
+    position: absolute !important;
+    top: 0 !important; left: 0 !important;
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+.sk-page .sk-profile-pic i { font-size: 48px; color: #aaa; }
+
+.sk-page .sk-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sk-page .sk-profile-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.sk-page .sk-profile-info span { font-size: 13px; color: var(--muted); }
+
+.sk-page .sk-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.sk-page .sk-profile-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-settings-section {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-settings-section:last-of-type { border-bottom: none; }
+
+.sk-page .sk-settings-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.sk-page .sk-settings-grid label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.sk-page .sk-settings-header {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
-    color: rgba(255,255,255,0.55);
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-.sk-page .sk-footer-bottom a {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    margin-left: 14px;
+.sk-page .sk-settings-header h2 { font-size: 22px; font-weight: 600; }
+.sk-page .sk-settings-header i  { font-size: 22px; color: #888; }
+
+.sk-page .sk-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 35px;
 }
+
+
 /* ─────────────────────────────────────
-   11. CLASS RESERVATION PAGE
+   CLASS RESERVATION PAGE
    ───────────────────────────────────── */
 
-/* Header row with search */
 .sk-page .sk-header-row {
     display: flex;
     justify-content: space-between;
@@ -1442,26 +1602,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.sk-page .sk-header-row h2 {
-    font-size: 22px;
-    font-weight: 700;
-}
+.sk-page .sk-header-row h2 { font-size: 22px; font-weight: 700; }
 
-.sk-page .sk-search {
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 13px;
-    outline: none;
-    width: 200px;
-    background: #fff;
-}
-
-.sk-page .sk-search:focus {
-    border-color: var(--red);
-}
-
-/* Form card */
 .sk-page .sk-reservation-form {
     display: flex;
     flex-direction: column;
@@ -1497,71 +1639,36 @@ h1 {
     box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
 }
 
-.sk-page .sk-reservation-form textarea {
-    resize: vertical;
-    min-height: 100px;
-}
+.sk-page .sk-reservation-form textarea { resize: vertical; min-height: 100px; }
 
-/* Date + Time row */
 .sk-page .sk-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-/* Time from–to inline */
 .sk-page .sk-time-row {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.sk-page .sk-time-row span {
-    font-size: 13px;
-    color: var(--muted);
-    white-space: nowrap;
-}
+.sk-page .sk-time-row span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.sk-page .sk-time-row input { flex: 1; }
 
-.sk-page .sk-time-row input {
-    flex: 1;
-}
-
-/* Form submit row */
 .sk-page .sk-form-actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 4px;
 }
 
-.sk-page .sk-form-actions .sk-btn {
-    padding: 10px 24px;
-    font-size: 14px;
-    border-radius: 8px;
-}
+.sk-page .sk-form-actions .sk-btn { padding: 10px 24px; font-size: 14px; border-radius: 8px; }
 
-/* Card spacing between form and status */
-.sk-page .sk-card + .sk-card {
-    margin-top: 24px;
-}
+.sk-page .sk-card + .sk-card { margin-top: 24px; }
+.sk-page .sk-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
 
-.sk-page .sk-card h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 14px;
-    color: var(--text);
-}
-
-/* ── Table ── */
-.sk-page .sk-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-}
-
-.sk-page .sk-table thead tr {
-    border-bottom: 1px solid var(--border);
-}
-
+.sk-page .sk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sk-page .sk-table thead tr { border-bottom: 1px solid var(--border); }
 .sk-page .sk-table th {
     text-align: left;
     padding: 10px 12px;
@@ -1571,400 +1678,26 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+.sk-page .sk-table td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text); vertical-align: middle; }
+.sk-page .sk-table tbody tr:last-child td { border-bottom: none; }
+.sk-page .sk-table tbody tr:hover { background: rgba(155, 35, 53, 0.04); }
 
-.sk-page .sk-table td {
-    padding: 12px 12px;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    color: var(--text);
-    vertical-align: middle;
-}
+.sk-page .sk-empty { text-align: center; color: var(--muted); padding: 32px; font-size: 13px; }
 
-.sk-page .sk-table tbody tr:last-child td {
-    border-bottom: none;
-}
+.sk-page .sk-status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: capitalize; }
+.sk-page .sk-status-pending     { background: #fff8e1; color: #b45309; }
+.sk-page .sk-status-approved    { background: #eafaf1; color: #1e8449; }
+.sk-page .sk-status-disapproved { background: #ffecec; color: #c0392b; }
 
-.sk-page .sk-table tbody tr:hover {
-    background: rgba(155, 35, 53, 0.04);
-}
+.sk-page .sk-action-form { display: inline-block; margin-right: 6px; }
 
-/* Empty row */
-.sk-page .sk-empty {
-    text-align: center;
-    color: var(--muted);
-    padding: 32px;
-    font-size: 13px;
-}
-
-/* ── Status badges ── */
-.sk-page .sk-status {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.sk-page .sk-status-pending {
-    background: #fff8e1;
-    color: #b45309;
-}
-
-.sk-page .sk-status-approved {
-    background: #eafaf1;
-    color: #1e8449;
-}
-
-.sk-page .sk-status-disapproved {
-    background: #ffecec;
-    color: #c0392b;
-}
-
-/* ── Admin action buttons side by side ── */
-.sk-page .sk-action-form {
-    display: inline-block;
-    margin-right: 6px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .sk-page .sk-form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .sk-page .sk-header-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .sk-page .sk-search {
-        width: 100%;
-    }
-}
-/* ═══════════════════════════════════════════════════
-   PROFILE SETTINGS — FIX v2
-   Paste these at the very bottom of skola.css,
-   AFTER the previous fix block.
-   ═══════════════════════════════════════════════════ */
-
-/* ── 1. Hide EMPTY alert bars
-   The <c:if> blocks still render a <div class="sk-alert ...">
-   with only whitespace inside when there is no message.
-   :empty won't match whitespace, so we use min-height + padding
-   collapse instead.                                        ── */
-.sk-page .sk-alert:empty,
-.sk-page .sk-alert-success:empty,
-.sk-page .sk-alert-error:empty {
-    display: none;
-}
-
-/* Safer catch-all: collapse alerts that contain only whitespace
-   (works in all modern browsers via has-no-text trick)          */
-.sk-page .sk-alert {
-    /* Keep existing colours — just ensure zero-height when blank */
-    overflow: hidden;
-}
-
-/* Hide the green bar when it has no visible text */
-.sk-page .sk-alert-success:not(:has(*)):empty,
-.sk-page .sk-alert-error:not(:has(*)):empty {
-    display: none;
-}
-
-/*  Broader catch: if the div is truly empty or whitespace-only,
-    collapse via min-height trick                                */
-.sk-page .sk-alert-success,
-.sk-page .sk-alert-error {
-    /* Transition so flash messages fade gracefully             */
-    transition: padding 0.2s, margin 0.2s;
-}
-
-/* The most reliable cross-browser fix — target by content length.
-   If JS is available you can also do:
-     document.querySelectorAll('.sk-alert')
-       .forEach(el => { if (!el.textContent.trim()) el.style.display='none'; });
-   But this CSS handles it for the empty-string case:            */
-.sk-page .sk-alert:not([data-has-message]) {
-    /* fallback: rely on JSP not rendering the div at all       */
-}
-
-/* ── Real fix: add this to your JSP instead of bare <c:if>:
-   <c:if test="${not empty success}">
-       <div class="sk-alert sk-alert-success" data-has-message>${success}</div>
-   </c:if>
-   Then target .sk-alert without data-has-message to hide empty ones ── */
-
-
-/* ── 2. Hide the native "Choose File / No file chosen" input
-   The <input type="file"> is rendered directly in the JSP.
-   We hide it and let the custom Choose button trigger it via JS.  ── */
-.sk-page .sk-profile-actions input[type="file"],
-.sk-page .sk-profile-section input[type="file"],
-/* Wider catch in case it's outside those wrappers: */
-.sk-page .sk-settings-card input[type="file"] {
-    display: none !important;
-}
-
-/* ── 3. Upload action row — keep Choose + Upload on one line,
-   Remove on second line, no "No file chosen" text visible     ── */
-.sk-page .sk-profile-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-}
-
-/* Row 1: Choose + Upload buttons side by side */
-.sk-page .sk-profile-actions-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-/* ── 4. Fix section label typography
-   "PHONE NUMBER", "CURRENT PASSWORD" etc. appear as their own
-   block with uppercase small text — that's intentional from the
-   sk-settings-form label rule, but they shouldn't be giant.    ── */
-.sk-page .sk-settings-form .sk-field-label,
-.sk-page .sk-settings-password label {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-    margin-top: 14px;
-}
-
-/* ── 5. Section headings ("Contact Number", "Change Password")
-   should stand out from the field labels above               ── */
-.sk-page .sk-settings-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    margin-top: 28px;
-    margin-bottom: 4px;
-    padding-bottom: 0;
-    border: none;
-}
-
-/* ── 6. Password inputs — full width within the password block ── */
-.sk-page .sk-settings-password input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.sk-page .sk-settings-password input:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
-}
-
-/* ── 7. Action button rows (Cancel / Save, Cancel / Update Password)
-   should sit flush with the content — no extra margin above   ── */
-.sk-page .sk-settings-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-    align-items: center;
-}
-
-/* Cancel button — outline style */
-.sk-page .sk-settings-actions .sk-btn-outline,
-.sk-page .sk-settings-password-actions .sk-btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid #ccc;
-    padding: 9px 18px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.sk-page .sk-settings-actions .sk-btn-outline:hover {
-    background: #f0f0f0;
-}
-
-/* ── 8. Log Out button — bottom right                         ── */
-.sk-page .sk-settings-logout {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 32px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-}
 
 /* ─────────────────────────────────────
-   SETTINGS PAGE — PROFILE PIC FIX
-   Append to bottom of skola.css
+   STUDENT SCHEDULE PAGE
    ───────────────────────────────────── */
 
-/* Profile pic — image fills the circle correctly */
-.sk-page .sk-profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #dcdcdc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    flex-shrink: 0;
-}
+.sk-stusch-topbar-right { display: flex; align-items: center; gap: 12px; }
 
-.sk-page .sk-profile-pic .sk-profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-}
-
-.sk-page .sk-profile-pic i {
-    font-size: 48px;
-    color: #aaa;
-}
-
-/* Profile info — name and email next to pic */
-.sk-page .sk-profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.sk-page .sk-profile-info h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
-}
-
-.sk-page .sk-profile-info span {
-    font-size: 13px;
-    color: var(--muted);
-}
-
-/* Profile actions — Choose/Upload on one row, Remove below */
-.sk-page .sk-profile-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-}
-
-.sk-page .sk-profile-actions-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Hide native file input — label acts as the button */
-.sk-page input[type="file"] {
-    display: none;
-}
-
-/* Settings section spacing */
-.sk-page .sk-settings-section {
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-}
-
-.sk-page .sk-settings-section:last-of-type {
-    border-bottom: none;
-}
-
-.sk-page .sk-settings-section h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 16px;
-}
-
-/* Read-only disabled inputs — slightly greyed out */
-.sk-page .sk-settings-grid input:disabled,
-.sk-page .sk-settings-grid select:disabled {
-    background: #f5f5f5;
-    color: #555;
-    cursor: not-allowed;
-    border-color: #e0e0e0;
-}
-
-.sk-page .sk-settings-grid label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--muted);
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-}
-.sk-page .sk-profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: #dcdcdc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sk-page .sk-profile-pic img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    flex-shrink: 0;
-}
-/* PROFILE IMAGE HARD FIX */
-.sk-profile-pic {
-    width: 120px !important;
-    height: 120px !important;
-    min-width: 120px !important;
-    min-height: 120px !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: #dcdcdc !important;
-    flex-shrink: 0 !important;
-    position: relative !important;
-}
-
-.sk-profile-pic img {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 120px !important;
-    height: 120px !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-    display: block !important;
-}
-
- STUDENT SCHEDULE PAGE
-   ───────────────────────────────────── */
- 
-/* Topbar right side */
-.sk-stusch-topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
- 
-/* Search */
 .sk-stusch-search-wrap {
     display: flex;
     align-items: center;
@@ -1975,13 +1708,9 @@ h1 {
     background: #fafafa;
     width: 220px;
 }
- 
-.sk-stusch-search-wrap i {
-    color: var(--muted);
-    font-size: 15px;
-    flex-shrink: 0;
-}
- 
+
+.sk-stusch-search-wrap i { color: var(--muted); font-size: 15px; flex-shrink: 0; }
+
 .sk-stusch-search {
     border: none;
     outline: none;
@@ -1990,39 +1719,20 @@ h1 {
     color: var(--text);
     width: 100%;
 }
- 
-.sk-stusch-search::placeholder {
-    color: var(--muted);
-}
- 
-/* Section label */
-.sk-stusch-section-label {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 16px;
-}
- 
-/* Table wrapper */
+
+.sk-stusch-search::placeholder { color: var(--muted); }
+
+.sk-stusch-section-label { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+
 .sk-stusch-table-wrap {
     border: 1px solid var(--red-light);
     border-radius: 10px;
     overflow: hidden;
 }
- 
-/* Table */
-.sk-stusch-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    background: #fff;
-}
- 
-/* Header */
-.sk-stusch-table thead tr {
-    background: var(--red-pale);
-}
- 
+
+.sk-stusch-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+.sk-stusch-table thead tr { background: var(--red-pale); }
+
 .sk-stusch-th {
     padding: 13px 20px;
     text-align: left;
@@ -2032,21 +1742,11 @@ h1 {
     border-right: 1px solid var(--red-light);
     border-bottom: 2px solid var(--red-light);
 }
- 
-.sk-stusch-th:last-child {
-    border-right: none;
-}
- 
-/* Day column — slightly wider */
-.sk-stusch-th-day {
-    width: 140px;
-}
- 
-/* Body rows */
-.sk-stusch-tr:hover {
-    background: #fdf5f6;
-}
- 
+
+.sk-stusch-th:last-child { border-right: none; }
+.sk-stusch-th-day { width: 140px; }
+.sk-stusch-tr:hover { background: #fdf5f6; }
+
 .sk-stusch-td {
     padding: 13px 20px;
     border-right: 1px solid var(--border);
@@ -2055,623 +1755,44 @@ h1 {
     font-size: 13px;
     vertical-align: middle;
 }
- 
-.sk-stusch-td:last-child {
-    border-right: none;
-}
- 
-.sk-stusch-tr:last-child .sk-stusch-td {
-    border-bottom: none;
-}
- 
-/* Day cell — bold */
-.sk-stusch-td-day {
-    font-weight: 500;
-}
- 
-/* Module cell */
-.sk-stusch-td-module {
-    color: var(--text);
-}
+
+.sk-stusch-td:last-child { border-right: none; }
+.sk-stusch-tr:last-child .sk-stusch-td { border-bottom: none; }
+.sk-stusch-td-day { font-weight: 500; }
+
 
 /* ─────────────────────────────────────
-   14. STUDENT DASHBOARD — ANNOUNCEMENT CARD
-   Add this to the bottom of your skola.css
-   ───────────────────────────────────── */
-/* ===========================
-   ANNOUNCEMENT SECTION
-=========================== */
-
-.sk-card-announce {
-    background: #ffffff;
-    border: 1px solid #e6e6e6;
-    border-radius: 22px;
-    padding: 28px;
-    margin-top: 22px;
-    margin-bottom: 28px;
-}
-
-.sk-announcement-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sk-announcement-header h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #222;
-}
-
-/* container */
-
-.sk-announcement-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    max-height: 240px;
-    overflow-y: auto;
-    padding-right: 6px;
-}
-
-/* individual card */
-
-.sk-announcement-card {
-    background: #f8ecee;
-    border-radius: 18px;
-    padding: 18px 22px;
-
-    transition: 0.2s ease;
-}
-
-.sk-announcement-card:hover {
-    transform: translateY(-2px);
-}
-
-/* title */
-
-.sk-announcement-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-/* content */
-
-.sk-announcement-content {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #555;
-    margin: 0;
-}
-
-/* empty */
-
-.sk-empty-state {
-    text-align: center;
-    color: #888;
-    padding: 30px;
-}
-
-/* ── Today's Schedule Table ── */
-.sk-student .sk-schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-}
-
-.sk-student .sk-schedule-table thead tr {
-    background: var(--red-light);
-}
-
-.sk-student .sk-schedule-table th {
-    padding: 8px 12px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text);
-}
-
-.sk-student .sk-schedule-table th:first-child {
-    border-radius: 6px 0 0 6px;
-}
-
-.sk-student .sk-schedule-table th:last-child {
-    border-radius: 0 6px 6px 0;
-}
-
-.sk-student .sk-schedule-table tbody tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.sk-student .sk-schedule-table tbody tr:last-child {
-    border-bottom: none;
-}
-
-.sk-student .sk-schedule-table td {
-    padding: 10px 12px;
-    font-size: 13px;
-    color: var(--text);
-}
-
-.sk-student .sk-card-schedule-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sk-student .sk-schedule-empty {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 12px;
-}
-
-.sk-student .sk-today-label {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.sk-student .sk-today-label strong {
-    color: var(--red);
-}
- 
- /* ═══════════════════════════════════════════════════════════
-   settings.css  —  Profile Settings Page
-   Scope: .sk-page  (matches the body class in the JSP)
-   Import AFTER skola.css
-   ═══════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-
-/* ── Root overrides for settings page ── */
-.sk-page {
-    --red:         #9b2335;
-    --red-hover:   #7a1a28;
-    --red-pale:    #f9eded;
-    --red-light:   #f0d0d4;
-    --white:       #ffffff;
-    --surface:     #f5f5f7;
-    --text:        #1a1a2e;
-    --muted:       #6b7280;
-    --border:      #e5e7eb;
-    --shadow-sm:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md:   0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
-    --radius-sm:   8px;
-    --radius-md:   12px;
-    --radius-lg:   18px;
-    font-family: 'DM Sans', system-ui, sans-serif;
-}
-
-
-/* ──────────────────────────────────────
-   WRAP & CARD
-   ────────────────────────────────────── */
-.sk-page .sk-settings-wrap {
-    max-width: 100%;
-    padding: 0;
-}
-
-/* No card box — flat like the Schedule page */
-.sk-page .sk-settings-card {
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    border: none;
-}
-
-
-/* ──────────────────────────────────────
-   PAGE HEADER — title lives in sk-topbar (shared)
-   ────────────────────────────────────── */
-
-
-/* ──────────────────────────────────────
-   ALERT BANNERS
-   ────────────────────────────────────── */
-.sk-page .sk-alert {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    overflow: hidden;
-    max-height: 80px;
-}
-
-.sk-page .sk-alert i { font-size: 16px; flex-shrink: 0; }
-
-.sk-page .sk-alert-success {
-    background: #f0fdf4;
-    color: #166534;
-    border: 1px solid #bbf7d0;
-}
-
-.sk-page .sk-alert-error {
-    background: #fff1f2;
-    color: #9f1239;
-    border: 1px solid #fecdd3;
-}
-
-
-/* ──────────────────────────────────────
-   SECTIONS
-   ────────────────────────────────────── */
-.sk-page .sk-settings-section {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.sk-page .sk-settings-section:last-of-type {
-    border-bottom: none;
-}
-
-/* Section label row — icon + title + optional badge */
-.sk-page .sk-section-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.sk-page .sk-section-label i {
-    font-size: 18px;
-    color: var(--red);
-    flex-shrink: 0;
-}
-
-.sk-page .sk-section-label h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
-    flex: 1;
-}
-
-.sk-page .sk-section-badge {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 3px 9px;
-    border-radius: 20px;
-}
-
-
-/* ──────────────────────────────────────
-   PROFILE ROW  (avatar + meta + actions)
-   ────────────────────────────────────── */
-.sk-page .sk-profile-row {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
-}
-
-/* ── Avatar circle ── */
-.sk-page .sk-avatar-wrap {
-    position: relative;
-    flex-shrink: 0;
-}
-
-.sk-page .sk-avatar-img,
-.sk-page .sk-avatar-placeholder {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    display: block;
-    object-fit: cover;
-    border: 3px solid var(--white);
-    box-shadow: 0 0 0 2px var(--red-light), var(--shadow-sm);
-}
-
-.sk-page .sk-avatar-placeholder {
-    background: var(--red-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sk-page .sk-avatar-placeholder i {
-    font-size: 40px;
-    color: var(--red-light);
-}
-
-/* Online indicator dot */
-.sk-page .sk-avatar-badge {
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #22c55e;
-    border: 2px solid var(--white);
-}
-
-/* ── Profile meta text ── */
-.sk-page .sk-profile-meta {
-    flex: 1;
-    min-width: 160px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.sk-page .sk-profile-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
-    letter-spacing: -0.2px;
-}
-
-.sk-page .sk-profile-email,
-.sk-page .sk-profile-grade {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    color: var(--muted);
-}
-
-.sk-page .sk-profile-email i,
-.sk-page .sk-profile-grade i {
-    font-size: 14px;
-    color: var(--red);
-    flex-shrink: 0;
-}
-
-/* ── Upload / Remove actions ── */
-.sk-page .sk-avatar-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-}
-
-/* Remove Photo button — matches sk-btn-outline style */
-.sk-page .sk-avatar-actions .sk-btn-remove {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 8px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s, border-color 0.15s, color 0.15s;
-}
-
-.sk-page .sk-avatar-actions .sk-btn-remove:hover {
-    background: #fff1f2;
-    border-color: var(--red-light);
-    color: var(--red);
-}
-
-/* Hide native file input entirely */
-.sk-page input[type="file"] {
-    display: none !important;
-}
-
-.sk-page .sk-avatar-btn-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.sk-page .sk-avatar-hint {
-    font-size: 11px;
-    color: var(--muted);
-    margin: 0;
-}
-
-
-/* ──────────────────────────────────────
-   READ-ONLY INFO GRID
-   ────────────────────────────────────── */
-.sk-page .sk-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px 28px;
-}
-
-.sk-page .sk-info-field label {
-    display: block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 5px;
-}
-
-.sk-page .sk-info-value {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    font-size: 14px;
-    color: #4b5563;
-    min-height: 40px;
-    line-height: 1.4;
-}
-
-
-/* ──────────────────────────────────────
-   EDITABLE FORMS  (phone & password)
-   ────────────────────────────────────── */
-
-/* Form labels */
-.sk-page .sk-settings-form label {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-}
-
-/* All text/password inputs inside editable forms */
-.sk-page .sk-settings-form input[type="text"],
-.sk-page .sk-settings-form input[type="password"],
-.sk-page .sk-settings-form input[type="email"] {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--white);
-    font-size: 14px;
-    color: var(--text);
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.18s, box-shadow 0.18s;
-}
-
-.sk-page .sk-settings-form input:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
-}
-
-/* Single-column grid used by Contact Number */
-.sk-page .sk-settings-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 28px;
-    margin-bottom: 4px;
-}
-
-/* Password stacked block */
-.sk-page .sk-settings-password {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-width: 380px;
-    margin-bottom: 4px;
-}
-
-/* Space between label and the input above it */
-.sk-page .sk-settings-password label {
-    margin-top: 12px;
-}
-
-.sk-page .sk-settings-password label:first-child {
-    margin-top: 0;
-}
-
-
-/* ──────────────────────────────────────
-   FORM ACTION BUTTONS
-   ────────────────────────────────────── */
-.sk-page .sk-settings-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 20px;
-}
-
-/* Primary button */
-.sk-page .sk-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.18s, transform 0.1s, box-shadow 0.18s;
-    text-decoration: none;
-    box-shadow: 0 1px 4px rgba(155, 35, 53, 0.25);
-}
-
-.sk-page .sk-btn:hover {
-    background: var(--red-hover);
-    box-shadow: 0 4px 12px rgba(155, 35, 53, 0.30);
-    transform: translateY(-1px);
-}
-
-.sk-page .sk-btn:active {
-    transform: translateY(0);
-}
-
-/* Outline / cancel button */
-.sk-page .sk-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 18px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s, border-color 0.15s;
-    text-decoration: none;
-}
-
-.sk-page .sk-btn-outline:hover {
-    background: var(--surface);
-    border-color: #d1d5db;
-}
-
-
-/* ──────────────────────────────────────
-   LOGOUT ROW
-   ────────────────────────────────────── */
-.sk-page .sk-settings-logout {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 20px;
-    margin-top: 4px;
-    border-top: 1px solid var(--border);
-}
-
-
-/* ──────────────────────────────────────
    RESPONSIVE
-   ────────────────────────────────────── */
-@media (max-width: 680px) {
-    .sk-page .sk-profile-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-    }
+   ───────────────────────────────────── */
 
-    .sk-page .sk-info-grid {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 768px) {
+    .sk-page .sk-settings-grid  { grid-template-columns: 1fr; }
+    .sk-page .sk-info-grid      { grid-template-columns: 1fr; }
+    .sk-page .sk-profile-row    { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .sk-page .sk-settings-password { max-width: 100%; }
+    .sk-page .sk-form-row       { grid-template-columns: 1fr; }
+    .sk-page .sk-header-row     { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .sk-page .sk-profile-section { flex-direction: column; align-items: flex-start; }
+    .sk-page .sk-profile-pic    { width: 140px !important; height: 140px !important; }
+    .sk-student .sk-notes-row   { flex-direction: column; }
 
-    .sk-page .sk-settings-grid {
-        grid-template-columns: 1fr;
+    .sk-club-register-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
+    .sk-club-register-btn { grid-column: span 2; }
+}
+a.sk-note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
 
-    .sk-page .sk-settings-password {
-        max-width: 100%;
-    }
-
-    .sk-page .sk-settings-header {
-        flex-direction: column;
-        gap: 12px;
-    }
+a.sk-note-item:hover {
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 6px;
 }

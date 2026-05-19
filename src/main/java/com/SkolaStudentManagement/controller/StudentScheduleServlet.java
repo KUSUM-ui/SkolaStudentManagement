@@ -1,6 +1,7 @@
 package com.SkolaStudentManagement.controller;
 
 import com.SkolaStudentManagement.Model.ScheduleModel;
+
 import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.Service.ScheduleService;
 

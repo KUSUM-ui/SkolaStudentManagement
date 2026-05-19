@@ -1,14 +1,8 @@
 package com.SkolaStudentManagement.controller;
 
-import com.SkolaStudentManagement.DAO.AnnouncementDAO;
-import com.SkolaStudentManagement.DAO.NotesDAO;
-import com.SkolaStudentManagement.DAO.ScheduleDAO;
-import com.SkolaStudentManagement.Model.AnnouncementModel;
-import com.SkolaStudentManagement.Model.ScheduleModel;
+import com.SkolaStudentManagement.Model.DashboardData;
 import com.SkolaStudentManagement.Model.SettingsStudentModel;
-import com.SkolaStudentManagement.Model.Viewnotes;
-import com.SkolaStudentManagement.utils.SessionUtil;
-import com.SkolaStudentManagement.Model.Notes;
+import com.SkolaStudentManagement.Service.DashboardService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,71 +12,40 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.List;
-import java.util.Locale;
 
-@WebServlet(asyncSupported = true, urlPatterns = { "/StudentDashboardServlet" })
+@WebServlet(urlPatterns = { "/StudentDashboardServlet" })
 public class StudentDashboardServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
+
+    private final DashboardService dashboardService = new DashboardService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // ── 1. Session guard
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("student") == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
+        // ── 2. Get student from session
         SettingsStudentModel student =
                 (SettingsStudentModel) session.getAttribute("student");
-        request.setAttribute("student", student);
 
-        // ── Today's day name — must match exactly what's stored in DB
-        // e.g. "Monday", "Tuesday" etc.
-        String todayDay = LocalDate.now()
-                .getDayOfWeek()
-                .getDisplayName(TextStyle.FULL, Locale.ENGLISH); // "Monday"
-        request.setAttribute("todayDay", todayDay);
+        // ── 3. Service builds all dashboard data
+        DashboardData data = dashboardService.getDashboardData(student);
 
-        // ── Today's schedule filtered by student's section and today's day
-        try {
-            ScheduleDAO scheduleDAO = new ScheduleDAO();
-            List<ScheduleModel> todaySchedule =
-                    scheduleDAO.getScheduleBySection(student.getSectionId());
+        // ── 4. Put on request — JSP reads these
+        request.setAttribute("student",       data.getStudent());
+        request.setAttribute("todayDay",      data.getTodayDay());
+        request.setAttribute("todaySchedule", data.getTodaySchedule());
+        request.setAttribute("announcements", data.getAnnouncements());
+        request.setAttribute("notes",         data.getNotes());
 
-            // Filter to only today's entries
-            todaySchedule.removeIf(s -> !todayDay.equalsIgnoreCase(s.getDay()));
-            request.setAttribute("todaySchedule", todaySchedule);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("todaySchedule", List.of());
-        }
-
-        // ── Latest 3 announcements
-        try {
-            AnnouncementDAO announcementDAO = new AnnouncementDAO();
-            List<AnnouncementModel> announcements =
-                    announcementDAO.getLatestAnnouncements(3);
-            request.setAttribute("announcements", announcements);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("announcements", List.of());
-        }
-
-     // ── Latest 3 notes for this student
-        try {
-            NotesDAO notesDAO = new NotesDAO();
-            List<Notes> notes = notesDAO.getNotesByStudentId(student.getStudentId());
-            if (notes.size() > 3) notes = notes.subList(0, 3);
-            request.setAttribute("notes", notes);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("notes", List.of());
-        }
+        // ── 5. Forward to JSP
         request.getRequestDispatcher("/WEB-INF/Studentdashboard.jsp")
                .forward(request, response);
     }
