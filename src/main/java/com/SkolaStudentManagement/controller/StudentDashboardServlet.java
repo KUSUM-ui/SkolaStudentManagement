@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = { "/StudentDashboardServlet" })
+@WebServlet(urlPatterns = { "/student/Dashboard" })
 public class StudentDashboardServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

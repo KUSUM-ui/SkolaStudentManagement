@@ -28,7 +28,7 @@
                 <h2>Welcome, ${student.fullName}</h2>
 
                 <%-- Profile avatar: shows image if student has one, else icon --%>
-                <a href="${pageContext.request.contextPath}/StudentSettingsServlet" class="sk-avatar">
+                <a href="${pageContext.request.contextPath}/student/Settings" class="sk-avatar">
                     <c:choose>
                         <c:when test="${not empty student.image}">
                             <%-- student.image → SettingsStudentModel.getImage() → DB column: image --%>
@@ -54,7 +54,7 @@
                                 &nbsp;— <strong>${todayDay}</strong>
                             </c:if>
                         </p>
-                        <a href="${pageContext.request.contextPath}/StudentScheduleServlet"
+                        <a href="${pageContext.request.contextPath}/student/schedule"
                            class="sk-view-all">View all</a>
                     </div>
 

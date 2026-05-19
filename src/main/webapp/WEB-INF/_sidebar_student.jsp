@@ -24,7 +24,7 @@
 
     <nav class="sk-nav">
 
-        <a href="${pageContext.request.contextPath}/StudentDashboardServlet"
+        <a href="${pageContext.request.contextPath}/student/Dashboard"
            class="${param.activePage == 'dashboard' ? 'active' : ''}">
             <i class="ri-layout-grid-line"></i> Dashboard
         </a>
@@ -39,12 +39,12 @@
             <i class="ri-book-open-line"></i> Class
         </a>
 
-        <a href="${pageContext.request.contextPath}/StudentScheduleServlet"
+        <a href="${pageContext.request.contextPath}/student/schedule"
            class="${param.activePage == 'schedule' ? 'active' : ''}">
             <i class="ri-calendar-line"></i> Schedule
         </a>
 
-        <a href="${pageContext.request.contextPath}/SettingsStudentServlet"
+        <a href="${pageContext.request.contextPath}/student/Settings"
            class="${param.activePage == 'settings' ? 'active' : ''}">
             <i class="ri-settings-3-line"></i> Settings
         </a>
