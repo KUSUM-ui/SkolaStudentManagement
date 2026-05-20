@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AboutUsServlet</servlet-name>
+  	<display-name>AboutUsServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.SkolaManagement.controller.AboutUsServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AboutusServlet</servlet-name>
+  	<display-name>AboutusServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.SkolaManagement.controller.AboutusServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>contactusservlet</servlet-name>
+  	<display-name>contactusservlet</display-name>
+  	<description></description>
+  	<servlet-class>com.SkolaManagement.controller.contactusservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AboutUsServlet</servlet-name>
+  	<url-pattern>/AboutUsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AboutusServlet</servlet-name>
+  	<url-pattern>/AboutusServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>contactusservlet</servlet-name>
+  	<url-pattern>/contactusservlet</url-pattern>
+  </servlet-mapping>
+</web-app>
