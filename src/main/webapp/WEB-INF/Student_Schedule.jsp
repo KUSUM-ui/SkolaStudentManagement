@@ -23,9 +23,16 @@
 
       <div class="sk-topbar">
 	    <h2>Schedule</h2>
-	    <a href="${pageContext.request.contextPath}/studentProfileServlet" style="text-decoration:none; color:inherit; margin-left:auto;">
-	        <div class="sk-avatar"><i class="ri-user-line"></i></div>
-	    </a>
+	               <a href="${pageContext.request.contextPath}/student/Settings" class="sk-avatar">
+                <c:choose>
+                    <c:when test="${not empty student.image}">
+                        <img src="${pageContext.request.contextPath}/${student.image}" alt="${student.firstName}" />
+                    </c:when>
+                    <c:otherwise>
+                        <i class="ri-user-3-line"></i>
+                    </c:otherwise>
+                </c:choose>
+            </a>
 	</div>
 
       <!-- Section label -->

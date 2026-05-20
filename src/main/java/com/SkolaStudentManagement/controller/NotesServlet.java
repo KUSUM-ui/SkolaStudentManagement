@@ -3,7 +3,6 @@ package com.SkolaStudentManagement.controller;
 import com.SkolaStudentManagement.Model.Notes;
 import com.SkolaStudentManagement.Model.SettingsStudentModel;
 import com.SkolaStudentManagement.Service.NotesService;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,8 +15,8 @@ import java.util.List;
 
 @WebServlet("/student/notes")
 public class NotesServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 1L;
     private final NotesService notesService = new NotesService();
 
     public NotesServlet() {
@@ -37,10 +36,22 @@ public class NotesServlet extends HttpServlet {
         SettingsStudentModel student = (SettingsStudentModel) session.getAttribute("student");
         int studentId = student.getStudentId();
 
-        List<Notes> notesList = notesService.getNotesByStudentId(studentId);
+        // Check if user typed a search query  (?q=...)
+        String keyword = request.getParameter("q");
+
+        List<Notes> notesList;
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            // Search mode — hits DB with LIKE query
+            notesList = notesService.searchNotesByTitle(studentId, keyword.trim());
+            request.setAttribute("searchKeyword", keyword.trim());
+        } else {
+            // Normal mode — load all notes
+            notesList = notesService.getNotesByStudentId(studentId);
+            request.setAttribute("searchKeyword", "");
+        }
+
         request.setAttribute("notesList", notesList);
         request.setAttribute("student", student);
-
         request.getRequestDispatcher("/WEB-INF/notes.jsp").forward(request, response);
     }
 

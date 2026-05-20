@@ -28,7 +28,18 @@
         <div class="sk-search">
           <i class="ri-search-line"></i>
           <span>Search</span>
-        </div>
+           </div>
+                      <a href="${pageContext.request.contextPath}/student/Settings" class="sk-avatar">
+                <c:choose>
+                    <c:when test="${not empty student.image}">
+                        <img src="${pageContext.request.contextPath}/${student.image}" alt="${student.firstName}" />
+                    </c:when>
+                    <c:otherwise>
+                        <i class="ri-user-3-line"></i>
+                    </c:otherwise>
+                </c:choose>
+            </a>
+        
       </div>
 
       <c:if test="${not empty noteSuccess}">

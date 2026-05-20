@@ -27,18 +27,16 @@
             <div class="sk-topbar">
                 <h2>Class Reservation</h2>
                 <%-- Profile avatar --%>
-                <a href="${pageContext.request.contextPath}/StudentSettingsServlet" class="sk-avatar">
-                    <c:choose>
-                        <c:when test="${not empty student.image}">
-                            <%-- student.image → SettingsStudentModel.getImage() → DB: Student.image --%>
-                            <img src="${pageContext.request.contextPath}/uploads/profiles/${student.image}"
-                                 alt="Profile" />
-                        </c:when>
-                        <c:otherwise>
-                            <i class="ri-user-line"></i>
-                        </c:otherwise>
-                    </c:choose>
-                </a>
+                           <a href="${pageContext.request.contextPath}/student/Settings" class="sk-avatar">
+                <c:choose>
+                    <c:when test="${not empty student.image}">
+                        <img src="${pageContext.request.contextPath}/${student.image}" alt="${student.firstName}" />
+                    </c:when>
+                    <c:otherwise>
+                        <i class="ri-user-3-line"></i>
+                    </c:otherwise>
+                </c:choose>
+            </a>
             </div>
 
             <%-- ── Feedback alerts ── --%>
@@ -183,7 +181,7 @@
         </main>
     </div>
 
-    <%-- Footer inside .sk-page so CSS selectors apply --%>
+    
     <jsp:include page="/WEB-INF/_footer.jsp"/>
 </div>
 

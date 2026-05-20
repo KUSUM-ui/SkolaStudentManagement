@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Create Notes</title>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skola.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/notes.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -25,64 +25,26 @@
       <div class="sk-topbar">
         <div class="sk-on-back-row">
           <a href="${pageContext.request.contextPath}/student/notes" class="sk-on-back">
-            <i class="ri-arrow-left-s-line"></i> Create note
+            <i class="ri-arrow-left-s-line"></i> Create Note
           </a>
         </div>
-       <div class="sk-topbar">
 
-    <div class="sk-on-back-row">
-        <a href="${pageContext.request.contextPath}/student/notes"
-           class="sk-on-back">
-
-            <i class="ri-arrow-left-s-line"></i>
-            Create Note
-
-        </a>
-    </div>
-
-   
-    <div class="sk-avatar">
-
-        <c:choose>
-
+        <div class="sk-avatar">
+          <c:choose>
             <c:when test="${not empty sessionScope.student.image}">
-
-                <img
-                    src="${pageContext.request.contextPath}/${sessionScope.student.image}"
-                    alt="${sessionScope.student.firstName}"
-
-                    style="
-                        width:44px;
-                        height:44px;
-                        border-radius:50%;
-                        object-fit:cover;
-                    "
-                >
-
+              <img
+                src="${pageContext.request.contextPath}/${sessionScope.student.image}"
+                alt="${sessionScope.student.firstName}"
+                class="sk-avatar-img"
+              />
             </c:when>
-
             <c:otherwise>
-
-                <div style="
-                    width:44px;
-                    height:44px;
-                    border-radius:50%;
-                    background:#f2f2f2;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    font-size:20px;
-                ">
-                    <i class="ri-user-3-line"></i>
-                </div>
-
+              <div class="sk-avatar-placeholder">
+                <i class="ri-user-3-line"></i>
+              </div>
             </c:otherwise>
-
-        </c:choose>
-
-    </div>
-
-</div>
+          </c:choose>
+        </div>
       </div>
 
       <c:if test="${not empty noteSuccess}">
@@ -101,10 +63,10 @@
         <input type="text" name="title" placeholder="Title" class="sk-cn-title"
                value="${not empty param.title ? param.title : ''}"/>
 
-        <!-- If your servlet does getParameter("noteContent") -->
         <textarea name="body" placeholder="Create new note" class="sk-cn-body"></textarea>
+
         <div class="sk-cn-btn-row">
-          <button type="submit" class="sk-btn" style="padding:9px 28px;">Save</button>
+          <button type="submit" class="sk-btn">Save</button>
           <button type="button" class="sk-cn-exit"
                   onclick="location.href='${pageContext.request.contextPath}/student/notes'">Exit</button>
         </div>
@@ -119,4 +81,3 @@
 
 </body>
 </html>
-    
