@@ -1,0 +1,370 @@
+/* ═══════════════════════════════════════════════════
+   SETTINGS PAGE — TARGETED OVERRIDES
+   Add at the very END of skola.css (after all existing rules)
+   ═══════════════════════════════════════════════════ */
+
+/* ── 1. Hide raw file input ── */
+.sk-page #avatarFile { display: none !important; }
+
+/* ── 2. Outer wrap — no extra card chrome ── */
+.sk-page .sk-settings-wrap {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+    padding: 0 0 60px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+.sk-page.sk-student .sk-main,
+.sk-page .sk-main {
+    background: #FFF5F5 !important;
+}
+
+.sk-page .sk-settings-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+/* ── 3. Section blocks — divider lines ── */
+.sk-page .sk-settings-section {
+    padding: 32px 0 !important;
+    border-bottom: 1px solid var(--border) !important;
+    background: transparent !important;
+}
+
+.sk-page .sk-settings-section:first-of-type { padding-top: 0 !important; }
+.sk-page .sk-settings-section:last-of-type  { border-bottom: none !important; }
+
+/* ── 4. Profile row: avatar | meta | actions pushed right ── */
+.sk-page .sk-profile-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 24px !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Avatar circle */
+.sk-page .sk-avatar-wrap { position: relative; flex-shrink: 0; }
+
+.sk-page .sk-avatar-wrap .sk-avatar-img {
+    width: 96px !important;
+    height: 96px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    border: 2px solid var(--red-light) !important;
+}
+
+.sk-page .sk-avatar-wrap .sk-avatar-placeholder {
+    width: 96px !important;
+    height: 96px !important;
+    border-radius: 50% !important;
+    background: var(--red-pale) !important;
+    border: 2px solid var(--red-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.sk-page .sk-avatar-wrap .sk-avatar-placeholder i {
+    font-size: 38px !important;
+    color: var(--red) !important;
+    opacity: 0.5 !important;
+}
+
+/* Green dot */
+.sk-page .sk-avatar-badge {
+    position: absolute !important;
+    bottom: 4px !important;
+    right: 4px !important;
+    width: 13px !important;
+    height: 13px !important;
+    border-radius: 50% !important;
+    background: #22c55e !important;
+    border: 2px solid #fff !important;
+}
+
+/* Profile name / email / grade */
+.sk-page .sk-profile-meta {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    min-width: 0 !important;
+}
+
+.sk-page .sk-profile-meta .sk-profile-name {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: var(--text) !important;
+    margin: 0 0 2px !important;
+}
+
+.sk-page .sk-profile-meta .sk-profile-email,
+.sk-page .sk-profile-meta .sk-profile-grade {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    font-size: 13px !important;
+    color: var(--muted) !important;
+}
+
+.sk-page .sk-profile-meta .sk-profile-email i,
+.sk-page .sk-profile-meta .sk-profile-grade i {
+    font-size: 14px !important;
+    color: var(--red) !important;
+    opacity: 0.8 !important;
+}
+
+/* Action buttons — pushed to far right */
+.sk-page .sk-avatar-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+}
+
+.sk-page .sk-avatar-btn-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* "Choose Photo" label acts as button */
+.sk-page label.sk-btn.sk-btn-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    padding: 9px 18px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    background: var(--red) !important;
+    color: #fff !important;
+    border: none !important;
+    transition: background 0.15s !important;
+    line-height: 1 !important;
+}
+
+.sk-page label.sk-btn.sk-btn-icon:hover { background: var(--red-hover) !important; }
+
+/* Upload button */
+.sk-page .sk-avatar-btn-row .sk-btn:not(.sk-btn-icon) {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 9px 18px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    background: var(--red) !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+}
+
+/* Remove Photo */
+.sk-page .sk-btn-remove {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 9px 18px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--white) !important;
+    color: var(--text) !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    transition: background 0.15s, color 0.15s, border-color 0.15s !important;
+}
+
+.sk-page .sk-btn-remove:hover {
+    background: #fff1f2 !important;
+    border-color: #fca5a5 !important;
+    color: #b91c1c !important;
+}
+
+/* ── 5. Section label row: icon | h3 (flex:1) | badge ── */
+.sk-page .sk-section-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.sk-page .sk-section-label i {
+    font-size: 18px !important;
+    color: var(--red) !important;
+    flex-shrink: 0 !important;
+}
+
+.sk-page .sk-section-label h3 {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+    flex: 1 !important;
+}
+
+.sk-page .sk-section-badge {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: var(--muted) !important;
+    background: var(--red-pale) !important;
+    border: 1px solid var(--red-light) !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+/* ── 6. Info grid (read-only fields) ── */
+.sk-page .sk-info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px 28px !important;
+}
+
+.sk-page .sk-info-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+   
+}
+
+.sk-page .sk-info-field label {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.7px !important;
+    text-transform: uppercase !important;
+    color: var(--muted) !important;
+}
+
+.sk-page .sk-info-value {
+    padding: 11px 16px !important;
+    background: #fafafa !important;
+    border: 1px solid var(--red-light) !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    color: var(--text) !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* ── 7. Contact / Password headings ── */
+.sk-page .sk-settings-section > h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--text) !important;
+    margin: 0 0 18px !important;
+}
+
+/* ── 8. Editable form inputs ── */
+.sk-page .sk-settings-form label {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.7px !important;
+    text-transform: uppercase !important;
+    color: var(--muted) !important;
+    margin-bottom: 6px !important;
+}
+
+.sk-page .sk-settings-form input {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    background:  var(--white)  !important;
+    font-size: 14px !important;
+    color: var(--text) !important;
+    font-family: inherit !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.15s, box-shadow 0.15s !important;
+}
+
+.sk-page .sk-settings-form input:focus {
+    border-color: var(--red) !important;
+    background: var(--white) !important;
+    box-shadow: 0 0 0 3px rgba(155,35,53,0.10) !important;
+}
+
+.sk-page .sk-settings-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* phone = single col */
+    max-width: 500px !important;
+    gap: 0 !important;
+    margin-bottom: 18px !important;
+}
+
+.sk-page .sk-settings-password {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    max-width: 480px !important;
+    margin-bottom: 18px !important;
+}
+
+.sk-page .sk-settings-actions {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 4px !important;
+}
+
+/* ── 9. Logout ── */
+.sk-page .sk-settings-logout {
+    display: flex !important;
+    justify-content: flex-end !important;
+    padding-top: 24px !important;
+}
+
+.sk-page .sk-btn-ghost {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 10px 22px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    border: 1.5px solid transparent !important;
+    transition: background 0.15s, color 0.15s, border-color 0.15s !important;
+}
+
+.sk-page .sk-btn-danger {
+    background: #fff1f2 !important;
+    color: #b91c1c !important;
+    border-color: #fca5a5 !important;
+}
+
+.sk-page .sk-btn-danger:hover {
+    background: #b91c1c !important;
+    color: #fff !important;
+    border-color: #b91c1c !important;
+}
+
+/* ── 10. Responsive ── */
+@media (max-width: 768px) {
+    .sk-page .sk-profile-row    { flex-wrap: wrap !important; }
+    .sk-page .sk-avatar-actions { margin-left: 0 !important; width: 100% !important; align-items: flex-start !important; }
+    .sk-page .sk-info-grid      { grid-template-columns: 1fr !important; }
+    .sk-page .sk-settings-actions { flex-direction: column-reverse !important; }
+}
