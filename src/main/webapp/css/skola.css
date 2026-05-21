@@ -1,0 +1,5597 @@
+@charset "UTF-8";
+
+/* ════════════════════════════════════════════
+   SKOLA — SHARED STYLESHEET
+   Sections:
+      1.  Reset & Base
+      2.  Login Page
+      3.  Shared Dashboard Layout
+      4.  Admin Dashboard
+      5.  Student Dashboard
+      6.  Announcements Page
+      7.  Student Club Registration Page
+      8.  Profile Settings Page
+      9.  Admin Student Page
+     10.  Student Requests Page (Admin)
+     11.  Student Notes Page
+     12.  Admin View Student Details Page
+     13.  Edit Student Details Page
+     14.  View Students Page
+     15.  Schedule Page
+     16.  Report Page
+     17.  Class Reservation Page
+     18.  Registration Approvals Page
+     19.  Student Registration Page (register.jsp)
+     20.  Admin-Schedule Filter Button
+     21.  Student Details Filter Panel
+     22.  Edit Page Selects & Alerts
+     23.  Report Filter Submit Button
+     24.  Admin Student Hero & Actions
+     25.  Admin Dashboard Stats & Announcements
+     26.  Student Registration Form (student-register.jsp)
+   ════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────
+   1. RESET & BASE
+   ───────────────────────────────────── */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+
+/* ─────────────────────────────────────
+   2. LOGIN PAGE
+   ───────────────────────────────────── */
+
+.sk-login-page {
+    display: flex;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+}
+
+.sk-login-left {
+    width: 44%;
+    min-height: 100vh;
+    background: #9b2335;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sk-login-center-brand {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+    padding-right: 60px;
+}
+
+.sk-login-logo-img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
+    margin-right: -8px;
+}
+
+.sk-login-logo-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 72px;
+    letter-spacing: 4px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.sk-login-bottom-brand {
+    width: 100%;
+    padding: 0 44px 44px;
+    position: relative;
+    z-index: 2;
+}
+
+.sk-login-welcome {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+    line-height: 1.1;
+}
+
+.sk-login-tagline {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.sk-login-blob {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.13);
+    z-index: 1;
+}
+
+.sk-login-blob-1 {
+    width: 300px;
+    height: 300px;
+    bottom: -70px;
+    right: -80px;
+}
+
+.sk-login-blob-2 {
+    width: 190px;
+    height: 190px;
+    bottom: 80px;
+    right: 50px;
+}
+
+.sk-login-blob-3 {
+    width: 130px;
+    height: 130px;
+    top: 40px;
+    right: 20px;
+}
+
+.sk-login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    background: #ffffff;
+}
+
+.sk-login-form-wrap {
+    width: 100%;
+    max-width: 420px;
+}
+
+.sk-login-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: #2d2d2d;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.sk-login-sub {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.sk-login-tabs {
+    display: flex;
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 0px;
+    gap: 4px;
+}
+
+.sk-login-tabs input[type="radio"] {
+    display: none;
+}
+
+.sk-login-tabs label {
+    flex: 1;
+    text-align: center;
+    padding: 9px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #7a7a7a;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+
+#tab-admin:checked ~ label[for="tab-admin"],
+#tab-student:checked ~ label[for="tab-student"] {
+    background: #ffffff;
+    color: #9b2335;
+    font-weight: 700;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+}
+
+.sk-login-error {
+    background: #ffecec;
+    color: #9b2335;
+    border-left: 3px solid #9b2335;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.sk-login-field {
+    margin-bottom: 16px;
+}
+
+.sk-login-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 6px;
+}
+
+.sk-login-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sk-login-input-icon {
+    position: absolute;
+    left: 13px;
+    font-size: 15px;
+    color: #b0b0b0;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.sk-login-input-wrap input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    font-size: 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fafafa;
+    color: #2d2d2d;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.sk-login-input-wrap input::placeholder {
+    color: #c0c0c0;
+}
+
+.sk-login-input-wrap input:focus {
+    border-color: #9b2335;
+    background: #ffffff;
+}
+
+.sk-login-btn {
+    width: 100%;
+    padding: 13px;
+    background: #9b2335;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+    font-family: inherit;
+    margin-top: 8px;
+}
+
+.sk-login-btn:hover {
+    background: #7a1a28;
+}
+
+@media (max-width: 768px) {
+    .sk-login-page {
+        flex-direction: column;
+    }
+    .sk-login-left {
+        width: 100%;
+        min-height: 320px;
+    }
+    .sk-login-center-brand {
+        padding-right: 0;
+    }
+    .sk-login-logo-img { width: 100px; height: 100px; }
+    .sk-login-logo-text { font-size: 48px; }
+    .sk-login-welcome { font-size: 28px; }
+    .sk-login-bottom-brand { padding: 0 28px 32px; }
+    .sk-login-right {
+        padding: 40px 24px 56px;
+    }
+}
+   
+
+
+/* ─────────────────────────────────────
+   3. SHARED DASHBOARD LAYOUT
+   Scoped under .sk-page
+   ───────────────────────────────────── */
+
+.sk-page {
+    --red:       #9b2335;
+    --red-hover: #7a1a28;
+    --red-pale:  #f5dde0;
+    --red-light: #e8c4c9;
+    --white:     #ffffff;
+    --text:      #2d2d2d;
+    --muted:     #7a7a7a;
+    --border:    #e0e0e0;
+
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--white);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.sk-page .sk-app {
+    display: flex;
+    flex: 1;
+}
+
+/* ── Sidebar ── */
+.sk-page .sk-sidebar {
+    width: 200px;
+    min-height: 100vh;
+    background: var(--red-pale);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-sidebar .nav-logo,
+.sk-page .sk-sidebar .sk-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 0 4px;
+}
+
+.sk-page .sk-sidebar .logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-sidebar .logo-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+/* ── Nav links ── */
+.sk-page .sk-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sk-page .sk-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s;
+}
+
+.sk-page .sk-nav a i {
+    font-size: 17px;
+    font-family: 'remixicon' !important;
+    font-style: normal;
+}
+
+.sk-page .sk-nav a:hover {
+    background: var(--red-light);
+}
+
+.sk-page .sk-nav a.active {
+    background: var(--red) !important;
+    color: var(--white) !important;
+}
+
+.sk-page .sk-nav a.active i {
+    color: var(--white) !important;
+}
+
+/* ── Main content area ── */
+.sk-page .sk-main {
+    flex: 1;
+    padding: 28px 32px;
+    background: var(--white);
+}
+
+/* ── Topbar ── */
+.sk-page .sk-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.sk-page .sk-topbar h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sk-page .sk-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ── Avatar ── */
+.sk-page .sk-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+}
+
+.sk-page .sk-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sk-page .sk-avatar i {
+    font-size: 26px;
+    color: #aaa;
+}
+
+/* ── Search ── */
+.sk-page .sk-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.sk-page .sk-search i {
+    font-size: 15px;
+}
+
+/* ── Generic card ── */
+.sk-page .sk-card {
+    background: var(--red-pale);
+    border-radius: 12px;
+    padding: 18px;
+}
+
+/* ── Generic row ── */
+.sk-page .sk-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+/* ── Solid button ── */
+.sk-page .sk-btn {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sk-page .sk-btn:hover {
+    background: var(--red-hover);
+}
+
+/* ── Outline button ── */
+.sk-page .sk-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sk-page .sk-btn-outline:hover {
+    background: var(--red-pale);
+}
+
+/* ── Success message ── */
+.sk-page .sk-success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* ── Generic alert banners (all pages) ── */
+.sk-page .sk-alert {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+.sk-page .sk-alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+.sk-page .sk-alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* ── Registration field: full-width spans both grid columns ── */
+.sk-page .sk-reg-field--full {
+    grid-column: 1 / -1;
+}
+
+/* ── Footer ── */
+.sk-page .sk-footer {
+    background: var(--red);
+    color: var(--white);
+    padding: 32px 48px 14px;
+}
+
+.sk-page .sk-footer-top {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 24px;
+}
+
+.sk-page .sk-footer-brand {
+    flex: 1.5;
+}
+
+.sk-page .sk-footer-brand .sk-footer-logo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.sk-page .sk-footer-brand p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+.sk-page .sk-footer-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.sk-page .sk-footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.sk-page .sk-footer-col a:hover {
+    color: var(--white);
+}
+
+.sk-page .sk-footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 5px;
+}
+
+.sk-page .sk-footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+}
+
+.sk-page .sk-footer-bottom a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    margin-left: 14px;
+}
+
+
+/* ─────────────────────────────────────
+   4. ADMIN DASHBOARD  (.sk-admin)
+   ───────────────────────────────────── */
+
+.sk-admin .sk-announce-box {
+    flex: 2;
+}
+
+.sk-admin .sk-announce-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sk-admin .sk-announce-header span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sk-admin .sk-announce-box textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    resize: none;
+    height: 72px;
+    color: var(--muted);
+    font-family: inherit;
+    outline: none;
+}
+
+.sk-admin .sk-announce-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.sk-admin .sk-announce-footer i {
+    font-size: 18px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.sk-admin .sk-stat-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-admin .sk-stat-card i  { font-size: 22px; color: var(--red); }
+.sk-admin .sk-stat-label   { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.sk-admin .sk-stat-count   { font-size: 38px; font-weight: 800; line-height: 1; }
+.sk-admin .sk-stat-desc    { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+.sk-admin .sk-action-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    cursor: pointer;
+}
+
+.sk-admin .sk-action-card span { font-size: 13px; font-weight: 500; }
+.sk-admin .sk-action-card i    { font-size: 44px; color: var(--red); opacity: 0.75; }
+
+.sk-admin .sk-mid-row   { display: flex; gap: 14px; margin-bottom: 20px; }
+.sk-admin .sk-mid-left  { flex: 2; }
+.sk-admin .sk-mid-right { flex: 1; }
+
+.sk-admin .sk-recent-label { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+
+.sk-admin .sk-recent-box {
+    background: var(--red-pale);
+    border-radius: 12px;
+    min-height: 300px;
+    padding: 14px;
+}
+
+.sk-admin .sk-club-section h3     { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.sk-admin .sk-club-table          { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.sk-admin .sk-club-row            { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid #f0f0f0; }
+.sk-admin .sk-club-row:last-child { border-bottom: none; }
+.sk-admin .sk-club-row span       { font-size: 13px; font-weight: 500; }
+.sk-admin .sk-club-actions        { display: flex; gap: 6px; }
+.sk-admin .sk-view-all-link       { text-align: right; font-size: 12px; color: var(--muted); margin-top: 8px; cursor: pointer; }
+
+
+/* ─────────────────────────────────────
+   5. STUDENT DASHBOARD  (.sk-student)
+   ───────────────────────────────────── */
+
+
+/* ─────────────────────────────────────
+   5. STUDENT DASHBOARD  (.sk-student)
+   ───────────────────────────────────── */
+
+/* ── Main background ── */
+.sk-student .sk-main {
+    background: #ffffff;
+}
+
+/* ── Row 1: Schedule + Profile ── */
+.sk-student .sk-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: stretch;
+}
+
+/* ── Schedule card ── */
+.sk-student .sk-card-schedule {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+}
+
+.sk-student .sk-card-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.sk-student .sk-today-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-student .sk-today-label strong {
+    color: var(--red);
+}
+
+.sk-student .sk-view-all {
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+/* ── Schedule table ── */
+.sk-student .sk-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-student .sk-schedule-table thead tr {
+    background: #f8f4f5;
+    border-radius: 8px;
+}
+
+.sk-student .sk-schedule-table th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-student .sk-schedule-table th:first-child { border-radius: 8px 0 0 8px; }
+.sk-student .sk-schedule-table th:last-child  { border-radius: 0 8px 8px 0; }
+
+.sk-student .sk-schedule-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.sk-student .sk-schedule-table tbody tr:last-child td { border-bottom: none; }
+.sk-student .sk-schedule-table tbody tr:hover { background: #fdf5f6; }
+
+.sk-student .sk-schedule-empty {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+    padding: 24px 0;
+}
+
+
+
+/* ── Profile card ── */
+.sk-student .sk-card-profile {
+    flex: 1;
+    background: var(--red);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sk-student .sk-card-profile::before {
+    content: '';
+    position: absolute;
+    top: -24px; right: -24px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+
+.sk-student .sk-card-profile::after {
+    content: '';
+    position: absolute;
+    bottom: -18px; left: -18px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.sk-student .sk-card-profile i {
+    font-size: 30px;
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.15);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.25);
+    margin-bottom: 2px;
+}
+
+.sk-student .sk-profile-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+.sk-student .sk-profile-class {
+    font-size: 34px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.sk-student .sk-profile-sem {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+}
+
+.sk-student .sk-profile-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* ── Announcement card ── */
+.sk-card-announce {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+}
+
+.sk-announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-announcement-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.sk-announcement-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.sk-announcement-container::-webkit-scrollbar { width: 4px; }
+.sk-announcement-container::-webkit-scrollbar-track { background: transparent; }
+.sk-announcement-container::-webkit-scrollbar-thumb { background: var(--red-light); border-radius: 4px; }
+
+.sk-announcement-card {
+    background: #fdf4f5;
+    border: 1px solid #f0d8db;
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: transform 0.15s ease;
+}
+
+.sk-announcement-card:hover {
+    transform: translateY(-1px);
+}
+
+.sk-ann-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.sk-announcement-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    flex: 1;
+}
+
+.sk-ann-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: capitalize;
+}
+
+.sk-ann-badge-academics    { background: #e8f0ff; color: #1d4ed8; }
+.sk-ann-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+.sk-announcement-content {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.sk-ann-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.sk-ann-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sk-ann-attachment:hover { text-decoration: underline; }
+
+.sk-empty-state {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 32px 0;
+}
+
+/* ── Notes section ── */
+.sk-student .sk-notes-section {
+    margin-top: 0;
+}
+
+.sk-student .sk-notes-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.sk-student .sk-notes-row {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.sk-student .sk-notes-area {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    min-height: 140px;
+    position: relative;
+}
+
+.sk-student .sk-notes-area p {
+    font-size: 13px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-student .sk-notes-area p:last-of-type {
+    border-bottom: none;
+}
+
+.sk-student .sk-notes-area .sk-view-all {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-notes-area .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+.sk-student .sk-new-note {
+    flex: 1;
+    background: #fdf4f5;
+    border: 1.5px dashed #d4848e;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sk-student .sk-new-note:hover {
+    background: #e6f4ec;
+}
+
+.sk-student .sk-new-note .sk-pins {
+    font-size: 28px;
+}
+.sk-student .sk-new-note:hover {
+    background: #f5dde0;
+}
+
+.sk-student .sk-new-note p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #9b2335;
+}
+
+
+/* ─────────────────────────────────────
+   8. STUDENT CLUB REGISTRATION PAGE
+   ───────────────────────────────────── */
+
+.sk-club-page-title {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.sk-club-register-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #e9dddd;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.sk-club-register-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #c62828;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sk-club-register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sk-club-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-club-field label {
+    font-size: 13px;
+    color: #333;
+}
+
+.sk-club-field input,
+.sk-club-field select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #bbb;
+    border-radius: 25px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.sk-club-field input:focus,
+.sk-club-field select:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.15);
+}
+
+.sk-club-register-btn {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    background: #c62828;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sk-club-register-btn:hover {
+    background: #a61b1b;
+}
+
+@media (min-width: 768px) {
+    .sk-club-register-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .sk-club-register-btn {
+        grid-column: span 2;
+    }
+}
+
+
+/* ─────────────────────────────────────
+   9. PROFILE SETTINGS PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-settings-card {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px 40px;
+    background: #efefef;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.sk-page .sk-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.sk-page .sk-settings-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.sk-page .sk-settings-header i {
+    font-size: 22px;
+    color: #888;
+}
+
+.sk-page .sk-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.sk-page .sk-profile-pic {
+    width: 180px;
+    height: 180px;
+    background: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sk-page .sk-profile-pic i {
+    font-size: 40px;
+    color: #999;
+}
+
+.sk-page .sk-profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sk-page .sk-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+    margin-bottom: 25px;
+}
+
+.sk-page .sk-settings-form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.sk-page .sk-settings-form input,
+.sk-page .sk-settings-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.sk-page .sk-settings-form input:focus,
+.sk-page .sk-settings-form select:focus {
+    border-color: #9b2335;
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.1);
+}
+
+.sk-page .sk-settings-password {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+    max-width: 350px;
+}
+
+.sk-page .sk-settings-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Section title within a settings form */
+.sk-page .sk-settings-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+}
+
+/* Visually separate multiple forms inside the settings card */
+.sk-page .sk-settings-form + .sk-settings-form {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.sk-page .sk-settings-logout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .sk-page .sk-settings-grid {
+        grid-template-columns: 1fr;
+    }
+    .sk-page .sk-profile-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .sk-page .sk-profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+    .sk-page .sk-settings-card {
+        padding: 20px;
+    }
+}
+
+
+/* ─────────────────────────────────────
+   10. ADMIN STUDENT PAGE  (.sk-adstu-)
+   ───────────────────────────────────── */
+
+.sk-page .sk-adstu-top-row {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-adstu-stat-card {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 20px 26px;
+}
+
+.sk-page .sk-adstu-stat-icon {
+    font-size: 26px;
+    color: var(--red);
+    margin-bottom: 2px;
+}
+
+.sk-page .sk-adstu-stat-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    overflow: hidden;
+    border: 2px solid var(--red-light);
+}
+
+.sk-page .sk-adstu-stat-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sk-page .sk-adstu-stat-img i {
+    font-size: 22px;
+    color: #aaa;
+}
+
+.sk-page .sk-adstu-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-adstu-select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sk-page .sk-adstu-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--red-pale);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 44px 12px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    min-width: 150px;
+    font-family: inherit;
+}
+
+.sk-page .sk-adstu-arrow {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: var(--text);
+    pointer-events: none;
+    line-height: 1;
+}
+
+.sk-page .sk-adstu-action-row {
+    margin-bottom: 22px;
+}
+
+.sk-page .sk-adstu-action-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 20px 18px;
+    min-height: 160px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+}
+
+.sk-page .sk-adstu-action-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+.sk-page .sk-adstu-action-card > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.sk-page .sk-adstu-action-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-adstu-action-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sk-page .sk-adstu-action-img i {
+    font-size: 36px;
+    color: var(--red);
+    opacity: 0.75;
+}
+
+.sk-page .sk-adstu-action-icon {
+    font-size: 54px;
+    color: var(--text);
+    opacity: 0.70;
+    align-self: center;
+}
+
+.sk-page .sk-adstu-action-outline {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.sk-page .sk-adstu-add-reg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sk-page .sk-adstu-add-plus {
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--red);
+    line-height: 1;
+}
+
+.sk-page .sk-adstu-add-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--red);
+    line-height: 1.4;
+}
+
+.sk-page .sk-adstu-manage-label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.sk-page .sk-adstu-account-card {
+    background: var(--red-pale);
+    border-radius: 12px;
+    margin-bottom: 0;
+    padding: 26px 26px 40px;
+}
+
+.sk-page .sk-adstu-account-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.sk-page .sk-adstu-account-actions {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-adstu-btn {
+    padding: 12px 28px;
+    font-size: 14px;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+
+/* ─────────────────────────────────────
+   14. STUDENT REGISTRATION PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-reg-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+}
+
+.sk-page .sk-reg-page-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 28px;
+    font-family: inherit;
+}
+
+.sk-page .sk-reg-card {
+    background: var(--red-pale);
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+}
+
+.sk-page .sk-reg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+}
+
+.sk-page .sk-reg-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sk-page .sk-reg-field--full {
+    grid-column: 1 / 2;
+}
+
+.sk-page .sk-reg-field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.sk-page .sk-reg-field input {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #fff;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: box-shadow 0.2s;
+    font-family: inherit;
+    box-shadow: 0 0 0 1px transparent;
+}
+
+.sk-page .sk-reg-field input:focus {
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.18);
+}
+
+.sk-page .sk-reg-submit-row {
+    display: flex;
+    justify-content: center;
+}
+
+.sk-page .sk-reg-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 80px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.sk-page .sk-reg-btn:hover {
+    background: var(--red-hover);
+}
+
+
+/* ─────────────────────────────────────
+   16. STUDENT REQUESTS PAGE (ADMIN)
+   ───────────────────────────────────── */
+
+.sk-sreq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-sreq-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.sk-sreq-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sk-sreq-avatar i   { font-size: 30px; color: #aaa; }
+.sk-sreq-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.sk-sreq-info { flex: 1; }
+
+.sk-sreq-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.sk-sreq-course {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.sk-sreq-details { display: flex; gap: 48px; }
+
+.sk-sreq-col p {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.sk-sreq-col p span { font-weight: 700; }
+
+.sk-sreq-action {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.sk-sreq-approve-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.sk-sreq-empty {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* ─────────────────────────────────────
+   17. STUDENT NOTES PAGE  (.sk-notes-)
+   ───────────────────────────────────── */
+
+.sk-page .sk-notes-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sk-page .sk-notes-error {
+    font-size: 13px;
+    color: var(--red);
+    margin-bottom: 14px;
+}
+
+.sk-page .sk-notes-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sk-page .sk-notes-list-card {
+    padding: 24px 28px 28px;
+}
+
+.sk-page .sk-notes-list-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.sk-page .sk-notes-ol {
+    list-style: decimal;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sk-page .sk-notes-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.sk-page .sk-notes-item:last-child { border-bottom: none; }
+
+.sk-page .sk-notes-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+
+.sk-page .sk-notes-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sk-page .sk-notes-item-preview {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sk-page .sk-notes-delete-form { flex-shrink: 0; }
+
+.sk-page .sk-notes-delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 16px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+}
+
+.sk-page .sk-notes-delete-btn:hover {
+    color: var(--red);
+    background: var(--red-pale);
+}
+
+.sk-page .sk-notes-empty {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 16px 0;
+}
+
+.sk-page .sk-notes-form-card {
+    border: 1.5px solid var(--red);
+    background: var(--white);
+    padding: 20px 24px 18px;
+}
+
+.sk-page .sk-notes-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sk-page .sk-notes-title-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.sk-page .sk-notes-title-input:focus { border-color: var(--red); }
+
+.sk-page .sk-notes-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--muted);
+    resize: none;
+    outline: none;
+}
+
+.sk-page .sk-notes-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+}
+
+.sk-page .sk-notes-add-btn {
+    padding: 8px 22px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sk-page .sk-notes-add-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+
+/* ─────────────────────────────────────
+   18. ADMIN VIEW STUDENT DETAILS PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-adstu-view-filters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-adstu-view-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 32px;
+}
+
+.sk-page .sk-adstu-view-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 32px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.12s;
+}
+
+.sk-page .sk-adstu-view-row:hover      { background: #fdf6f7; }
+.sk-page .sk-adstu-view-row:last-child { border-bottom: none; }
+
+.sk-page .sk-adstu-view-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.sk-page .sk-adstu-view-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-page .sk-adstu-view-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    align-items: center;
+}
+
+.sk-page .sk-adstu-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.sk-page .sk-adstu-meta-item i {
+    font-size: 13px;
+    color: var(--red);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-adstu-placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+.sk-page .sk-adstu-edit-btn {
+    display: inline-block;
+    padding: 7px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    background: transparent;
+    border: 1.5px solid var(--red);
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-adstu-edit-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.sk-page .sk-adstu-view-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+    text-align: center;
+}
+
+.sk-page .sk-adstu-view-empty p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+
+/* ─────────────────────────────────────
+   19. EDIT STUDENT DETAILS PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-edit-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.sk-page .sk-edit-back-link i    { font-size: 16px; line-height: 1; }
+.sk-page .sk-edit-back-link:hover { color: var(--red-hover); }
+
+.sk-page .sk-edit-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0 48px;
+}
+
+.sk-page .sk-edit-card {
+    width: 100%;
+    max-width: 680px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 32px 40px 36px;
+}
+
+.sk-page .sk-edit-card-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.sk-page .sk-edit-card-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sk-page .sk-edit-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.sk-page .sk-edit-card-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.sk-page .sk-edit-photo-input { display: none; }
+
+.sk-page .sk-edit-avatar-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #ececec;
+    border: 3px solid var(--red-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sk-page .sk-edit-avatar-upload { cursor: pointer; }
+
+.sk-page .sk-edit-avatar-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sk-page .sk-edit-avatar-img--hidden { display: none; }
+
+.sk-page .sk-edit-avatar-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.sk-page .sk-edit-avatar-placeholder i { font-size: 28px; color: #aaa; }
+
+.sk-page .sk-edit-avatar-hint {
+    font-size: 9px;
+    color: #aaa;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.sk-page .sk-edit-avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(155, 35, 53, 0.55);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.sk-page .sk-edit-avatar-overlay i { font-size: 22px; color: #fff; }
+
+.sk-page .sk-edit-avatar-circle:hover .sk-edit-avatar-overlay { opacity: 1; }
+
+.sk-page .sk-edit-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+}
+
+.sk-page .sk-edit-section-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.sk-page .sk-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.sk-page .sk-edit-field-full {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-page .sk-edit-field-full label,
+.sk-page .sk-edit-field-half label {
+    font-size: 12.5px;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.sk-page .sk-edit-field-full input,
+.sk-page .sk-edit-field-half input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.sk-page .sk-edit-field-full input:focus,
+.sk-page .sk-edit-field-half input:focus {
+    border-color: var(--red);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-edit-field-full input::placeholder,
+.sk-page .sk-edit-field-half input::placeholder {
+    color: #c0c0c0;
+    font-size: 13px;
+}
+
+.sk-page .sk-edit-input-readonly {
+    background: #f0f0f0 !important;
+    color: var(--muted) !important;
+    cursor: not-allowed !important;
+    border-color: #e0e0e0 !important;
+}
+
+.sk-page .sk-edit-input-readonly:focus {
+    border-color: #e0e0e0 !important;
+    box-shadow: none !important;
+}
+
+.sk-page .sk-edit-row {
+    display: flex;
+    gap: 16px;
+}
+
+.sk-page .sk-edit-field-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-page .sk-edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.sk-page .sk-edit-remove-btn { color: var(--red); border-color: var(--red); }
+.sk-page .sk-edit-remove-btn:hover { background: var(--red); color: var(--white); }
+
+@media (max-width: 768px) {
+    .sk-page .sk-edit-card    { padding: 24px 20px 28px; }
+    .sk-page .sk-edit-row     { flex-direction: column; gap: 14px; }
+    .sk-page .sk-edit-actions { flex-direction: column-reverse; }
+    .sk-page .sk-edit-actions .sk-btn,
+    .sk-page .sk-edit-actions .sk-btn-outline { width: 100%; text-align: center; }
+}
+
+
+/* ─────────────────────────────────────
+   20. VIEW STUDENTS PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-view-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0 48px;
+}
+
+.sk-page .sk-view-card {
+    width: 100%;
+    max-width: 680px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 8px 24px 16px;
+}
+
+.sk-page .sk-view-list { display: flex; flex-direction: column; }
+
+.sk-page .sk-view-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-page .sk-view-row:last-child { border-bottom: none; }
+
+.sk-page .sk-view-row-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ececec;
+    border: 2px solid var(--red-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sk-page .sk-view-row-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sk-page .sk-view-row-avatar i   { font-size: 20px; color: #aaa; }
+
+.sk-page .sk-view-row-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.sk-page .sk-view-row-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.sk-page .sk-view-row-meta { font-size: 12px; color: var(--muted); }
+
+.sk-page .sk-view-row-btn {
+    padding: 6px 18px;
+    font-size: 13px;
+    border-radius: 7px;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-view-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 48px 0;
+    color: var(--muted);
+}
+
+.sk-page .sk-view-empty p { font-size: 13px; }
+
+
+/* ─────────────────────────────────────
+   21. SCHEDULE PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-stusch-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sk-page .sk-stusch-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 12px;
+    background: var(--white);
+}
+
+.sk-page .sk-stusch-search {
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--text);
+    background: transparent;
+    width: 180px;
+}
+
+.sk-page .sk-sch-filter-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-sch-select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sk-page .sk-sch-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--red-pale);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    min-width: 160px;
+    font-family: inherit;
+}
+
+.sk-page .sk-sch-arrow {
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+    color: var(--text);
+    pointer-events: none;
+}
+
+.sk-page .sk-sch-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-sch-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sk-page .sk-sch-th {
+    background: var(--red-pale);
+    padding: 12px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-sch-th-day    { width: 130px; }
+.sk-page .sk-sch-th-module { width: 200px; }
+
+.sk-page .sk-sch-tr:nth-child(even) { background: #fdf9f9; }
+
+.sk-page .sk-sch-td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.sk-page .sk-sch-tr:last-child .sk-sch-td { border-bottom: none; }
+.sk-page .sk-sch-td-day                    { font-weight: 600; color: var(--red); }
+.sk-page .sk-sch-td-module-name            { font-weight: 500; }
+
+.sk-page .sk-sch-time-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sk-page .sk-sch-time-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 32px 7px 10px;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    min-width: 110px;
+}
+
+.sk-page .sk-sch-time-select:focus { border-color: var(--red); }
+
+.sk-page .sk-sch-time-arrow {
+    position: absolute;
+    right: 6px;
+    font-size: 16px;
+    color: var(--text);
+    pointer-events: none;
+}
+
+.sk-page .sk-sch-save-row { display: flex; justify-content: flex-end; }
+
+.sk-page .sk-sch-save-btn {
+    padding: 10px 28px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+
+/* ─────────────────────────────────────
+   22. REPORT PAGE  (.sk-rpt-)
+   ───────────────────────────────────── */
+
+.sk-page .sk-rpt-export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    background: transparent;
+    border: 1.5px solid var(--red);
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sk-page .sk-rpt-export-btn:hover { background: var(--red); color: var(--white); }
+.sk-page .sk-rpt-export-btn i     { font-size: 15px; }
+
+.sk-page .sk-rpt-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.sk-page .sk-rpt-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-rpt-stat-card {
+    flex: 0 0 auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 28px;
+    min-width: 180px;
+    max-width: 240px;
+    border-radius: 12px;
+    background: var(--red-pale);
+}
+
+.sk-page .sk-rpt-stat-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.sk-page .sk-rpt-stat-count {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text);
+}
+
+.sk-page .sk-rpt-toggle-group {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.sk-page .sk-rpt-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--red-pale);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sk-page .sk-rpt-toggle-btn i    { font-size: 15px; }
+.sk-page .sk-rpt-toggle-btn:hover { background: var(--red-light); }
+
+.sk-page .sk-rpt-toggle-active {
+    background: var(--red) !important;
+    color: var(--white) !important;
+}
+
+.sk-page .sk-rpt-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.sk-page .sk-rpt-table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.sk-page .sk-rpt-table { width: 100%; border-collapse: collapse; }
+
+.sk-page .sk-rpt-table thead tr { background: var(--red-pale); }
+
+.sk-page .sk-rpt-table th {
+    padding: 12px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-rpt-table tbody tr:nth-child(even) { background: #fdf9f9; }
+.sk-page .sk-rpt-table tbody tr:hover           { background: #fdf2f3; }
+
+.sk-page .sk-rpt-table td {
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-page .sk-rpt-table tbody tr:last-child td { border-bottom: none; }
+
+.sk-page .sk-rpt-total {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+    padding-right: 4px;
+}
+
+.sk-page .sk-rpt-total span { font-weight: 700; color: var(--text); }
+
+@media (max-width: 768px) {
+    .sk-page .sk-rpt-top-row        { flex-direction: column; align-items: flex-start; }
+    .sk-page .sk-rpt-toggle-group   { width: 100%; margin-left: 0; }
+    .sk-page .sk-rpt-toggle-btn     { flex: 1; justify-content: center; }
+    .sk-page .sk-rpt-stat-card      { max-width: 100%; width: 100%; }
+    .sk-page .sk-rpt-table th,
+    .sk-page .sk-rpt-table td       { padding: 9px 12px; font-size: 12px; }
+}
+/* ═══════════════════════════════════════════════════════════════
+   FIXES — added to patch missing / broken styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Dashboard action-card layout fix ──────────────────────────
+   The three "Manage Classes / Schedule / View Students" cards
+   were in a flex row with the wide announce box, making them
+   tiny slivers. Giving each card proper min-width + fixed
+   icon size, and wrapping the row so they sit below the box
+   on narrow screens.
+────────────────────────────────────────────────────────────── */
+.sk-admin .sk-action-card {
+    flex: 0 0 140px;          /* stop them from shrinking to nothing  */
+    min-width: 130px;
+    max-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 18px;
+    cursor: pointer;
+    transition: box-shadow 0.18s;
+}
+
+.sk-admin .sk-action-card:hover { box-shadow: 0 4px 16px rgba(155,35,53,0.12); }
+.sk-admin .sk-action-card span  { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.35; }
+.sk-admin .sk-action-card a     { display: flex; align-items: center; justify-content: center;
+                                    width: 52px; height: 52px; border-radius: 12px;
+                                    background: var(--red-pale); text-decoration: none;
+                                    transition: background 0.15s; }
+.sk-admin .sk-action-card a:hover { background: var(--red-light); }
+.sk-admin .sk-action-card i     { font-size: 26px; color: var(--red); opacity: 1; }
+
+/* Row that holds announce-box + action cards */
+.sk-admin .sk-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;        /* cards drop to next line on narrow main */
+    align-items: stretch;
+}
+
+/* ── Student-list page (StudentDetails.jsp) ──────────────────── */
+.sk-page .sk-stdlist-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.15s;
+}
+.sk-page .sk-stdlist-back:hover { color: var(--red); }
+
+.sk-page .sk-stdlist-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.sk-page .sk-stdlist-search-wrap i {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    color: var(--muted);
+    pointer-events: none;
+}
+.sk-page .sk-stdlist-search {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.18s;
+}
+.sk-page .sk-stdlist-search:focus { border-color: var(--red); }
+
+.sk-page .sk-stdlist-count {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.sk-page .sk-stdlist-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.sk-page .sk-stdlist-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.12s;
+}
+.sk-page .sk-stdlist-row:last-child { border-bottom: none; }
+.sk-page .sk-stdlist-row:hover { background: #fdf8f8; }
+
+.sk-page .sk-stdlist-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--red);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.sk-page .sk-stdlist-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.sk-page .sk-stdlist-avatar i { font-size: 20px; color: var(--red); opacity: 0.7; }
+
+.sk-page .sk-stdlist-info { flex: 1; min-width: 0; }
+
+.sk-page .sk-stdlist-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sk-page .sk-stdlist-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 3px;
+}
+
+.sk-page .sk-stdlist-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+.sk-page .sk-stdlist-meta-item i { font-size: 13px; }
+
+.sk-page .sk-stdlist-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--red-pale);
+    color: var(--red);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-stdlist-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--red-pale);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.sk-page .sk-stdlist-edit-btn:hover { background: var(--red); color: var(--white); }
+
+.sk-page .sk-stdlist-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 60px 20px;
+    color: var(--muted);
+    font-size: 14px;
+}
+.sk-page .sk-stdlist-empty i { font-size: 40px; opacity: 0.4; }
+
+/* ── Register page full-width fields fix ────────────────────── */
+.sk-page .sk-reg-field--full {
+    grid-column: 1 / -1;   /* span BOTH columns, was wrong "1 / 2" */
+}
+/* ─────────────────────────────────────
+   11. CLASS RESERVATION PAGE
+   ───────────────────────────────────── */
+
+/* Header row with search */
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sk-page .sk-search {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    width: 200px;
+    background: #fff;
+}
+
+.sk-page .sk-search:focus {
+    border-color: var(--red);
+}
+
+/* Form card */
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Date + Time row */
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Time from–to inline */
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.sk-page .sk-time-row input {
+    flex: 1;
+}
+
+/* Form submit row */
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* Card spacing between form and status */
+.sk-page .sk-card + .sk-card {
+    margin-top: 24px;
+}
+
+.sk-page .sk-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+/* ── Table ── */
+.sk-page .sk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-page .sk-table thead tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-page .sk-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.sk-page .sk-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sk-page .sk-table tbody tr:hover {
+    background: rgba(155, 35, 53, 0.04);
+}
+
+/* Empty row */
+.sk-page .sk-empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 32px;
+    font-size: 13px;
+}
+
+/* ── Status badges ── */
+.sk-page .sk-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.sk-page .sk-status-pending {
+    background: #fff8e1;
+    color: #b45309;
+}
+
+.sk-page .sk-status-approved {
+    background: #eafaf1;
+    color: #1e8449;
+}
+
+.sk-page .sk-status-disapproved {
+    background: #ffecec;
+    color: #c0392b;
+}
+
+/* ── Admin action buttons side by side ── */
+.sk-page .sk-action-form {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sk-page .sk-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sk-page .sk-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sk-page .sk-search {
+        width: 100%;
+    }
+}
+/* ─────────────────────────────────────
+   23. REGISTRATION APPROVALS PAGE  (.sk-appr-)
+   ───────────────────────────────────── */
+
+/* Back link */
+.sk-page .sk-appr-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.15s;
+}
+
+.sk-page .sk-appr-back i      { font-size: 16px; line-height: 1; }
+.sk-page .sk-appr-back:hover  { color: var(--red); }
+
+/* ── Stats row ── */
+.sk-page .sk-appr-stats {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.sk-page .sk-appr-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 140px;
+    padding: 18px 22px;
+    border-radius: 12px;
+    background: var(--red-pale);
+}
+
+.sk-page .sk-appr-stat--pending  { background: #fff8e1; }
+.sk-page .sk-appr-stat--approved { background: #eafaf1; }
+.sk-page .sk-appr-stat--rejected { background: #ffecec; }
+
+.sk-page .sk-appr-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.sk-page .sk-appr-stat--pending  .sk-appr-stat-icon { background: #fff3cd; color: #b45309; }
+.sk-page .sk-appr-stat--approved .sk-appr-stat-icon { background: #d1f2e0; color: #1e8449; }
+.sk-page .sk-appr-stat--rejected .sk-appr-stat-icon { background: #ffd6d6; color: #c0392b; }
+
+.sk-page .sk-appr-stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text);
+}
+
+.sk-page .sk-appr-stat-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* ── Tabs ── */
+.sk-page .sk-appr-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-appr-tab {
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    border-radius: 6px 6px 0 0;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.sk-page .sk-appr-tab:hover {
+    color: var(--red);
+    background: var(--red-pale);
+}
+
+.sk-page .sk-appr-tab.active {
+    color: var(--red);
+    font-weight: 700;
+    border-bottom-color: var(--red);
+    background: transparent;
+}
+
+/* ── Approval card ── */
+.sk-page .sk-appr-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.15s;
+}
+
+.sk-page .sk-appr-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+/* ── Avatar (initials circle) ── */
+.sk-page .sk-appr-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    border: 2px solid var(--red-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+/* ── Info block ── */
+.sk-page .sk-appr-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sk-page .sk-appr-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sk-page .sk-appr-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+}
+
+.sk-page .sk-appr-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.sk-page .sk-appr-meta-item i {
+    font-size: 13px;
+    color: var(--red);
+    opacity: 0.65;
+    flex-shrink: 0;
+}
+
+/* ── Status badge ── */
+.sk-page .sk-appr-status {
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+}
+
+.sk-page .sk-appr-status--pending  { background: #fff8e1; color: #b45309; }
+.sk-page .sk-appr-status--approved { background: #eafaf1; color: #1e8449; }
+.sk-page .sk-appr-status--rejected { background: #ffecec; color: #c0392b; }
+
+/* ── Action buttons ── */
+.sk-page .sk-appr-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-appr-actions form { margin: 0; padding: 0; }
+
+.sk-page .sk-appr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+
+.sk-page .sk-appr-btn i { font-size: 14px; }
+
+.sk-page .sk-appr-btn--approve {
+    background: #eafaf1;
+    color: #1e8449;
+    border: 1.5px solid #a9dfbf;
+}
+
+.sk-page .sk-appr-btn--approve:hover {
+    background: #1e8449;
+    color: #fff;
+    border-color: #1e8449;
+}
+
+.sk-page .sk-appr-btn--reject {
+    background: #ffecec;
+    color: #c0392b;
+    border: 1.5px solid #f5b7b1;
+}
+
+.sk-page .sk-appr-btn--reject:hover {
+    background: #c0392b;
+    color: #fff;
+    border-color: #c0392b;
+}
+
+/* ── Empty state ── */
+.sk-page .sk-appr-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 60px 20px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.sk-page .sk-appr-empty i  { font-size: 44px; opacity: 0.35; }
+.sk-page .sk-appr-empty p  { font-size: 14px; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .sk-page .sk-appr-card {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .sk-page .sk-appr-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .sk-page .sk-appr-stats {
+        flex-direction: column;
+    }
+
+    .sk-page .sk-appr-stat {
+        min-width: unset;
+    }
+}
+.sk-page .sk-reg-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px 0 48px;
+}
+
+.sk-page .sk-reg-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    padding: 32px 40px 36px;
+    margin-bottom: 0;
+}
+
+.sk-page .sk-reg-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.sk-page .sk-reg-select:focus {
+    border-color: var(--red);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-reg-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .sk-page .sk-reg-card {
+        padding: 24px 20px 28px;
+    }
+}
+
+
+/* ─────────────────────────────────────
+   24. ADMIN-SCHEDULE PAGE
+   .sk-sch-apply-btn
+   ───────────────────────────────────── */
+
+.sk-page .sk-sch-apply-btn {
+    height: 40px;
+    padding: 0 20px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    align-self: center;
+}
+
+.sk-page .sk-sch-apply-btn:hover {
+    background: var(--red-hover);
+}
+
+
+/* ─────────────────────────────────────
+   25. STUDENT DETAILS / FILTER PANEL
+   ───────────────────────────────────── */
+
+.sk-page .sk-filter-panel-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 20px;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.sk-page .sk-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.sk-page .sk-filter-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-page .sk-filter-group select {
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23aaa' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.sk-page .sk-filter-group select:focus {
+    border-color: var(--red);
+    background-color: var(--white);
+}
+
+.sk-page .sk-filter-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 20px;
+}
+
+.sk-page .sk-filter-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.sk-page .sk-filter-submit-btn:hover {
+    background: var(--red-hover);
+}
+
+.sk-page .sk-error-banner {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* ─────────────────────────────────────
+   26. EDIT PAGE  — select inputs & alerts
+   ───────────────────────────────────── */
+
+.sk-page .sk-edit-field-half select,
+.sk-page .sk-edit-field-full select {
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23aaa' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.sk-page .sk-edit-field-half select:focus,
+.sk-page .sk-edit-field-full select:focus {
+    border-color: var(--red);
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .sk-edit-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.sk-page .sk-edit-alert--success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.sk-page .sk-edit-alert--error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.sk-page .sk-edit-alert i { font-size: 18px; }
+
+.sk-page .sk-edit-photo-hint {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+
+/* ─────────────────────────────────────
+   27. REPORT PAGE  — filter submit button
+   ───────────────────────────────────── */
+
+.sk-page .sk-rpt-filter-submit {
+    height: 38px;
+    padding: 0 18px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    align-self: flex-end;
+}
+
+.sk-page .sk-rpt-filter-submit:hover {
+    background: var(--red-hover);
+}
+
+
+/* ─────────────────────────────────────
+   28. ADMIN STUDENT PAGE — hero & actions
+   ───────────────────────────────────── */
+
+.sk-page .sk-adstu-hero {
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.sk-page .sk-adstu-stat-card--red {
+    background: var(--red);
+    color: var(--white);
+}
+
+.sk-page .sk-adstu-stat-card--red .sk-adstu-stat-icon,
+.sk-page .sk-adstu-stat-card--red .sk-adstu-stat-label,
+.sk-page .sk-adstu-stat-card--red .sk-adstu-stat-count {
+    color: var(--white);
+    opacity: 1;
+}
+
+.sk-page .sk-adstu-info-strip {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background: var(--red-pale);
+    border-radius: 14px;
+    padding: 22px 26px;
+}
+
+.sk-page .sk-adstu-info-strip h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.sk-page .sk-adstu-info-strip p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.55;
+}
+
+.sk-page .sk-adstu-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 12px;
+}
+
+.sk-page .sk-adstu-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.sk-page .sk-adstu-action-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    cursor: pointer;
+    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+    text-decoration: none;
+}
+
+.sk-page .sk-adstu-action-card:hover {
+    box-shadow: 0 6px 22px rgba(155, 35, 53, 0.12);
+    border-color: var(--red-light);
+    transform: translateY(-2px);
+}
+
+.sk-page .sk-adstu-action-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--red-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sk-page .sk-adstu-action-icon-wrap i {
+    font-size: 22px;
+    color: var(--red);
+}
+
+.sk-page .sk-adstu-action-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.sk-page .sk-adstu-action-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* Approval banner */
+.sk-page .sk-adstu-approval-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    margin-bottom: 28px;
+}
+
+.sk-page .sk-adstu-approval-banner:hover {
+    border-color: var(--red-light);
+    box-shadow: 0 4px 16px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-adstu-approval-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.sk-page .sk-adstu-approval-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+}
+
+.sk-page .sk-adstu-approval-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sk-page .sk-adstu-approval-text strong {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-page .sk-adstu-approval-text span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.sk-page .sk-adstu-approval-badge {
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: #fff8e1;
+    color: #b45309;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.sk-page .sk-adstu-approval-arrow {
+    font-size: 20px;
+    color: var(--muted);
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .sk-page .sk-adstu-actions-grid {
+        grid-template-columns: 1fr;
+    }
+    .sk-page .sk-adstu-hero {
+        flex-direction: column;
+    }
+}
+
+
+/* ─────────────────────────────────────
+   29. ADMIN DASHBOARD  — stat cards & announcements
+   ───────────────────────────────────── */
+
+.sk-page .dash-stats {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.sk-page .dash-stat {
+    flex: 1;
+    background: var(--red-pale);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.sk-page .dash-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sk-page .dash-stat-icon i  { font-size: 22px; color: var(--red); }
+.sk-page .dash-stat-count   { font-size: 28px; font-weight: 800; line-height: 1; color: var(--text); }
+.sk-page .dash-stat-label   { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px; }
+
+/* Announcement input in admin dashboard */
+.sk-admin .sk-announce-box input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    background: var(--white);
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+.sk-admin .sk-announce-box input[type="text"]:focus { border-color: var(--red-light); }
+
+.sk-admin .sk-announce-genre {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.sk-admin .sk-announce-genre label {
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--text);
+}
+
+.sk-admin .sk-announce-genre select {
+    flex: 1;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+}
+
+.sk-admin .sk-announce-genre select:focus { border-color: var(--red-light); }
+
+.sk-admin .sk-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sk-admin .sk-icon-btn:hover  { background: var(--red-light); }
+.sk-admin .sk-icon-btn i      { font-size: 18px; color: var(--muted); }
+
+/* Announcement badges */
+.sk-page .dash-badge           { padding: 3px 10px; border-radius: 999px; font-size: 10px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+.sk-page .dash-badge-academics     { background: #e8f0ff; color: #1d4ed8; }
+.sk-page .dash-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+/* Recent announcement items */
+.sk-page .dash-ann-item      { display: block; text-decoration: none; color: inherit; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.sk-page .dash-ann-item:last-of-type { border-bottom: none; }
+.sk-page .dash-ann-row       { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.sk-page .dash-ann-title     { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.sk-page .dash-ann-preview   { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sk-page .dash-ann-date      { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+.sk-page .dash-view-all      { display: block; text-align: right; font-size: 12px; color: var(--muted); text-decoration: none; margin-top: 10px; transition: color 0.15s; }
+.sk-page .dash-view-all:hover { color: var(--red); }
+
+@media (max-width: 768px) {
+    .sk-page .dash-stats { flex-direction: column; }
+}
+
+
+/* ─────────────────────────────────────
+   30. STUDENT REGISTRATION FORM  (student-register.jsp)
+   .reg-* classes
+   ───────────────────────────────────── */
+
+.sk-page .reg-page {
+    flex: 1;
+    background: #fafafa;
+    padding: 60px 24px 80px;
+}
+
+.sk-page .reg-container {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.sk-page .reg-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sk-page .reg-heading h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 8px 0 12px;
+}
+
+.sk-page .reg-subtext {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.sk-page .reg-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    margin-bottom: 28px;
+}
+
+.sk-page .reg-alert-error {
+    background: #fdecea;
+    color: #b00020;
+    border: 1px solid #f5c6cb;
+}
+
+.sk-page .reg-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 44px 44px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.sk-page .reg-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sk-page .reg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+}
+
+.sk-page .reg-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-page .reg-field label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-page .reg-req { color: var(--red); }
+
+.sk-page .reg-field input {
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.sk-page .reg-field input:focus {
+    border-color: var(--red);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .reg-select {
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafafa;
+    font-size: 13.5px;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.sk-page .reg-select:focus {
+    border-color: var(--red);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.10);
+}
+
+.sk-page .reg-field-hint {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.sk-page .reg-field-photo { grid-column: 1; }
+
+.sk-page .reg-file-input { display: none; }
+
+.sk-page .reg-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: var(--red-pale);
+    color: var(--red);
+    border: 1.5px solid var(--red-light);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: fit-content;
+    transition: background 0.15s;
+}
+
+.sk-page .reg-upload-btn:hover { background: var(--red-light); }
+
+.sk-page .reg-upload-hint {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.sk-page .reg-load-sections { margin-top: 16px; }
+
+.sk-page .reg-load-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    background: var(--white);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.sk-page .reg-load-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-pale);
+}
+
+.sk-page .reg-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+}
+
+.sk-page .reg-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 44px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.sk-page .reg-btn-primary:hover { background: var(--red-hover); }
+
+.sk-page .reg-link-login {
+    font-size: 13.5px;
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.sk-page .reg-link-login strong { color: var(--red); }
+.sk-page .reg-link-login:hover strong { text-decoration: underline; }
+
+/* Success screen */
+.sk-page .reg-success-wrap {
+    text-align: center;
+    padding: 60px 44px;
+}
+
+.sk-page .reg-success-avatar {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.sk-page .reg-success-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+}
+
+.sk-page .reg-success-check {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background: #2e7d32;
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 2px solid var(--white);
+}
+
+.sk-page .reg-success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--red-pale);
+    color: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 40px;
+}
+
+.sk-page .reg-success-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .sk-page .reg-form          { padding: 28px 20px 32px; }
+    .sk-page .reg-grid          { grid-template-columns: 1fr; }
+    .sk-page .reg-field-photo   { grid-column: 1; }
+    .sk-page .reg-actions       { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .sk-page .reg-heading h1    { font-size: 26px; }
+}
+/* ─────────────────────────────────────
+   SETTINGS: hidden file input
+   (label acts as the visible trigger)
+   ───────────────────────────────────── */
+.sk-page .sk-ecp-file-input { display: none; }
+
+/* ══════════════════════════════════════════════
+   SKOLA — NOTES (enhanced)
+   Requires skola.css loaded first.
+   Fix your JSP link tag:
+     <link rel="stylesheet" href=".../css/skola.css"/>
+     <link rel="stylesheet" href=".../css/notes.css"/>
+   ══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+.sk-page.sk-student {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    
+    --white:     #ffffff;
+    --text:      #1e1e2e;
+    --muted:     #72728a;
+    --border:    #ebebf0;
+    --surface:   #f7f7fb;
+    --surface-2: #f0f0f6;
+}
+
+/* ── Flash messages ── */
+.sk-msg-success {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0fdf6;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+.sk-msg-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff1f2;
+    color: #9b2335;
+    border: 1px solid #fecdd3;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+/* ════════════════════════════════════════
+   NOTES LIST PAGE
+   ════════════════════════════════════════ */
+
+/* Page heading */
+.sk-student .sk-topbar h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+/* Pinned cards */
+.sk-notes-pinned-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.sk-note-pin-card {
+    background: var(--red-pale);
+    border: 1px solid var(--red-light);
+    border-radius: 16px;
+    padding: 20px 18px 36px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    min-height: 120px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(.22,.68,0,1.2),
+                box-shadow 0.2s ease,
+                border-color 0.2s;
+}
+
+/* Top accent stripe */
+.sk-note-pin-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--red);
+    opacity: 0.45;
+    border-radius: 16px 16px 0 0;
+    transition: opacity 0.2s;
+}
+
+/* Folded corner */
+.sk-note-pin-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 28px; height: 28px;
+    background: linear-gradient(225deg, var(--red-mid) 50%, transparent 50%);
+}
+
+.sk-note-pin-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 14px 36px rgba(155,35,53,0.15),
+                0 4px 10px rgba(155,35,53,0.08);
+    border-color: var(--red-mid);
+}
+
+.sk-note-pin-card:hover::after { opacity: 1; }
+
+/* Create new button */
+.sk-notes-create-row { margin-bottom: 28px; }
+
+.sk-notes-create-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px dashed var(--red-mid);
+    color: var(--red);
+    background: transparent;
+    border-radius: 12px;
+    padding: 11px 26px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s,
+                transform 0.12s, box-shadow 0.15s;
+}
+
+.sk-notes-create-btn:hover {
+    background: var(--red-pale);
+    border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(155,35,53,0.12);
+}
+
+/* All notes list */
+.sk-notes-list-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05),
+                0 1px 4px rgba(0,0,0,0.03);
+}
+
+.sk-notes-list-label {
+    display: flex;
+    align-items: center;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted) !important;
+    padding: 16px 24px 14px !important;
+    border-bottom: 1px solid var(--border);
+    margin: 0 !important;
+    background: var(--surface);
+}
+
+.sk-notes-list { padding: 0; }
+
+.sk-note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.12s;
+}
+
+.sk-note-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px; bottom: 10px;
+    width: 3px;
+    background: var(--red);
+    border-radius: 0 3px 3px 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.sk-note-item:hover { background: #fdf4f6; }
+.sk-note-item:hover::before { opacity: 1; }
+
+.sk-note-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sk-note-date {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.sk-note-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 24px;
+}
+
+.sk-notes-empty {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding: 56px 0 48px;
+    margin: 0;
+}
+
+/* ════════════════════════════════════════
+   CREATE NOTE PAGE
+   ════════════════════════════════════════ */
+
+.sk-on-back-row { display: flex; align-items: center; }
+
+.sk-on-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 6px 14px 6px 8px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sk-on-back i {
+    font-size: 18px;
+    color: var(--red);
+    transition: transform 0.15s;
+}
+
+.sk-on-back:hover { background: var(--red-pale); color: var(--red); }
+.sk-on-back:hover i { transform: translateX(-3px); }
+
+/* Editor card */
+.sk-cn-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 800px;
+    margin-top: 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07),
+                0 1px 6px rgba(0,0,0,0.04);
+}
+
+.sk-cn-title {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    padding: 24px 30px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'DM Sans', inherit;
+    outline: none;
+    background: var(--surface);
+    letter-spacing: -0.3px;
+    transition: background 0.18s, border-color 0.18s;
+}
+
+.sk-cn-title::placeholder { color: #c0c0d0; font-weight: 400; }
+
+.sk-cn-title:focus {
+    background: var(--white);
+    border-bottom-color: var(--red);
+}
+
+.sk-cn-body {
+    width: 100%;
+    min-height: 400px;
+    border: none;
+    border-radius: 0;
+    padding: 24px 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    font-family: 'DM Sans', inherit;
+    resize: vertical;
+    outline: none;
+    background: var(--white);
+}
+
+.sk-cn-body::placeholder { color: #c0c0d0; font-style: italic; }
+
+.sk-cn-btn-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 26px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+.sk-cn-btn-row .sk-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    background: var(--red) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 11px 28px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.18s, transform 0.12s, box-shadow 0.18s !important;
+    box-shadow: 0 2px 10px rgba(155,35,53,0.25) !important;
+    text-decoration: none;
+}
+
+.sk-cn-btn-row .sk-btn:hover {
+    background: var(--red-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(155,35,53,0.30) !important;
+}
+
+.sk-cn-exit {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.sk-cn-exit:hover {
+    background: var(--surface-2);
+    border-color: #c0c0d0;
+    color: var(--text);
+}
+.sk-avatar-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sk-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+/* ─────────────────────────────────────
+   CLASS RESERVATION PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 { font-size: 22px; font-weight: 700; }
+
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea { resize: vertical; min-height: 100px; }
+
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.sk-page .sk-time-row input { flex: 1; }
+
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn { padding: 10px 24px; font-size: 14px; border-radius: 8px; }
+
+.sk-page .sk-card + .sk-card { margin-top: 24px; }
+.sk-page .sk-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+
+.sk-page .sk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sk-page .sk-table thead tr { border-bottom: 1px solid var(--border); }
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.sk-page .sk-table td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text); vertical-align: middle; }
+.sk-page .sk-table tbody tr:last-child td { border-bottom: none; }
+.sk-page .sk-table tbody tr:hover { background: rgba(155, 35, 53, 0.04); }
+
+.sk-page .sk-empty { text-align: center; color: var(--muted); padding: 32px; font-size: 13px; }
+
+.sk-page .sk-status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: capitalize; }
+.sk-page .sk-status-pending     { background: #fff8e1; color: #b45309; }
+.sk-page .sk-status-approved    { background: #eafaf1; color: #1e8449; }
+.sk-page .sk-status-disapproved { background: #ffecec; color: #c0392b; }
+
+.sk-page .sk-action-form { display: inline-block; margin-right: 6px; }
+
+
+/* ─────────────────────────────────────
+   STUDENT SCHEDULE PAGE
+   ───────────────────────────────────── */
+
+.sk-stusch-topbar-right { display: flex; align-items: center; gap: 12px; }
+
+.sk-stusch-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    background: #fafafa;
+    width: 220px;
+}
+
+.sk-stusch-search-wrap i { color: var(--muted); font-size: 15px; flex-shrink: 0; }
+
+.sk-stusch-search {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text);
+    width: 100%;
+}
+
+.sk-stusch-search::placeholder { color: var(--muted); }
+
+.sk-stusch-section-label { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+
+.sk-stusch-table-wrap {
+    border: 1px solid var(--red-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sk-stusch-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+.sk-stusch-table thead tr { background: var(--red-pale); }
+
+.sk-stusch-th {
+    padding: 13px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    border-right: 1px solid var(--red-light);
+    border-bottom: 2px solid var(--red-light);
+}
+
+.sk-stusch-th:last-child { border-right: none; }
+.sk-stusch-th-day { width: 140px; }
+.sk-stusch-tr:hover { background: #fdf5f6; }
+
+.sk-stusch-td {
+    padding: 13px 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.sk-stusch-td:last-child { border-right: none; }
+.sk-stusch-tr:last-child .sk-stusch-td { border-bottom: none; }
+.sk-stusch-td-day { font-weight: 500; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   PROFILE SETTINGS PAGE - SKOLA STUDENT MANAGEMENT
+   ────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+
+.sk-page .sk-settings-card,
+.sk-page .sk-settings-wrap,
+.dashboard-container-class-name { /* Replace with your actual main wrapper class if it varies */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* Ensure individual dashboard cards keep their clean single layout framing */
+.sk-page .schedule-card, 
+.sk-page .announcement-card,
+.sk-page .computing-card {
+    background: #ffffff;
+    border: 1px solid #e5dad8; /* Keeps the single intentional border */
+    border-radius: 12px;
+}
+
+.sk-page .sk-settings-header {
+    margin-bottom: 35px;
+}
+
+.sk-page .sk-settings-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* --- Container Card --- */
+.sk-page .sk-settings-wrap {
+    max-width: 1000px;
+    margin: 0;
+}
+
+.sk-page .sk-settings-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* --- Section Dividers --- */
+.sk-page .sk-settings-section {
+    padding: 32px 0;
+    border-bottom: 1px solid #f0e6e4;
+}
+
+.sk-page .sk-settings-section:first-of-type {
+    padding-top: 0;
+}
+
+.sk-page .sk-settings-section:last-of-type {
+    border-bottom: none;
+}
+
+/* --- Section Headers & Badges --- */
+.sk-page .sk-section-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.sk-page .sk-section-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sk-page .sk-section-label i {
+    font-size: 16px;
+    color: #9b2335; /* Primary brand dark red */
+    flex-shrink: 0;
+}
+
+.sk-page .sk-section-label h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.sk-page .sk-section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    background: #f3eceb;
+    border: 1px solid #e5dad8;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* --- Top Profile / Avatar Section --- */
+.sk-page .sk-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.sk-page .sk-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sk-page .sk-avatar-img,
+.sk-page .sk-avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #e5dad8;
+    background-color: #fff;
+}
+
+/* Red indicator line/border logic or generic missing icon styling */
+.sk-page .sk-avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+    color: #7a7a7a;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Active Status Dot Indicator */
+.sk-page .sk-avatar-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #22c55e; /* Online green */
+    border: 2px solid #fffaf9;
+}
+
+/* --- Profile Meta Details --- */
+.sk-page .sk-profile-meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-page .sk-profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 2px 0;
+}
+
+.sk-page .sk-profile-email,
+.sk-page .sk-profile-grade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666666;
+}
+
+.sk-page .sk-profile-email i,
+.sk-page .sk-profile-grade i {
+    font-size: 14px;
+    color: #9b2335;
+    width: 14px;
+    text-align: center;
+}
+
+/* --- Action Buttons (Top Right) --- */
+.sk-page .sk-avatar-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.sk-page .sk-avatar-btn-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Main Action Buttons (Choose Photo / Upload) */
+.sk-page .sk-btn-primary {
+    background: #9b2335;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+}
+
+.sk-page .sk-btn-primary:hover {
+    background: #801b2a;
+}
+
+/* Remove Photo Button */
+.sk-page .sk-btn-remove {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #d1c4c2;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+}
+
+.sk-page .sk-btn-remove:hover {
+    background: #fff1f2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+}
+
+/* --- Information Input Fields & Grid --- */
+.sk-page .sk-info-grid,
+.sk-page .sk-settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+}
+
+/* Full width fix for isolated sections like Phone Number */
+.sk-page .sk-info-grid.sk-single-col {
+    grid-template-columns: 1fr;
+}
+
+.sk-page .sk-info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sk-page .sk-info-field label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #7a7a7a;
+}
+
+/* Styled Fields (Disabled / Read-only appearance) */
+.sk-page .sk-info-value,
+.sk-page .sk-settings-form input[readonly] {
+    background: #f4eceb;
+    border: 1px solid #e5dad8;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #333333;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 44px;
+    outline: none;
+}
+
+/* For editable standard fields (if applied later) */
+.sk-page .sk-settings-form input[type="text"]:not([readonly]),
+.sk-page .sk-settings-form input[type="email"]:not([readonly]) {
+    background: #ffffff;
+    border: 1px solid #d1c4c2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #1a1a1a;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sk-page .sk-settings-form input:focus:not([readonly]) {
+    border-color: #9b2335;
+    box-shadow: 0 0 0 3px rgba(155, 35, 53, 0.15);
+}
+/* ─────────────────────────────────────
+   CLASS RESERVATION PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 { font-size: 22px; font-weight: 700; }
+
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea { resize: vertical; min-height: 100px; }
+
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.sk-page .sk-time-row input { flex: 1; }
+
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn { padding: 10px 24px; font-size: 14px; border-radius: 8px; }
+
+.sk-page .sk-card + .sk-card { margin-top: 24px; }
+.sk-page .sk-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+
+.sk-page .sk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sk-page .sk-table thead tr { border-bottom: 1px solid var(--border); }
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.sk-page .sk-table td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text); vertical-align: middle; }
+.sk-page .sk-table tbody tr:last-child td { border-bottom: none; }
+.sk-page .sk-table tbody tr:hover { background: rgba(155, 35, 53, 0.04); }
+
+.sk-page .sk-empty { text-align: center; color: var(--muted); padding: 32px; font-size: 13px; }
+
+.sk-page .sk-status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: capitalize; }
+.sk-page .sk-status-pending     { background: #fff8e1; color: #b45309; }
+.sk-page .sk-status-approved    { background: #eafaf1; color: #1e8449; }
+.sk-page .sk-status-disapproved { background: #ffecec; color: #c0392b; }
+
+.sk-page .sk-action-form { display: inline-block; margin-right: 6px; }
+/* ─────────────────────────────────────
+   5. STUDENT DASHBOARD  (.sk-student)
+   ───────────────────────────────────── */
+
+/* ── Main background ── */
+.sk-student .sk-main {
+    background: #ffffff;
+}
+
+/* ── Row 1: Schedule + Profile ── */
+.sk-student .sk-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: stretch;
+}
+
+/* ── Schedule card ── */
+.sk-student .sk-card-schedule {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+}
+
+.sk-student .sk-card-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.sk-student .sk-today-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.sk-student .sk-today-label strong {
+    color: var(--red);
+}
+
+.sk-student .sk-view-all {
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+/* ── Schedule table ── */
+.sk-student .sk-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.sk-student .sk-schedule-table thead tr {
+    background: #f8f4f5;
+    border-radius: 8px;
+}
+
+.sk-student .sk-schedule-table th {
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-student .sk-schedule-table th:first-child { border-radius: 8px 0 0 8px; }
+.sk-student .sk-schedule-table th:last-child  { border-radius: 0 8px 8px 0; }
+
+.sk-student .sk-schedule-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--text);
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.sk-student .sk-schedule-table tbody tr:last-child td { border-bottom: none; }
+.sk-student .sk-schedule-table tbody tr:hover { background: #fdf5f6; }
+
+.sk-student .sk-schedule-empty {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+    padding: 24px 0;
+}
+
+
+
+/* ── Profile card ── */
+.sk-student .sk-card-profile {
+    flex: 1;
+    background: var(--red);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sk-student .sk-card-profile::before {
+    content: '';
+    position: absolute;
+    top: -24px; right: -24px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+
+.sk-student .sk-card-profile::after {
+    content: '';
+    position: absolute;
+    bottom: -18px; left: -18px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.sk-student .sk-card-profile i {
+    font-size: 30px;
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.15);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.25);
+    margin-bottom: 2px;
+}
+
+.sk-student .sk-profile-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+.sk-student .sk-profile-class {
+    font-size: 34px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.sk-student .sk-profile-sem {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+}
+
+.sk-student .sk-profile-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* ── Announcement card ── */
+.sk-card-announce {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+}
+
+.sk-announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-announcement-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.sk-announcement-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.sk-announcement-container::-webkit-scrollbar { width: 4px; }
+.sk-announcement-container::-webkit-scrollbar-track { background: transparent; }
+.sk-announcement-container::-webkit-scrollbar-thumb { background: var(--red-light); border-radius: 4px; }
+
+.sk-announcement-card {
+    background: #fdf4f5;
+    border: 1px solid #f0d8db;
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: transform 0.15s ease;
+}
+
+.sk-announcement-card:hover {
+    transform: translateY(-1px);
+}
+
+.sk-ann-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.sk-announcement-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    flex: 1;
+}
+
+.sk-ann-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: capitalize;
+}
+
+.sk-ann-badge-academics    { background: #e8f0ff; color: #1d4ed8; }
+.sk-ann-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+.sk-announcement-content {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.sk-ann-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.sk-ann-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sk-ann-attachment:hover { text-decoration: underline; }
+
+.sk-empty-state {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 32px 0;
+}
+
+/* ── Notes section ── */
+.sk-student .sk-notes-section {
+    margin-top: 0;
+}
+
+.sk-student .sk-notes-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.sk-student .sk-notes-row {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.sk-student .sk-notes-area {
+    flex: 2;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    min-height: 140px;
+    position: relative;
+}
+
+.sk-student .sk-notes-area p {
+    font-size: 13px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sk-student .sk-notes-area p:last-of-type {
+    border-bottom: none;
+}
+
+.sk-student .sk-notes-area .sk-view-all {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 12px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sk-student .sk-notes-area .sk-view-all:hover {
+    text-decoration: underline;
+}
+
+.sk-student .sk-new-note {
+    flex: 1;
+    background: #fdf4f5;
+    border: 1.5px dashed #d4848e;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sk-student .sk-new-note:hover {
+    background: #e6f4ec;
+}
+
+.sk-student .sk-new-note .sk-pins {
+    font-size: 28px;
+}
+.sk-student .sk-new-note:hover {
+    background: #f5dde0;
+}
+
+.sk-student .sk-new-note p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #9b2335;
+}
+/* ─────────────────────────────────────
+   CLASS RESERVATION PAGE
+   ───────────────────────────────────── */
+
+.sk-page .sk-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sk-page .sk-header-row h2 { font-size: 22px; font-weight: 700; }
+
+.sk-page .sk-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sk-page .sk-reservation-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.sk-page .sk-reservation-form input[type="text"],
+.sk-page .sk-reservation-form input[type="date"],
+.sk-page .sk-reservation-form input[type="time"],
+.sk-page .sk-reservation-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sk-page .sk-reservation-form input:focus,
+.sk-page .sk-reservation-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(155, 35, 53, 0.08);
+}
+
+.sk-page .sk-reservation-form textarea { resize: vertical; min-height: 100px; }
+
+.sk-page .sk-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sk-page .sk-time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sk-page .sk-time-row span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.sk-page .sk-time-row input { flex: 1; }
+
+.sk-page .sk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.sk-page .sk-form-actions .sk-btn { padding: 10px 24px; font-size: 14px; border-radius: 8px; }
+
+.sk-page .sk-card + .sk-card { margin-top: 24px; }
+.sk-page .sk-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+
+.sk-page .sk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sk-page .sk-table thead tr { border-bottom: 1px solid var(--border); }
+.sk-page .sk-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sk-page .sk-table td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text); vertical-align: middle; }
+.sk-page .sk-table tbody tr:last-child td { border-bottom: none; }
+.sk-page .sk-table tbody tr:hover { background: rgba(155, 35, 53, 0.04); }
+
+.sk-page .sk-empty { text-align: center; color: var(--muted); padding: 32px; font-size: 13px; }
+
+.sk-page .sk-status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: capitalize; }
+.sk-page .sk-status-pending     { background: #fff8e1; color: #b45309; }
+.sk-page .sk-status-approved    { background: #eafaf1; color: #1e8449; }
+.sk-page .sk-status-disapproved { background: #ffecec; color: #c0392b; }
+
+.sk-page .sk-action-form { display: inline-block; margin-right: 6px; }
+
+
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .sk-notes-pinned-row { grid-template-columns: 1fr 1fr; }
+    .sk-note-item { padding: 14px 16px; }
+    .sk-note-divider { margin: 0 16px; }
+    .sk-cn-title { padding: 18px 20px; font-size: 18px; }
+    .sk-cn-body  { padding: 18px 20px; }
+    .sk-cn-btn-row { padding: 14px 16px; flex-wrap: wrap; }
+    .sk-cn-btn-row .sk-btn, .sk-cn-exit { flex: 1; justify-content: center; }
+}

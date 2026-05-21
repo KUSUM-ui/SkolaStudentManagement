@@ -1,0 +1,344 @@
+/* ─────────────────────────────────────
+   6. ANNOUNCEMENTS PAGE  (.sk-announce-page)
+   ───────────────────────────────────── */
+
+/* ── Create / Edit form box ── */
+.sk-announce-page .sk-announce-form-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.sk-announce-page .sk-announce-form-box > span {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 16px;
+}
+
+/* Title input */
+.sk-announce-page .sk-announce-title-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: #fafafa;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.sk-announce-page .sk-announce-title-input::placeholder { color: #c0c0c0; }
+.sk-announce-page .sk-announce-title-input:focus {
+    border-color: var(--red);
+    background: var(--white);
+}
+
+/* Genre row */
+.sk-announce-page .sk-announce-genre {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.sk-announce-page .sk-announce-genre label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.sk-announce-page .sk-genre-select {
+    flex: 1;
+    max-width: 220px;
+    padding: 9px 36px 9px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: #fafafa;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23aaa' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-color: #fafafa;
+    transition: border-color 0.2s;
+}
+
+.sk-announce-page .sk-genre-select:focus {
+    border-color: var(--red);
+    background-color: var(--white);
+}
+
+/* Textarea */
+.sk-announce-page .sk-announce-form-box textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: #fafafa;
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.sk-announce-page .sk-announce-form-box textarea::placeholder { color: #c0c0c0; }
+.sk-announce-page .sk-announce-form-box textarea:focus {
+    border-color: var(--red);
+    background: var(--white);
+}
+
+/* Form footer — icon buttons + Post button */
+.sk-announce-page .sk-announce-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+/* Hide the raw <input type="file"> */
+.sk-announce-page .sk-announce-form-footer input[type="file"] {
+    display: none;
+}
+
+/* Icon trigger buttons */
+.sk-announce-page .sk-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--red-pale);
+    cursor: pointer;
+    transition: background 0.15s;
+    border: none;
+    flex-shrink: 0;
+}
+
+.sk-announce-page .sk-icon-btn:hover { background: var(--red-light); }
+.sk-announce-page .sk-icon-btn i    { font-size: 18px; color: var(--red); }
+
+/* Post / Save Changes button pushed right */
+.sk-announce-page .sk-announce-form-footer .sk-btn {
+    margin-left: auto;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+/* ── Section label + filter tabs row ── */
+.sk-announce-page .sk-announce-list-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.sk-announce-page .sk-announce-filter {
+    display: flex;
+    gap: 6px;
+}
+
+.sk-announce-page .sk-filter-btn {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--red-pale);
+    border: 1.5px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.sk-announce-page .sk-filter-btn:hover {
+    background: var(--red-light);
+}
+
+.sk-announce-page .sk-filter-btn.active {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+}
+
+/* ── Announcement list ── */
+.sk-announce-page .sk-announce-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ── Individual announcement card ── */
+.sk-announce-page .sk-announce-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    transition: box-shadow 0.15s;
+}
+
+.sk-announce-page .sk-announce-item:hover {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+}
+
+/* Header: title + badge */
+.sk-announce-page .sk-announce-item-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.sk-announce-page .sk-announce-item-header strong {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.4;
+}
+
+/* Genre badges */
+.sk-announce-page .sk-announce-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: capitalize;
+}
+
+.sk-announce-page .sk-badge-academics     { background: #e8f0ff; color: #1d4ed8; }
+.sk-announce-page .sk-badge-non-academics { background: #fff4e5; color: #b45309; }
+
+/* Content paragraph */
+.sk-announce-page .sk-announce-item > p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 10px;
+}
+
+/* Image preview */
+.sk-announce-page .sk-announce-img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Attachment link */
+.sk-announce-page .sk-announce-attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.sk-announce-page .sk-announce-attachment:hover { text-decoration: underline; }
+
+/* Footer: date + actions */
+.sk-announce-page .sk-announce-item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+    flex-wrap: wrap;
+}
+
+.sk-announce-page .sk-announce-item-footer small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.sk-announce-page .sk-announce-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.sk-announce-page .sk-announce-actions form { margin: 0; }
+
+/* Edit button */
+.sk-announce-page .sk-announce-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1.5px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sk-announce-page .sk-announce-edit-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* Delete button */
+.sk-announce-page .sk-announce-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1.5px solid #fecaca;
+    background: #fff5f5;
+    color: #c0392b;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.sk-announce-page .sk-announce-delete-btn:hover {
+    background: #c0392b;
+    color: var(--white);
+    border-color: #c0392b;
+}
